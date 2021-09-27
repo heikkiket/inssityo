@@ -1,0 +1,69 @@
+\hypertarget{viikko-1}{%
+\subsection{Viikko 1}\label{viikko-1}}
+
+Pidin palaverin Lauran kanssa, ja Pasin + Lauran kanssa. Sovimme
+aihealueeksi Diariumin laskutuksen.
+
+Lauran kanssa yhdessä alettiin keskustella laskutuksesta. Laura näytti,
+miten Diariumissa laskuttamisen logiikka toimii, ja piirsin
+tussitaululle esimerkkejä, miten logiikka voisi toimia.
+
+Käytin yksinkertaista notaatiota, jossa merkitsin asioita laatikoilla,
+ja niiden välisiä yksi moneen -suhteita.
+
+Sain lopulta aikaiseksi mallin, josta kuva ohessa. {[}kuva mallista{]}
+Tämä päätettiin toteuttaa.
+
+Minulla meni torstaisen kokouksen jälkeen perjantai ja maanantai
+perusrakenteen pystyttämiseen: Falcon, Ariadne GraphQL, Gunicorn ja
+muutamia muita työkaluja. Lisäksi hommasin Pytest-testikirjaston, ja
+opiskelin sen.
+
+Lisäksi piti asentaa Apollo GraphQL-client ja Vue-cli, sekä plugin
+Vue-Apollo.
+
+Tiistaina sain ensimmäisen toiminnon, käyntien lisäämisen, valmiiksi.
+
+Oli mielenkiintoista huomata, miten piirtämäni kuva ja tässä vaiheessa
+aikaansaamani GraphQL-skeema muistuttivat läheisesti toisiaan.
+GraphQL-queryjen sisältämät oliot rakensivat saman rakenteen, joka
+tussitaululle piirsin. Sen sijaan GraphQL-mutaatioiden rooli ei ole
+vielä auennut.
+
+\hypertarget{viikko-2}{%
+\subsection{Viikko 2}\label{viikko-2}}
+
+Ensimmäisellä kehitykseen käyttämälläni viikolla (to-to) sain siis vain
+ekan ominaisuuden valmiiksi. Sen jälkeen loppuviikosta tein vielä
+käyntien laskutuksen. Lienee rehellistä arvioida, että noin viikon
+kehitystyön myötä kaksi ``käyttäjätarinaa'' valmistui.
+
+Perjantaina myös kirjoitin frontendia Vue-Apollolla ja käytin melkoisen
+määrän aikaa kirjaston ominaisuuksien hahmottamiseen. Se ei kuulu
+suoraan insinöörityön sisältöön, mutta toisaalta kuitenkin tarjoaa hyvän
+kehyksen asioiden tekemiseenn.
+
+\hypertarget{viikko-3}{%
+\subsection{Viikko 3}\label{viikko-3}}
+
+Sain ensimmäisen version laskuhärvelistä valmiiksi. Tavoite oli Lauran
+kanssa pitää asiasta palaveri perjantaina, mutta se peruuntui, koska
+Laura oli tulossa kipeäksi.
+
+Laskuhärveli toimii sinänsä, ja on hankala miettiä, onko siitä apua.
+
+Kuitenkin domain-tason konseptien mallintaminen GraphQL-skeemaksi toimii
+hyvin. Esimerkki:
+
+\begin{verbatim}
+Type Invoice {
+  numnber: Int
+  sum: Float
+  date: Date
+}
+
+type ConsolidatedInvoice {
+  number: Int
+  invoices: [Invoice]
+}
+\end{verbatim}
