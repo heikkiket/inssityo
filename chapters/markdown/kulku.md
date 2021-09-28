@@ -1,8 +1,10 @@
 \vspace{21.5pt}
 
-# Työn eteneminen
+# Työn kulku
 
-Tähän tulee laajempi kuvaus, kunhan päiväkirja on saatu valmiiksi
+Tähän tulee kuvaus työn kulusta päiväkirjan pohjalta.
+
+Kuuluisivatkohan nämä oikeastaan tulosten tarkastelun tai yhteenvedon alle?
 
 ## Ubiquitous Language käytännössä
 

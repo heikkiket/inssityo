@@ -1,6 +1,6 @@
 \vspace{21.5pt}
 
-# Teoria
+# Aineisto ja menetelmät
 
 Keskeisten käsitteiden esittely
 
