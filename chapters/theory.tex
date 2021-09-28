@@ -1,6 +1,60 @@
-% Theoretical background
-%\clearpage%if the chapter heading starts close to bottom of the page, force a line break and remove the vertical vspace
 \vspace{21.5pt}
-\chapter{Theoretical background}
 
-Check Final Year Project Guide for the content of Theoretical background chapter.
+\hypertarget{teoria}{%
+\chapter{Teoria}\label{teoria}}
+
+Keskeisten käsitteiden esittely
+
+\hypertarget{domain-driven-design}{%
+\section{Domain Driven Design}\label{domain-driven-design}}
+
+(Sovellusalakeskeinen suunnittelu) (Liiketoimintavetoinen suunnittelu)
+
+\hypertarget{knowledge-crunching}{%
+\subsection{Knowledge crunching}\label{knowledge-crunching}}
+
+\hypertarget{ubiquitous-language}{%
+\subsection{Ubiquitous Language}\label{ubiquitous-language}}
+
+\hypertarget{mallin-ilmaiseminen-ohjelmistossa}{%
+\subsection{Mallin ilmaiseminen
+ohjelmistossa}\label{mallin-ilmaiseminen-ohjelmistossa}}
+
+\begin{itemize}
+\tightlist
+\item
+  Domain-malli on ohjelmistossa omana erillisenä kerroksenaan, puhtaasti
+  ja erillään muista.
+\item
+  Entity - entiteetti, eli olio, jolla on identiteetti
+\item
+  Assosiaatio, eli kulkusuunta
+\end{itemize}
+
+Pohdintaa: - Evans suosittaa kerroksittaista arkkitehtuuria, ja
+erillistä kerrosta, jossa Domain-malli elää. Luonteva paikka tälle voisi
+olla GraphQL-rajapinnan takana.
+
+\hypertarget{graphql}{%
+\section{GraphQL}\label{graphql}}
+
+\hypertarget{tyyppijuxe4rjestelmuxe4}{%
+\subsection{Tyyppijärjestelmä}\label{tyyppijuxe4rjestelmuxe4}}
+
+GraphQL-rajapinta koostuu tyypeistä
+
+\hypertarget{query-ja-mutation}{%
+\subsection{Query ja Mutation}\label{query-ja-mutation}}
+
+Rajapintaan voi tehdä queryjä - nämä ovat ikäänkuin sisäänmenoaukkoja,
+joiden kautta oliorakenteita voi pyytää Mutation - toiminto datan
+muuntelemiseen. Myös tämä palauttaa dataa
+
+\hypertarget{skeema}{%
+\subsection{Skeema}\label{skeema}}
+
+Rajapinnan tyypit, niille tehtävät kyselyt ja mutaatiot kuvataan
+skeemassa, GraphQL-kielen avulla.
+
+-Pohdintaa: Tämä skeema on varmaankin keskeinen nivelkohta Domain Driven
+Designin kanssa.
