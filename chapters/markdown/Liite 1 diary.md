@@ -81,3 +81,18 @@ Nyt Käynnin alle lisättiin erillinen, laskutustarkoituksiin käytettävä olio
 
 Tämä tuntui meistä hyvältä mallilta, ja sen pohjalta ryhdyin koodaamaan. Tätä mallia esittää kuva \ref{malli3}.
 Sovittiin uusi palaveri viikon päähän.
+
+## Viikko 4
+
+Tiistai meni refaktoroidessa mallia uudelle tolalle, Lauran kanssa keskustellun mukaisesti.
+Keskiviikkona taas toteutin ominaisuuden, jossa laskut ja hyvityssummat täsmää.
+Torstain ja perjantain käytin rakentaen uuden logiikan mukaista listausta käynneille ja laskuille: aiemmin käyntejä käsitelleet laskuoliot piti nyt siirtää käyttämään **Service-** ja **ServiceCredit**-olioita. Nämä vastaavat käyntiä ja käynnin hyvitystä.
+
+Lopulta tämä logiikka jäi sisällöllisesti aika kauas siitä, mitä Lauran kanssa puhuttiin. Näin viikon lopulta katsottuna tuntuu, että olisi pitänyt sopia selkeämmät tavoitteet myös sovelluksen toiminnan osalta: mitä käyttäjätarinoita otetaan viikon ajaksi työn alle?
+
+Positiivisena puolena taas on todettava, että malli syveni. Keskeinen uusi löydös tässä on ketju **Appointment** -> **Service** -> **ServiceCredit**. Nuolet kuvaavat kulkusuuntaa, jossa rakennetta käydään läpi. Appointment siis tietää, liittyykö siihen "Service" eli onko se jo laskutettu, ja Service taas tietää, liittyykö siihen ServiceCredit.
+
+## Viikko 5
+Maanantainen palaveri Lauran kanssa oli omasta mielestäni jotenkin jähmeä. Epäilen, että osasyynä oli tussitaulullisen neukkarin puute. Paras anti oli se, että päätettiin joukko tarinoita, joita teen eteenpäin.
+
+Ensimmäisenä lähdin toteuttamaan tarinaa, jossa jo kerran laskutettu mutta hyvitetty käynti on voitava hyvittää uudelleen. Ratkaisin asian tekemällä listan laskurivejä, jotka on liitetty käyntiin. Jos riviä vastaa hyvitysrivi, on laskun summa taas avoinna.

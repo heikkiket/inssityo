@@ -13,33 +13,4 @@ Web-sovelluksessa eräs merkittävimpiä nivelkohtia on sovelluksen käyttöliit
 ja logiikkaosan välinen HTTP-rajapinta. Tässä insinöörityössä tarkastellaan,
 voiko tämän rajapinnan uudistamisen kanssa yhtä aikaa myös kohentaa ohjelmiston sisäistä logiikkaa.
 
-Työ tehdään ohjelmistopalveluyritys Nordhealth Oy:n tilauksesta.
- 
-\section{Nordhealth Oy lyhyesti}
-
-
-Nordhealth Oy on vuonna 2001 perustettu ohjelmistopalveluyritys, joka tekee toiminnanohjausjärjestelmiä kahdelle eri toimialalle: Provet Cloud -järjestelmää eläinlääkäriklinikoille ja Diarium-järjestelmää terapeuteille. Molemmat järjestelmät ovat web-pohjaisia sovelluksia. Niitä käytetään kirjautumalla web-selaimen kautta. (Tästä puuttuu perustietoja, kuten työntekijöiden määrä, liikevaihto tms.)
-
-Nordhealthia voisi luonnehtia tyypilliseksi ohjelmistoalan yritykseksi: se tekee
-erityisalalle suunnattua toiminnanohjausjärjestelmää. Alunperin järjestelmät
-ovat olleet työpöytäsovelluksia, ja siitä Nordhealth on muuntanut ne
-LAMP-alustalla toimiviksi web-sovelluksiksi. Kun Web on kehittynyt, on otettu
-suunnaksi sovellusten siirtäminen julkiseen pilveen, ja käyttöliittymän
-rakentaminen erilliseksi yhden sivun JavaScript-sovellukseksi.
-
-Diarium on Nordhealthin kahdesta järjestelmästä vanhempi. Se on suunnattu terapeuteille: fysio-, toiminta-, puhe- ja psykoterapeuteille. Järjestelmä on laajentunut yksinkertaisesta potilaskortistojärjestelmästä suurenkin terapia-alan yrityksen tarpeita vastaavaksi toiminnanohjausjärjestelmäksi, ja se on lisäksi myös Valviran tarkoittama A-luokan potilastietojärjestelmä. Diariumia käyttävä terapeutti voi siis lähettää käyntikirjaukset potilastiedon sähköiseen Kanta-rekisteriin.
-
-\section{Insinöörityön tavoite}
-
-Työn tavoitteena on analysoida pientä osaa Diariumin tietomallista, ja etsiä
-parempia tapoja sen toteuttamiseen. Diariumin HTTP-rajapintaa halutaan muista
-syistä kehittää, ja tämä tarjoaa työni pääkysymyksen: onko ohjelmiston
-tietomallia mahdollista kehittää rakentamalla GraphQL-rajapinta?
-
-GraphQL on teknologiana uusi ja erilainen verrattuna vanhaan HTTP REST
--rajapintaan. Tarvitaan siis hyviä perusteita siihen siirtymiselle.
-
-Taustateoksena työssä käytän Eric Evansin kirjaa Doman Driven Design.
-
-Työn tuloksena en ajattele syntyvän valmista ja parempaa tietomallia, vaan
-pikemminkin prosessi tietomallin kehittämiseksi rajapinnan uusimisen ohella.
+Työssä perehdytään GraphQL-rajapinnan toimintaan Domain Driven Designin näkökulmasta.

@@ -22,10 +22,46 @@ Keskeisten käsitteiden esittely
 ## GraphQL
 
 ### Tyyppijärjestelmä
-GraphQL-rajapinta koostuu tyypeistä
+GraphQL-rajapinta koostuu tyypeistä, ja niitä edustavista olio-ilmentymistä.
+
+Oheisessa esimerkissä näytetään tyyppien, ja sitä myötä olioiden väliset suhteet. ConsolidatedInvoice-tyyppisessä oliossa on sisällä invoices-kenttä, joka on lista Invoice-tyyppisiä olioita.
+
+```GraphQL
+type Query {
+  consolidatedInvoices [ConsolidatedInvoice]
+}
+
+Type Invoice {
+  number: Int
+  sum: Float
+  date: Date
+}
+
+type ConsolidatedInvoice {
+  number: Int
+  invoices: [Invoice]
+}
+```
 
 ### Query ja Mutation
-Rajapintaan voi tehdä queryjä - nämä ovat ikäänkuin sisäänmenoaukkoja, joiden kautta oliorakenteita voi pyytää
+Rajapintaan voi tehdä kyselyjä Query-tyyppisen juuriolion kautta. Tämän olion kentät vastaavat käytännössä niitä kyselyitä, joita rajapintaan voi tehdä. Kentät ovat ikäänkuin sisäänmenoaukkoja, joiden kautta oliorakenteita voi pyytää.
+
+Kun oheisen esimerkin mukaisesti määritellystä GraphQL-rajapinnasta halutaan pyytää tietoja, tehdään kysely, joka kuvaa halutun oliopuun rakenteen tyyppien avulla:
+
+```
+{
+  ConsolidatedInvoice {
+    number
+    invoices {
+      number
+      sum
+    }
+  }
+}
+```
+
+Kyselyssä määritellään kentät, jotka palautuvassa datassa halutaan nähdä. Näin myös oliopuun syvyyttä voidaan kontrolloida. Oheisessa esimerkissä voidaan hakea paitsi lista koontilaskuista, haluttaessa myös jokaisen koontilaskun alle lista siihen kuuluvista laskuista.
+
 Mutation - toiminto datan muuntelemiseen. Myös tämä palauttaa dataa
 
 ### Skeema
