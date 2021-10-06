@@ -1,13 +1,22 @@
-main:
+latex: bibliography glossaries latex_raw
+
+latex_raw:
 	xelatex -shell-escape -8bit main
 
+bibliography:
+	biber main
+
+glossaries:
+	makeglossaries main
+
 markdown:
+	pandoc chapters/markdown/introduction.md -o chapters/introduction.tex --top-level-division=chapter
 	pandoc "chapters/markdown/lähtökohdat ja tavoitteet.md" -o chapters/käsittely.tex --top-level-division=chapter
 	pandoc chapters/markdown/käsittely.md -o chapters/käsittely.tex --top-level-division=chapter
 	pandoc chapters/markdown/theory.md -o chapters/theory.tex
 	pandoc chapters/markdown/kulku.md -o chapters/kulku.tex
 	pandoc chapters/markdown/tulokset.md -o chapters/tulokset.tex --top-level-division=chapter
 	pandoc chapters/markdown/yhteenveto.md -o chapters/yhteenveto.tex --top-level-division=chapter
-	pandoc chapters/markdown/diary.md -o chapters/diary.tex --top-level-division=chapter
+	pandoc "chapters/markdown/Liite 1 diary.md" -o chapters/diary.tex --top-level-division=chapter
 
-all: markdown main
+all: markdown latex

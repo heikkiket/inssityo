@@ -3,14 +3,68 @@
 \hypertarget{tyuxf6n-kulku}{%
 \section{Työn kulku}\label{tyuxf6n-kulku}}
 
-Tähän tulee kuvaus työn kulusta päiväkirjan pohjalta.
+Työn aluksi valitsimme yhdessä ohjaajani sekä tiimin tuoteomistaja
+Lauran kanssa aiheen työhön. Laskutusta koskevat osat ohjelmistossa ovat
+suhteellisen monimutkaisia, ja sisältävät käsitteellisiä epäselvyyksiä.
+Valitsimme laskutuksen sisältä tapauksen, jossa hoitokäynti tulee voida
+jakaa usealle eri maksajalle osoitetuille laskuille, ja nämä laskut
+tulee voida hyvittää itsenäisesti.
 
-Kuuluisivatkohan nämä oikeastaan tulosten tarkastelun tai yhteenvedon
-alle?
+Tämän jälkeen ryhdyin pitämään tiimin tuoteomistaja Lauran kanssa
+kokokouksia, joissa suunnittelimme mallin rakennetta. Pyrin noudattamaan
+työskentelyssä Eric Evansin esittämää tiedon rouhimisen periaatetta,
+jossa suunnittelu ja ohjelmistokehitys limittyvät keskenään.
+
+Pidimme lyhyitä suunnittelukokouksia, joissa pohdimme, millainen mallin
+tulisi olla. Kokousten välillä kirjoitin ohjelmiston, joka vastasi
+pohdintojamme. Seuraavassa kokouksessa katsoimme, miten ohjelma toimii,
+ja lisäsimme malliin uusia piirteitä.
+
+Käytin apuvälineenä tussitaulua, johon piirsin erilaisia ehdotuksia
+malleiksi. Oleellista on, että taulun pystyi pyyhkimään nopeasti, ja
+piirtämään uuden mallin. Otimme myös valokuvia mallinnussession eri
+vaiheista. En kuitenkaan halunnut, että piirretyt mallit sanelevat
+ohjelmiston rakennetta. Tärkein mittari on ohjelmakoodi, ja sen
+ilmaisema rakenne. Piirrokset toimivat apuna, tämän rakenteen kuvaajina.
+
+Ensimmäisesssä kokouksessa hahmottelimme yksinkertaisen mallin, jossa
+käynnit liitetään laskuihin, laskut koontilaskuihin ja koontilaskut
+hyvityslaskuihin. Toteutin tämän mallin parin viikon kuluessa, jonka
+jälkeen pidimme uuden tapaamisen.
+
+Tavoitteenani oli jokaisen tapaamisen myötä rakentaa hieman
+monipuolisempi ja paremmin ohjelmiston käyttäjien tarpeita vastaava
+malli. Toisinaan tällaiset laajentamispyrkimykset voivat myös johtaa
+äkilliseen läpimurtoon, jonka myötä syntyy
+\gls{deepermodel}.\cite{evans:ddd}
+
+Tapaamisissa kävin joka kerta läpi, mitkä käsitteelliset asiat olivat
+ohjelmoidessa vaivanneet. Esimerkiksi toisella tapaamiskerralla esitin
+suurimmaksi ongelmaksi sen, että käynnin ja laskun välillä on suora
+kytkös. Ohjelmoidessa tämä kytkös tuli koko ajan huomioida, ja varoa
+aiheuttamasta ongelmia. Pyysin Lauraa kertomaan enemmän siitä, mitä
+käynnin laskuttaminen oikeastaan tarkoittaa, ja hän piti lyhyen
+yhteenvedon laskuttamisen periaatteista. Huomioni kiinnittyi puheessa
+esiintyneeseen termiin \textbf{Laskutusperuste}. Tämä tuntui valtavan
+kiinnostavalta, ja lähdimme tarkastelemaan sitä eri puolilta.
+
+Tapaamisen jälkeisen viikon kehitystyötä ohjasi nyt uusi ajattelutapa:
+käyntiä sinänsä ei liitetä laskuun, vaan käynti laskutetaan, mikäli
+laskutusperuste täyttyy. Tämän tuloksena syntyi melko yksinkertainen
+malli:
+
+\begin{verbatim}
++--------------+       +--------------+       +----------------+
+|  Appointment | ----> |  ServiceRow  | ----> |  ServiceCredit |
++--------------+       +--------------+       +----------------+
+\end{verbatim}
 
 \hypertarget{ubiquitous-language-kuxe4ytuxe4nnuxf6ssuxe4}{%
 \subsection{Ubiquitous Language
 käytännössä}\label{ubiquitous-language-kuxe4ytuxe4nnuxf6ssuxe4}}
+
+Kuuluisivatkohan nämä oikeastaan tulosten tarkastelun tai yhteenvedon
+alle?
 
 Pitäessäni suunnittelukokouksia yhdessä tuoteomistajan kanssa, pyrin
 koko ajan kuuntelemaan tarkalla korvalla, minkälaisia sanoja käytimme.

@@ -4,27 +4,30 @@
 
 Keskeisten käsitteiden esittely
 
-## Domain Driven Design
+## \gls{ddd}
 (Sovellusalakeskeinen suunnittelu)
 (Liiketoimintavetoinen suunnittelu)
 
-### Knowledge crunching
-### Ubiquitous Language
+\gls{crunching} (Knowledge crunching) on keskeinen väline sovellusaluemallin rakentamiseen. Evans kuvaa prosessin, jossa kehittäjät luonnostelevat yhdessä sovellusalueen asiantuntijoiden kanssa \gls{domainmodel}. Malli kytketään tiiviisti yhteen toteutuksen kanssa tekemällä vuoroin suunnittelua, vuoroin ohjelmistokehitystä.
+\cite[p. 13]{evans:ddd}
 
-### Mallin ilmaiseminen ohjelmistossa
+Tavoitteena on, että ohjelmistokehittäjien ja alan asiantuntijoiden välille rakentuu \gls{ubilang}, jonka avulla kaikkien on mahdollista yhteisesti keskustella ohjelmiston toiminnasta ja kehitystarpeista. Tämän kielen käsitteet elävät ohjelmakoodissa, ja muodostavat koodin ytimessä sijaitsevan \gls{domainlayer}
 
- - Domain-malli on ohjelmistossa omana erillisenä kerroksenaan, puhtaasti ja erillään muista.
- - Entity - entiteetti, eli olio, jolla on identiteetti
- - Assosiaatio, eli kulkusuunta
+### \gls{ddd}n rakennuspalikat
+Eric Evans tarjoaa kirjassaan joukon käteviä työkaluja, joiden avulla \gls{domainmodel} on mahdollista toteuttaa teknisesti.
 
- Pohdintaa: - Evans suosittaa kerroksittaista arkkitehtuuria, ja erillistä kerrosta, jossa Domain-malli elää. Luonteva paikka tälle voisi olla GraphQL-rajapinnan takana.
+\gls{entity} edustaa käytännössä kaikkea, jolla on identiteetti. Esimerkiksi kahdella ihmisellä voi olla sama nimi, mutta he ovat silti identiteetiltään eri henkilöitä. Todella suuri osa \gls{domainmodel} koostuu juuri \gls{entity}stä.
+
+Tärkeä osa mallia ovat myös kulkusuunnat \gls{entity} välillä. Nämä vaikuttavat paitsi ohjelmiston tekniseen monimutkaisuuteen, myös siihen, minkälaisia asioita mallilla on mahdollista ilmaista.
+
+Esimerkiksi lasku voi koostua joukosta laskurivejä. Ohjelman toteutus ja käyttötavat muuttuvat hyvin paljon, jos kulkusuuntaa muutetaan. Ensimmäisessä tapauksessa lasku tietää, mitkä laskurivit siihen kuuluvat, mutta yksittäinen laskurivi ei tiedä, miltä laskulta on peräisin. Toisessa tapauksessa laskurivi osaa kertoa, mille laskulle se kuuluu, mutta lasku ei kykene listaamaan omia rivejään. Mikäli näiden kahden käsitteen välillä kulkeminen onnistuu molempiin suuntiin, ohjelman monimutkaisuus kasvaa.
 
 ## GraphQL
 
 ### Tyyppijärjestelmä
-GraphQL-rajapinta koostuu tyypeistä, ja niitä edustavista olio-ilmentymistä.
+GraphQL-rajapinta koostuu tyypeistä, joiden avulla rajapinnalle lähetetään kysely. Rajapinta palauttaa takaisin oliota edustavan joukon kenttiä avain-arvo -pareina. \cite{graphql:spec}
 
-Oheisessa esimerkissä näytetään tyyppien, ja sitä myötä olioiden väliset suhteet. ConsolidatedInvoice-tyyppisessä oliossa on sisällä invoices-kenttä, joka on lista Invoice-tyyppisiä olioita.
+Oheisessa esimerkissä kuvataan tyyppien, ja sitä myötä olioiden väliset suhteet. ConsolidatedInvoice-tyyppisessä oliossa on sisällä invoices-kenttä, joka on lista Invoice-tyyppisiä olioita.
 
 ```GraphQL
 type Query {
@@ -42,6 +45,13 @@ type ConsolidatedInvoice {
   invoices: [Invoice]
 }
 ```
+
+
+### Skeema
+Rajapinnan tyypit, niille tehtävät kyselyt ja mutaatiot kuvataan skeemassa, GraphQL-kielen avulla. ConsolidatedInvoice- ja Invoice-olioista koostuva esimerkki on validi GraphQL-skeema.
+
+GraphQL-kehityksessä tyylejä on useita, ja yksi suosittu tapa on kirjoittaa skeema ensiksi. Se tarjoaa suuntaviivat sekä rajapinnan tekniselle toteutukselle, että myös graafisen asiakasohjelman laatimiselle.
+
 
 ### Query ja Mutation
 Rajapintaan voi tehdä kyselyjä Query-tyyppisen juuriolion kautta. Tämän olion kentät vastaavat käytännössä niitä kyselyitä, joita rajapintaan voi tehdä. Kentät ovat ikäänkuin sisäänmenoaukkoja, joiden kautta oliorakenteita voi pyytää.
@@ -62,9 +72,4 @@ Kun oheisen esimerkin mukaisesti määritellystä GraphQL-rajapinnasta halutaan 
 
 Kyselyssä määritellään kentät, jotka palautuvassa datassa halutaan nähdä. Näin myös oliopuun syvyyttä voidaan kontrolloida. Oheisessa esimerkissä voidaan hakea paitsi lista koontilaskuista, haluttaessa myös jokaisen koontilaskun alle lista siihen kuuluvista laskuista.
 
-Mutation - toiminto datan muuntelemiseen. Myös tämä palauttaa dataa
-
-### Skeema
-Rajapinnan tyypit, niille tehtävät kyselyt ja mutaatiot kuvataan skeemassa, GraphQL-kielen avulla.
-
- -Pohdintaa: Tämä skeema on varmaankin keskeinen nivelkohta Domain Driven Designin kanssa.
+Mutation-juurityyppiä puolestaan käytetään datan muunnoksiin. Mutation-komennot voivat myös palauttaa oliorakenteita.
