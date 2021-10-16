@@ -209,3 +209,13 @@ tekemällä listan laskurivejä, jotka on liitetty käyntiin. Jos riviä
 vastaa hyvitysrivi, on laskun summa taas avoinna. Tämä muistuttaa
 aikaisempaa ideaani lokista, mutta on yksinkertaisempi: se perustuu
 ServiceRow:n ja ServiceCreditin väliseen kytkökseen.
+
+\hypertarget{viikko-6}{%
+\section{Viikko 6}\label{viikko-6}}
+
+Maanantain aloitin voimakkaalla refaktoroinnilla: tarvitaan SalesItem,
+joka jakautuu SalesShareiksi, jotka puolestaan kytkeytyvät laskuilla
+oleville SalesRow-olioihin.
+
+Tämä vaatii isoja muutoksia alla olevaan mallin koodiin, ja siihen kului
+koko maanantai. Olin aloittanut työn jo viime perhjantaina.

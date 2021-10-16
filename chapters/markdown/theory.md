@@ -69,23 +69,27 @@ Graafi eli verkko on tietorakenne, joka koostuu N:stä solmusta ja niitä yhdist
 
 GraphQL:n avulla sovellusala on mahdollista esittää verkon muodossa määrittelemällä GraphQL-skeema. Tämän avulla rajapinta tarjoaa asiakasohjelmalle rakenteen, joka muistuttaa olio-ohjelmointia.\cite{thinkingInGraphsOct2021}
 
+- tähän vielä vähän lisää funtsailua siitä, miten olio-ohjelmoinnin graafimainen ajattelu ohjaa ongelmanratkaisua, ja ehkä myös joku naseva pätkä Evansilta samansuuntaisesti ajattelemiseen
+
 ### Tyyppijärjestelmä
 
-- Tyyppiteoria?
+Tietokoneet käsittelevät dataa ottamatta sen enempää kantaa sen tyyppiin. Pohjimmiltaan data on vain bittijonoja muistissa, tai elementtejä joukossa. Kun tällaista järjestämätöntä ja tyypittämätöntä joukkoa ryhdytään käsittelemään, on välttämätöntä järjestää se erilaisiin kategorioihin. Tämä tiedon luokittelu synnyttää tyyppijärjestelmän, mutta järjestelmä ei ole formaalisti määritelty, eikä tietokone voi niin ollen tehdä tyyppitarkistusta.
 
-GraphQL-rajapinta koostuu tyypeistä, joita rajapinnalle lähetettävä kysely käyttää. Kyselysssä määritetään pyydettävät tyypit ja niiden kentät. Rajapinta palauttaa takaisin oliota edustavan joukon kenttiä \gls{hakurakenne}-muodossa. \cite{graphql:spec}
+Tyypitys tarkoittaa määrättyjä rajoituksia, joiden avulla voidaan varmistaa muuttujan oikeellisuus. Staattinen tyypitys on menetelmä, jossa ekspressioiden tyyppi voidaan määrittää staattisen analyysin avulla, siis jo käännösaikaisesti. Vahva tyypitys taas mahdollistaa tyypin tarkistamisen luotettavasti ajon aikana. \cite{Cardelli+Wegner:1985}
+
+GraphQL-rajapinta koostuu tyypeistä, joita rajapinnalle lähetettävä kysely käyttää. Kyselyssä määritetään pyydettävät tyypit ja niiden kentät. Rajapinta palauttaa takaisin oliota edustavan joukon kenttiä \gls{hakurakenne}-muodossa. \cite{graphql:spec}
 
 GraphQL:ää käyttävät sovellukset on kuitenkin useimmiten kirjoitettu dynaamisesti tyypitetyillä kielillä. Esimerkiksi alkuperäinen GraphQL-referenssi-implementaatio on kirjoitettu JavaScriptillä.\cite{graphqlRefImple2021Oct}
 
-Samoin Python-kieli on dynaamisesti tyypitetty, ja olioiden tunnistamisessa se käyttää duck-tyypitykseksi kutsuttua menetelmää. Siinä olion tyyppi oletetaan sen sisältämien jäsenten perusteella.\cite{pythonGloss2021Oct}
+Samoin Python-kieli on dynaamisesti tyypitetty, ja olioiden tunnistamisessa se käyttää duck-tyypitykseksi kutsuttua menetelmää. Duck-tyypityksessä olion tyyppiä ei tarkasteta välttämättä edes ajonaikaisesti, vaan oletetaan sen sisältämien jäsenten perusteella.\cite{pythonGloss2021Oct} Jos esimerkiksi oliosta löytyvät kentät *summa* ja *laskunumero*, oletetaan, että olio on lasku.
 
-- Python-kieli käyttää Duck-tyypitystä. (Python-manuaali)
-- Myös JavaScript on dynaamisesti tyypitetty kieli.
-GraphQL on siis keino tuoda tyyppitarkistus dynaamisten kielten päälle.
+Tässä mielessä voidaan ajatella, että GraphQL on keino tuoda ajonaikaisia tyyppitarkistuksia myös dynaamisesti tyypitetyillä kielillä kirjoitettuun sovellukseen. Rajapinta erottaa toisistaan ohjelmiston taustaosan ja käyttöliittymän, joten tällä rajalla tehtävän tyyppitarkistuksen voi ajatella ehkäisevän virheitä ja parantavan ohjelmiston luotettavuutta.
 
 Oheisessa esimerkissä kuvaan rajapinnan edustamien tyyppien, ja sitä myötä sen palauttamien olioiden väliset suhteet. ConsolidatedInvoice-tyyppisessä oliossa on sisällä invoices-kenttä, joka on lista Invoice-tyyppisiä olioita.
 
 Laskutuksessa ConsolidatedInvoicella eli koontilaskulla tarkoitetaan yhdistelmälaskua, joka kokoaa yksittäisiä laskuja (Invoice).
+
+Tältä rajapinnalta voi pyytää listaa koontilaskuista. GraphQL:n tyyppijärjestelmä takaa, että koontilaskun sisällä on invoices-jäsen, joka sisältää listan Invoice-tyyppisiä olioita, eli siis laskuja.
 
 
 ```GraphQL
@@ -106,12 +110,15 @@ type ConsolidatedInvoice {
 ```
 
 ### Skeema
- - DSL - domain-spesifi kieli.
+\Gls{dsl} on ohjelmointikieltä korkeamman tason kieli, joka on suunniteltu jollekin kapealle sovellusalueelle. Esimerkkejä \glsentryname{dsl}istä ovat esimerkiksi UNIX-tyyppisistä järjestelmistä tutut *sed*- ja *awk*-kielet. Tällaisen kielen avulla on mahdollista määritellä monimutkaisiakin asioita nopeasti.\cite{Raymond2003Sep} Kieli tarjoaa tavanomaista ohjelmointikieltä ilmaisuvoimaisemman ja täsmällisemmän tavan määritellä asioita.
 
-Rajapinnan tyypit, niille tehtävät kyselyt ja mutaatiot kuvataan skeemassa, GraphQL-kielen avulla. ConsolidatedInvoice- ja Invoice-olioista koostuva esimerkki on validi GraphQL-skeema.
+GraphQL-rajapinnan tyypit, niille tehtävät kyselyt ja mutaatiot kuvataan skeemassa, GraphQL-kielen avulla. Edellä esitetty ConsolidatedInvoice- ja Invoice-olioista koostuva esimerkki on validi GraphQL-skeema. Tämä skeemamäärittelyihin käytettävä kieli on riippumaton ohjelmointikielestä.
 
-GraphQL-kehityksen tyylejä on useita, ja yksi suosittu tapa on kirjoittaa skeema ensiksi. Se tarjoaa suuntaviivat sekä rajapinnan tekniselle toteutukselle, että myös graafisen asiakasohjelman laatimiselle.
+GraphQL-kirjastot eri kielissä lukevat skeeman, tarkistavat sen, ja sen jälkeen suorittavat Skeeman avulla ajonaikaisen tyyppitarkistuksen.
 
+GraphQL-kehityksen tyylejä on useita, ja yksi suosittu tapa on kirjoittaa skeema ensiksi. Se tarjoaa suuntaviivat sekä rajapinnan tekniselle toteutukselle, että myös graafisen asiakasohjelman laatimiselle.\cite{SchemaDriven2017Nov},\cite{SchemaDrivenDesign2021Jul}
+
+GraphQL-skeemaa voi siis verrata Eric Evansin esittämään ajatukseen \glsentryname{ubilang}sta. Esimerkiksi GraphQL Foundationin materiaaleissa esitetään, että GraphQL-skeemaa tulisi ajatella jaettuna kielenä oman ohjelmointitiimin kesken, ja myös käyttäjien kanssa kommunikoimiseen.\cite{thinkingInGraphsOct2021}
 
 ### Query ja Mutation -juurityypit
 Rajapintaan voi tehdä kyselyjä Query-tyyppisen juuriolion kautta. Tämän olion kentät määrittävät, mitä dataa rajapinnalta voidaan pyytää. Kentät ovat ikäänkuin sisäänmenoaukkoja, joiden kautta oliorakenteita voi pyytää.
