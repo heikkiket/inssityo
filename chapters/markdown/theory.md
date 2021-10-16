@@ -8,26 +8,85 @@ Keskeisten käsitteiden esittely
 (Sovellusalakeskeinen suunnittelu)
 (Liiketoimintavetoinen suunnittelu)
 
-\gls{crunching} (Knowledge crunching) on keskeinen väline sovellusaluemallin rakentamiseen. Evans kuvaa prosessin, jossa kehittäjät luonnostelevat yhdessä sovellusalueen asiantuntijoiden kanssa \gls{domainmodel}. Malli kytketään tiiviisti yhteen toteutuksen kanssa tekemällä vuoroin suunnittelua, vuoroin ohjelmistokehitystä.
-\cite[p. 13]{evans:ddd}
+Yleinen ongelma tietokoneohjelmistoja tehtäessä on, että ohjelmoijat tuntevat ohjelmiston erikoisalan heikosti. Esimerkiksi kiinteistötekniikkaa, kirjastokortistoa tai tämän työn tapauksessa laskutusta hoitavan ohjelmiston kehittäjä joutuu käsittelemään monimutkaisia, sovellusalaan sidottuja ongelmia. Ohjelmiston tulisi ratkaista ongelmat oikein, ja toimia virheettömästi kun sitä käytetään.
+
+Eric Evans esittää kirjassaan Domain Driven Design laajan työkalupakin keinoja, joilla tämän ongelman voi pyrkiä ylittämään. Evansin mielestä jokaisen monimutkaisemman ohjelmiston sisässä on \gls{domainmodel} (Domain model), eli malli siitä, miten kyseinen ohjelmisto ratkaisee sovellusalan ongelmat.
+
+\Gls{crunching} (Knowledge crunching) on keskeinen väline sovellusaluemallin rakentamiseen. Evans kuvaa prosessin, jossa kehittäjät luonnostelevat yhdessä sovellusalueen asiantuntijoiden kanssa \gls{domainmodel}in. Malli kytketään tiiviisti yhteen ohjelmakoodin kanssa vuorottelemalla suunnittelun ja ohjelmistokehityksen välillä. \cite[s. 13]{evans:ddd}
 
 Tavoitteena on, että ohjelmistokehittäjien ja alan asiantuntijoiden välille rakentuu \gls{ubilang}, jonka avulla kaikkien on mahdollista yhteisesti keskustella ohjelmiston toiminnasta ja kehitystarpeista. Tämän kielen käsitteet elävät ohjelmakoodissa, ja muodostavat koodin ytimessä sijaitsevan \gls{domainlayer}
 
 ### \gls{ddd}n rakennuspalikat
-Eric Evans tarjoaa kirjassaan joukon käteviä työkaluja, joiden avulla \gls{domainmodel} on mahdollista toteuttaa teknisesti.
+Evansin lähtökohta on, että \gls{domainmodel} ilmaistaan nimenomaan ohjelmakoodin kautta. Koodi on kuitenkin lopulta se dokumentti, joka määrittää ohjelman toiminnan.
 
-\gls{entity} edustaa käytännössä kaikkea, jolla on identiteetti. Esimerkiksi kahdella ihmisellä voi olla sama nimi, mutta he ovat silti identiteetiltään eri henkilöitä. Todella suuri osa \gls{domainmodel} koostuu juuri \gls{entity}stä.
+Evans tarjoaa kirjassaan joukon käteviä työkaluja, joiden avulla \glsentryname{domainmodel} on mahdollista toteuttaa teknisesti.
 
-Tärkeä osa mallia ovat myös kulkusuunnat \gls{entity} välillä. Nämä vaikuttavat paitsi ohjelmiston tekniseen monimutkaisuuteen, myös siihen, minkälaisia asioita mallilla on mahdollista ilmaista.
+\Gls{entity} edustaa käytännössä kaikkea, jolla on identiteetti. Esimerkiksi kahdella ihmisellä voi olla sama nimi, mutta he ovat silti identiteetiltään eri henkilöitä. \gls{entity} voi myös muuttaa muotoaan, esimerkiksi ihminen kasvaa aikuiseksi ja vaikkapa vaihtaa sukunimensä. Identiteetti säilyy silti. Todella suuri osa \glsentryname{domainmodel}{sta} koostuu juuri \glsentryname{entity}{ista}.
 
-Esimerkiksi lasku voi koostua joukosta laskurivejä. Ohjelman toteutus ja käyttötavat muuttuvat hyvin paljon, jos kulkusuuntaa muutetaan. Ensimmäisessä tapauksessa lasku tietää, mitkä laskurivit siihen kuuluvat, mutta yksittäinen laskurivi ei tiedä, miltä laskulta on peräisin. Toisessa tapauksessa laskurivi osaa kertoa, mille laskulle se kuuluu, mutta lasku ei kykene listaamaan omia rivejään. Mikäli näiden kahden käsitteen välillä kulkeminen onnistuu molempiin suuntiin, ohjelman monimutkaisuus kasvaa.
+Laskutusta käsittelevässä ohjelmassa esimerkiksi laskuilla on identiteetti. Kahdella laskulla voi olla sisällytettynä samat tuotteet ja maksajakin voi olla sama, mutta silti laskut ovat omia erillisiä kokonaisuuksiaan.
+
+Tärkeä osa mallia ovat myös kulkusuunnat \glsentryname{entity}{iden} välillä. Nämä vaikuttavat paitsi ohjelmiston tekniseen monimutkaisuuteen, myös siihen, minkälaisia asioita mallilla on mahdollista ilmaista.
+
+Esimerkiksi lasku voi koostua joukosta laskurivejä. Ohjelman toteutus ja käyttötavat muuttuvat hyvin paljon, jos kulkusuuntaa muutetaan.
+ - Tapaus A: lasku tietää, mitkä laskurivit siihen kuuluvat, mutta yksittäinen laskurivi ei tiedä, miltä laskulta on peräisin. 
+ - Tapaus B: laskurivi osaa kertoa, mille laskulle se kuuluu, mutta lasku ei kykene listaamaan omia rivejään.
+ 
+Kolmas vaihtoehto on mahdollistaa kulkeminen molempiin suuntiin näiden kahden käsitteen välillä. Tällöin ohjelman tekninen monimutkaisuus kasvaa.
+
+## Refaktorointi
+
+Yleistä refaktoroinnista
+
+ - Refactoring towards deeper insight
+ - YAGNI-periaate
+ - Automaattiset yksikkötestit (Clean Code vai XP -kirja? - uncle bobin "Three laws of TDD" -blogi)
 
 ## GraphQL
 
-### Tyyppijärjestelmä
-GraphQL-rajapinta koostuu tyypeistä, joiden avulla rajapinnalle lähetetään kysely. Rajapinta palauttaa takaisin oliota edustavan joukon kenttiä avain-arvo -pareina. \cite{graphql:spec}
+- REST-rajapinnan ongelmien kautta GraphQL:n esittely
 
-Oheisessa esimerkissä kuvataan tyyppien, ja sitä myötä olioiden väliset suhteet. ConsolidatedInvoice-tyyppisessä oliossa on sisällä invoices-kenttä, joka on lista Invoice-tyyppisiä olioita.
+GraphQL on Facebookin kehittämä kyselykieli, joka on tarkoitettu rajapintojen toteuttamiseen. Sen alkuperäinen suunnitteluperiaate oli tarjota web-asiakasohjelmien kehittäjille aiempaa laajempi vapaus rajapintapyyntöjen laatimiseen. \cite{graphql:spec}
+
+Teknologia koostuu kahdesta osasta: kyselykielestä sekä tyyppijärjestelmästä. Kyselykielellä muotoillaan pyyntö, johon rajapinnan tulee vastata. GraphQL on vahvasti tyypitetty teknologia, ja tyyppijärjestelmä tarkistaa, että rajapintapyyntö on oikein muotoiltu.
+
+GraphQL ei ole varsinainen rajapinta, sillä rajapinnan toteuttamisteknologia on määrittelyn ulkopuolella. Useimmiten GraphQL-rajapinnat on toteutettu HTTP-teknologian päälle, mutta muitakin, kuten WebSocketia, voi käytttää. GraphQL ei myöskään määrittele, miten kyselyn vastaus tulee muodostaa, tai milllä ohjelmointikielellä järjestelmmä tulee toteuttaa.
+
+- Ensimmäinen GraphQL-implementaatio toteutetiin JavaScriptillä. (Mistä tieto löytyy?)
+- Osa konventioista on JS-konventioita. Esimerkiksi kentän- ja muuttujien nimet ovat camelCasea ja PascalCasea. https://www.apollographql.com/docs/apollo-server/schema/schema/#naming-conventions
+
+### Miten GraphQL-sovellus toimii
+
+ 1. HTTP-palvelin: yleinen
+ 2. GraphQL-kirjasto
+   - Ottaa vastaan kyselyn, tarkistaa sen validiuden skeemaa vasten, ja ohjaa sen halutulle resolver-funktiolle.
+ 3. Bisneslogiikka
+ 4. Tietokanta
+
+
+### Graafeista
+
+Graafi eli verkko on tietorakenne, joka koostuu N:stä solmusta ja niitä yhdistävistä kaarista.\cite{pozrikidis2014introduction} Graafien avulla on mahdollista esittää monenlaisia suhdeverkkoja. Tietojenkäsittelyssä ja ohjelmistotuotannossa yleinen olio-ohjelmoinnin tyyli esittää ratkaistavan ongelmakentän olioiden välisinä verkkoina.\cite{booch2008object}
+
+GraphQL:n avulla sovellusala on mahdollista esittää verkon muodossa määrittelemällä GraphQL-skeema. Tämän avulla rajapinta tarjoaa asiakasohjelmalle rakenteen, joka muistuttaa olio-ohjelmointia.\cite{thinkingInGraphsOct2021}
+
+### Tyyppijärjestelmä
+
+- Tyyppiteoria?
+
+GraphQL-rajapinta koostuu tyypeistä, joita rajapinnalle lähetettävä kysely käyttää. Kyselysssä määritetään pyydettävät tyypit ja niiden kentät. Rajapinta palauttaa takaisin oliota edustavan joukon kenttiä \gls{hakurakenne}-muodossa. \cite{graphql:spec}
+
+GraphQL:ää käyttävät sovellukset on kuitenkin useimmiten kirjoitettu dynaamisesti tyypitetyillä kielillä. Esimerkiksi alkuperäinen GraphQL-referenssi-implementaatio on kirjoitettu JavaScriptillä.\cite{graphqlRefImple2021Oct}
+
+Samoin Python-kieli on dynaamisesti tyypitetty, ja olioiden tunnistamisessa se käyttää duck-tyypitykseksi kutsuttua menetelmää. Siinä olion tyyppi oletetaan sen sisältämien jäsenten perusteella.\cite{pythonGloss2021Oct}
+
+- Python-kieli käyttää Duck-tyypitystä. (Python-manuaali)
+- Myös JavaScript on dynaamisesti tyypitetty kieli.
+GraphQL on siis keino tuoda tyyppitarkistus dynaamisten kielten päälle.
+
+Oheisessa esimerkissä kuvaan rajapinnan edustamien tyyppien, ja sitä myötä sen palauttamien olioiden väliset suhteet. ConsolidatedInvoice-tyyppisessä oliossa on sisällä invoices-kenttä, joka on lista Invoice-tyyppisiä olioita.
+
+Laskutuksessa ConsolidatedInvoicella eli koontilaskulla tarkoitetaan yhdistelmälaskua, joka kokoaa yksittäisiä laskuja (Invoice).
+
 
 ```GraphQL
 type Query {
@@ -46,21 +105,22 @@ type ConsolidatedInvoice {
 }
 ```
 
-
 ### Skeema
+ - DSL - domain-spesifi kieli.
+
 Rajapinnan tyypit, niille tehtävät kyselyt ja mutaatiot kuvataan skeemassa, GraphQL-kielen avulla. ConsolidatedInvoice- ja Invoice-olioista koostuva esimerkki on validi GraphQL-skeema.
 
-GraphQL-kehityksessä tyylejä on useita, ja yksi suosittu tapa on kirjoittaa skeema ensiksi. Se tarjoaa suuntaviivat sekä rajapinnan tekniselle toteutukselle, että myös graafisen asiakasohjelman laatimiselle.
+GraphQL-kehityksen tyylejä on useita, ja yksi suosittu tapa on kirjoittaa skeema ensiksi. Se tarjoaa suuntaviivat sekä rajapinnan tekniselle toteutukselle, että myös graafisen asiakasohjelman laatimiselle.
 
 
-### Query ja Mutation
-Rajapintaan voi tehdä kyselyjä Query-tyyppisen juuriolion kautta. Tämän olion kentät vastaavat käytännössä niitä kyselyitä, joita rajapintaan voi tehdä. Kentät ovat ikäänkuin sisäänmenoaukkoja, joiden kautta oliorakenteita voi pyytää.
+### Query ja Mutation -juurityypit
+Rajapintaan voi tehdä kyselyjä Query-tyyppisen juuriolion kautta. Tämän olion kentät määrittävät, mitä dataa rajapinnalta voidaan pyytää. Kentät ovat ikäänkuin sisäänmenoaukkoja, joiden kautta oliorakenteita voi pyytää.
 
-Kun oheisen esimerkin mukaisesti määritellystä GraphQL-rajapinnasta halutaan pyytää tietoja, tehdään kysely, joka kuvaa halutun oliopuun rakenteen tyyppien avulla:
+Kun oheisen esimerkin mukaisesti määritellystä GraphQL-rajapinnasta halutaan pyytää tietoja, tehdään Query-tyypin consolidatedInvoices -kenttään kysely, joka kuvaa halutun oliopuun rakenteen tyyppien avulla:
 
 ```
 {
-  ConsolidatedInvoice {
+  consolidatedInvoices {
     number
     invoices {
       number
@@ -70,6 +130,14 @@ Kun oheisen esimerkin mukaisesti määritellystä GraphQL-rajapinnasta halutaan 
 }
 ```
 
-Kyselyssä määritellään kentät, jotka palautuvassa datassa halutaan nähdä. Näin myös oliopuun syvyyttä voidaan kontrolloida. Oheisessa esimerkissä voidaan hakea paitsi lista koontilaskuista, haluttaessa myös jokaisen koontilaskun alle lista siihen kuuluvista laskuista.
+Kyselyssä määritellään kentät, jotka palautuvassa datassa halutaan nähdä. Näin myös oliopuun syvyyttä voidaan kontrolloida. Oheisessa esimerkissä haetaan paitsi lista koontilaskuista, myös jokaisen koontilaskun alle lista siihen kuuluvista laskuista.
 
-Mutation-juurityyppiä puolestaan käytetään datan muunnoksiin. Mutation-komennot voivat myös palauttaa oliorakenteita.
+Mutation-juurityyppiä puolestaan käytetään datan muunnoksiin. Sen sisältämiin kenttiin lähetetään kysely, jossa mukana olevat parametrit kertovat, miten dataa muokataan. Parametrit ovat yhtä lailla tyypitettyjä kuin rajapinnan kentät, ja GraphLQ-kirjasto tarkistaa niiden tyypin oikeellisuuden. Mutation-komennot voivat myös palauttaa oliorakenteita.
+
+## GraphQL ja DDD
+
+Eric Evansin kirjassa \gls{domainmodel} rakennetaan olio-ohjelmoinnin tekniikoita käyttäen. Vaikka se ei olekaan ainoa tapa rakentaa \gls{domainmodel}, on se kuitenkin tyylinä hyvin suosittu.
+
+Kuten edellä olen esittänyt, GraphQL puolestaan on oliograafiin perustuva rajapinta, jossa rajapinnan tarjoama tieto on jäsennetty olioiksi ja niiden välisiksi suhteiksi.
+
+Voidaan siis esittää kysymys, kuinka hyvin GraphQL-rajapinta soveltuu \gls{ddd} tarpeisiin? On helppo kuvitella, että oliograafilla on mahdollista heijastaa \gls{domainmodel}, ja jopa mallintaa se lähes yksi yhteen. Toisaalta GraphQL-rajapinta palauttaa dataa, kun taas olio-ohjelmoinnin keinon luotu olioverkko voi esittää dynaamisen ja muuttuvan mallin. Tätä kysymystä lähdin työni käytännön osassa selvittämään.

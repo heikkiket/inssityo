@@ -96,3 +96,9 @@ Positiivisena puolena taas on todettava, että malli syveni. Keskeinen uusi löy
 Maanantainen palaveri Lauran kanssa oli omasta mielestäni jotenkin jähmeä. Epäilen, että osasyynä oli tussitaulullisen neukkarin puute. Paras anti oli se, että päätettiin joukko tarinoita, joita teen eteenpäin.
 
 Ensimmäisenä lähdin toteuttamaan tarinaa, jossa jo kerran laskutettu mutta hyvitetty käynti on voitava hyvittää uudelleen. Ratkaisin asian tekemällä listan laskurivejä, jotka on liitetty käyntiin. Jos riviä vastaa hyvitysrivi, on laskun summa taas avoinna. Tämä muistuttaa aikaisempaa ideaani lokista, mutta on yksinkertaisempi: se perustuu ServiceRow:n ja ServiceCreditin väliseen kytkökseen.
+
+## Viikko 6
+
+Maanantain aloitin voimakkaalla refaktoroinnilla: tarvitaan SalesItem, joka jakautuu SalesShareiksi, jotka puolestaan kytkeytyvät laskuilla oleville SalesRow-olioihin.
+
+Tämä vaatii isoja muutoksia alla olevaan mallin koodiin, ja siihen kului koko maanantai. Olin aloittanut työn jo viime perhjantaina.

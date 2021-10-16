@@ -10,12 +10,12 @@ Keskeisten käsitteiden esittely
 
 (Sovellusalakeskeinen suunnittelu) (Liiketoimintavetoinen suunnittelu)
 
-\gls{crunching} (Knowledge crunching) on keskeinen väline
+\Gls{crunching} (Knowledge crunching) on keskeinen väline
 sovellusaluemallin rakentamiseen. Evans kuvaa prosessin, jossa
 kehittäjät luonnostelevat yhdessä sovellusalueen asiantuntijoiden kanssa
-\gls{domainmodel}. Malli kytketään tiiviisti yhteen toteutuksen kanssa
-tekemällä vuoroin suunnittelua, vuoroin ohjelmistokehitystä.
-\cite[p. 13]{evans:ddd}
+\gls{domainmodel}in. Malli kytketään tiiviisti yhteen ohjelmakoodin
+kanssa vuoroteelemalla suunnittelun, ja ohjelmistokehityksen välillä.
+\cite[s. 13]{evans:ddd}
 
 Tavoitteena on, että ohjelmistokehittäjien ja alan asiantuntijoiden
 välille rakentuu \gls{ubilang}, jonka avulla kaikkien on mahdollista
@@ -28,39 +28,61 @@ ytimessä sijaitsevan \gls{domainlayer}
 rakennuspalikat}{n rakennuspalikat}}\label{n-rakennuspalikat}}
 
 Eric Evans tarjoaa kirjassaan joukon käteviä työkaluja, joiden avulla
-\gls{domainmodel} on mahdollista toteuttaa teknisesti.
+\glsentryname{domainmodel} on mahdollista toteuttaa teknisesti.
 
-\gls{entity} edustaa käytännössä kaikkea, jolla on identiteetti.
+\Gls{entity} edustaa käytännössä kaikkea, jolla on identiteetti.
 Esimerkiksi kahdella ihmisellä voi olla sama nimi, mutta he ovat silti
-identiteetiltään eri henkilöitä. Todella suuri osa \gls{domainmodel}
-koostuu juuri \gls{entity}stä.
+identiteetiltään eri henkilöitä. Todella suuri osa
+\glsentryname{domainmodel}{sta} koostuu juuri
+\glsentryname{entity}{ista}.
 
-Tärkeä osa mallia ovat myös kulkusuunnat \gls{entity} välillä. Nämä
-vaikuttavat paitsi ohjelmiston tekniseen monimutkaisuuteen, myös siihen,
-minkälaisia asioita mallilla on mahdollista ilmaista.
+Tärkeä osa mallia ovat myös kulkusuunnat \glsentryname{entity}{iden}
+välillä. Nämä vaikuttavat paitsi ohjelmiston tekniseen
+monimutkaisuuteen, myös siihen, minkälaisia asioita mallilla on
+mahdollista ilmaista.
 
 Esimerkiksi lasku voi koostua joukosta laskurivejä. Ohjelman toteutus ja
-käyttötavat muuttuvat hyvin paljon, jos kulkusuuntaa muutetaan.
-Ensimmäisessä tapauksessa lasku tietää, mitkä laskurivit siihen
-kuuluvat, mutta yksittäinen laskurivi ei tiedä, miltä laskulta on
-peräisin. Toisessa tapauksessa laskurivi osaa kertoa, mille laskulle se
-kuuluu, mutta lasku ei kykene listaamaan omia rivejään. Mikäli näiden
-kahden käsitteen välillä kulkeminen onnistuu molempiin suuntiin,
-ohjelman monimutkaisuus kasvaa.
+käyttötavat muuttuvat hyvin paljon, jos kulkusuuntaa muutetaan. - Tapaus
+A: lasku tietää, mitkä laskurivit siihen kuuluvat, mutta yksittäinen
+laskurivi ei tiedä, miltä laskulta on peräisin. - Tapaus B: laskurivi
+osaa kertoa, mille laskulle se kuuluu, mutta lasku ei kykene listaamaan
+omia rivejään.
+
+Kolmas vaihtoehto on mahdollistaa kulkeminen molempiin suuntiin näiden
+kahden käsitteen välillä. Tällöin ohjelman monimutkaisuus kasvaa.
 
 \hypertarget{graphql}{%
 \subsection{GraphQL}\label{graphql}}
 
+GraphQL on Facebookin kehittämä kyselykieli, joka on tarkoitettu
+rajapintojen toteuttamiseen. Sen alkuperäinen suunnitteluperiaate oli
+tarjota web-asiakasohjelmien kehittäjille aiempaa laajempi vapaus
+rajapintapyyntöjen laatimiseen. \cite{graphql:spec}
+
+Teknologia koostuu kahdesta osasta: kyselykielestä sekä
+tyyppijärjestelmästä. Kyselykielellä muotoillaan pyyntö, johon
+rajapinnan tulee vastata. GraphQL on vahvasti tyypitetty teknologia, ja
+tyyppijärjestelmä tarkistaa, että rajapintapyyntö on oikein muotoiltu.
+
+GraphQL ei ole varsinainen rajapinta, sillä rajapinnan
+toteuttamisteknologia on määrittelyn ulkopuolella. Useimmiten
+GraphQL-rajapinnat on toteutettu HTTP-teknologian päälle, mutta
+muitakin, kuten WebSocketia, voi käytttää. GraphQL ei myöskään
+määrittele, miten kyselyn vastaus tulee muodostaa, tai milllä
+ohjelmointikielellä järjestelmmä tulee toteuttaa.
+
 \hypertarget{tyyppijuxe4rjestelmuxe4}{%
 \subsubsection{Tyyppijärjestelmä}\label{tyyppijuxe4rjestelmuxe4}}
 
-GraphQL-rajapinta koostuu tyypeistä, joiden avulla rajapinnalle
-lähetetään kysely. Rajapinta palauttaa takaisin oliota edustavan joukon
-kenttiä avain-arvo -pareina. \cite{graphql:spec}
+GraphQL-rajapinta koostuu tyypeistä, joita rajapinnalle lähetettävä
+kysely käyttää. Kyselysssä määritetään pyydettävät tyypit ja niiden
+kentät. Rajapinta palauttaa takaisin oliota edustavan joukon kenttiä
+\gls{hakurakenne}-muodossa. \cite{graphql:spec}
 
-Oheisessa esimerkissä kuvataan tyyppien, ja sitä myötä olioiden väliset
-suhteet. ConsolidatedInvoice-tyyppisessä oliossa on sisällä
-invoices-kenttä, joka on lista Invoice-tyyppisiä olioita.
+Oheisessa esimerkissä kuvaan rajapinnan edustamien tyyppien, ja sitä
+myötä sen palauttamien olioiden väliset suhteet.
+ConsolidatedInvoice-tyyppisessä oliossa on sisällä invoices-kenttä, joka
+on lista Invoice-tyyppisiä olioita.
 
 \begin{verbatim}
 type Query {
@@ -86,26 +108,27 @@ Rajapinnan tyypit, niille tehtävät kyselyt ja mutaatiot kuvataan
 skeemassa, GraphQL-kielen avulla. ConsolidatedInvoice- ja
 Invoice-olioista koostuva esimerkki on validi GraphQL-skeema.
 
-GraphQL-kehityksessä tyylejä on useita, ja yksi suosittu tapa on
+GraphQL-kehityksen tyylejä on useita, ja yksi suosittu tapa on
 kirjoittaa skeema ensiksi. Se tarjoaa suuntaviivat sekä rajapinnan
 tekniselle toteutukselle, että myös graafisen asiakasohjelman
 laatimiselle.
 
-\hypertarget{query-ja-mutation}{%
-\subsubsection{Query ja Mutation}\label{query-ja-mutation}}
+\hypertarget{query-ja-mutation--juurityypit}{%
+\subsubsection{Query ja Mutation
+-juurityypit}\label{query-ja-mutation--juurityypit}}
 
 Rajapintaan voi tehdä kyselyjä Query-tyyppisen juuriolion kautta. Tämän
-olion kentät vastaavat käytännössä niitä kyselyitä, joita rajapintaan
-voi tehdä. Kentät ovat ikäänkuin sisäänmenoaukkoja, joiden kautta
-oliorakenteita voi pyytää.
+olion kentät määrittävät, mitä dataa rajapinnalta voidaan pyytää. Kentät
+ovat ikäänkuin sisäänmenoaukkoja, joiden kautta oliorakenteita voi
+pyytää.
 
 Kun oheisen esimerkin mukaisesti määritellystä GraphQL-rajapinnasta
-halutaan pyytää tietoja, tehdään kysely, joka kuvaa halutun oliopuun
-rakenteen tyyppien avulla:
+halutaan pyytää tietoja, tehdään Query-tyypin consolidatedInvoices
+-kenttään kysely, joka kuvaa halutun oliopuun rakenteen tyyppien avulla:
 
 \begin{verbatim}
 {
-  ConsolidatedInvoice {
+  consolidatedInvoices {
     number
     invoices {
       number
@@ -117,8 +140,10 @@ rakenteen tyyppien avulla:
 
 Kyselyssä määritellään kentät, jotka palautuvassa datassa halutaan
 nähdä. Näin myös oliopuun syvyyttä voidaan kontrolloida. Oheisessa
-esimerkissä voidaan hakea paitsi lista koontilaskuista, haluttaessa myös
-jokaisen koontilaskun alle lista siihen kuuluvista laskuista.
+esimerkissä haetaan paitsi lista koontilaskuista, myös jokaisen
+koontilaskun alle lista siihen kuuluvista laskuista.
 
-Mutation-juurityyppiä puolestaan käytetään datan muunnoksiin.
-Mutation-komennot voivat myös palauttaa oliorakenteita.
+Mutation-juurityyppiä puolestaan käytetään datan muunnoksiin. Sen
+sisältämiin kenttiin lähetetään kysely, jossa mukana olevat parametrit
+kertovat, miten dataa muokataan. Mutation-komennot voivat myös palauttaa
+oliorakenteita.

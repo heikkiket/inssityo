@@ -32,6 +32,15 @@ käynnit liitetään laskuihin, laskut koontilaskuihin ja koontilaskut
 hyvityslaskuihin. Toteutin tämän mallin parin viikon kuluessa, jonka
 jälkeen pidimme uuden tapaamisen.
 
+\begin{verbatim}
++--------------+       +-----------+       +---------------------+
+|  Appointment | ----> |  Invoice  | ----> | ConsolidatedInvoice |
++--------------+       +-----------+       +---------------------+
+                                                |     +---------------+ 
+                                                ----> | ServiceCredit | 
+                                                      +---------------+ 
+\end{verbatim}
+
 Tavoitteenani oli jokaisen tapaamisen myötä rakentaa hieman
 monipuolisempi ja paremmin ohjelmiston käyttäjien tarpeita vastaava
 malli. Toisinaan tällaiset laajentamispyrkimykset voivat myös johtaa
