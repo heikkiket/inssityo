@@ -11,8 +11,7 @@ glossaries:
 
 markdown:
 	pandoc chapters/markdown/introduction.md -o chapters/introduction.tex --top-level-division=chapter
-	pandoc "chapters/markdown/lähtökohdat ja tavoitteet.md" -o chapters/käsittely.tex --top-level-division=chapter
-	pandoc chapters/markdown/käsittely.md -o chapters/käsittely.tex --top-level-division=chapter
+	pandoc "chapters/markdown/lähtökohdat ja tavoitteet.md" -o chapters/lähtökohdat.tex --top-level-division=chapter
 	pandoc chapters/markdown/theory.md -o chapters/theory.tex --top-level-division=chapter
 	pandoc chapters/markdown/kulku.md -o chapters/kulku.tex --top-level-division=chapter
 	pandoc chapters/markdown/tulokset.md -o chapters/tulokset.tex --top-level-division=chapter

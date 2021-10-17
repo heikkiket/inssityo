@@ -3,7 +3,7 @@
 ## Nordhealth Oy lyhyesti
 
 
-Nordhealth Oy on vuonna 2001 perustettu ohjelmistopalveluyritys, joka tekee toiminnanohjausjärjestelmiä kahdelle eri toimialalle: Provet Cloud -järjestelmää eläinlääkäriklinikoille ja Diarium-järjestelmää terapeuteille. Molemmat järjestelmät ovat web-pohjaisia sovelluksia. Niitä käytetään kirjautumalla web-selaimen kautta. (Tästä puuttuu perustietoja, kuten työntekijöiden määrä, liikevaihto tms.)
+Nordhealth Oy on vuonna 2001 perustettu ohjelmistopalveluyritys, joka tekee toiminnanohjausjärjestelmiä kahdelle eri toimialalle: Provet Cloud -järjestelmää eläinlääkäriklinikoille ja Diarium-järjestelmää terapeuteille. Molemmat järjestelmät ovat web-pohjaisia sovelluksia. Niitä käytetään kirjautumalla web-selaimen kautta. **(Tästä puuttuu perustietoja, kuten työntekijöiden määrä, liikevaihto tms.)**
 
 Nordhealthia voisi luonnehtia tyypilliseksi ohjelmistoalan yritykseksi: se tekee erityisalalle suunnattua toiminnanohjausjärjestelmää. Tyypillinen on myös järjestelmien kehityskaari: alunperin ne ovat olleet työpöytäsovelluksia, ja siitä Nordhealth on muuntanut ne LAMP-alustalla toimiviksi web-sovelluksiksi. Kun Web on kehittynyt, on otettu suunnaksi sovellusten siirtäminen julkiseen pilveen, ja käyttöliittymän rakentaminen erilliseksi yhden sivun JavaScript-sovellukseksi.
 
