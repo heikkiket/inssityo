@@ -7,9 +7,10 @@
 Yleinen ongelma tietokoneohjelmistoja tehtäessä on, että ohjelmoijat
 tuntevat ohjelmiston erikoisalan heikosti. Esimerkiksi
 kiinteistötekniikkaa, kirjastokortistoa tai tämän työn tapauksessa
-laskutusta hoitavan ohjelmiston kehittäjä joutuu käsittelemään
-monimutkaisia, sovellusalaan sidottuja ongelmia. Ohjelmiston tulisi
-ratkaista ongelmat oikein, ja toimia virheettömästi kun sitä käytetään.
+terapiaklinikan toimintaa hoitavan ohjelmiston kehittäjä joutuu
+käsittelemään monimutkaisia, sovellusalaan sidottuja ongelmia.
+Ohjelmiston tulisi ratkaista ongelmat oikein, ja toimia virheettömästi
+kun sitä käytetään.
 
 Eric Evans esittää kirjassaan Domain Driven Design laajan työkalupakin
 keinoja, joilla tämän ongelman voi pyrkiä ylittämään. Evansin mielestä
@@ -120,9 +121,6 @@ ohjelmointikielellä järjestelmmä tulee toteuttaa.
 
 \begin{itemize}
 \tightlist
-\item
-  Ensimmäinen GraphQL-implementaatio toteutetiin JavaScriptillä. (Mistä
-  tieto löytyy?)
 \item
   Osa konventioista on JS-konventioita. Esimerkiksi kentän- ja
   muuttujien nimet ovat camelCasea ja PascalCasea.
@@ -258,13 +256,12 @@ type ConsolidatedInvoice {
 \subsection{Skeema}\label{skeema}}
 
 \Gls{dsl} on ohjelmointikieltä korkeamman tason kieli, joka on
-suunniteltu jollekin kapealle sovellusalueelle. Esimerkkejä
-\glsentryname{dsl}istä ovat esimerkiksi UNIX-tyyppisistä järjestelmistä
-tutut \emph{sed}- ja \emph{awk}-kielet. Tällaisen kielen avulla on
-mahdollista määritellä monimutkaisiakin asioita
-nopeasti.\cite{Raymond2003Sep} Kieli tarjoaa tavanomaista
-ohjelmointikieltä ilmaisuvoimaisemman ja täsmällisemmän tavan määritellä
-asioita.
+suunniteltu jollekin kapealle sovellusalueelle.\cite{landin1966next}
+Esimerkkejä \glsentryname{dsl}istä ovat esimerkiksi UNIX-tyyppisistä
+järjestelmistä tutut \emph{sed}- ja \emph{awk}-kielet. Tällaisen kielen
+avulla on mahdollista määritellä monimutkaisiakin asioita
+nopeasti.\cite{Raymond2003} Kieli tarjoaa tavanomaista ohjelmointikieltä
+ilmaisuvoimaisemman ja täsmällisemmän tavan määritellä asioita.
 
 GraphQL-rajapinnan tyypit, niille tehtävät kyselyt ja mutaatiot kuvataan
 skeemassa, GraphQL-kielen avulla. Edellä esitetty ConsolidatedInvoice-
