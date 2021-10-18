@@ -2,7 +2,7 @@
 
 ## \gls{ddd}
 
-Yleinen ongelma tietokoneohjelmistoja tehtäessä on, että ohjelmoijat tuntevat ohjelmiston erikoisalan heikosti. Esimerkiksi kiinteistötekniikkaa, kirjastokortistoa tai tämän työn tapauksessa laskutusta hoitavan ohjelmiston kehittäjä joutuu käsittelemään monimutkaisia, sovellusalaan sidottuja ongelmia. Ohjelmiston tulisi ratkaista ongelmat oikein, ja toimia virheettömästi kun sitä käytetään.
+Yleinen ongelma tietokoneohjelmistoja tehtäessä on, että ohjelmoijat tuntevat ohjelmiston erikoisalan heikosti. Esimerkiksi kiinteistötekniikkaa, kirjastokortistoa tai tämän työn tapauksessa terapiaklinikan toimintaa hoitavan ohjelmiston kehittäjä joutuu käsittelemään monimutkaisia, sovellusalaan sidottuja ongelmia. Ohjelmiston tulisi ratkaista ongelmat oikein, ja toimia virheettömästi kun sitä käytetään.
 
 Eric Evans esittää kirjassaan Domain Driven Design laajan työkalupakin keinoja, joilla tämän ongelman voi pyrkiä ylittämään. Evansin mielestä jokaisen monimutkaisemman ohjelmiston sisässä on \gls{domainmodel} (Domain model), eli malli siitä, miten kyseinen ohjelmisto ratkaisee sovellusalan ongelmat.
 
@@ -47,7 +47,6 @@ Teknologia koostuu kahdesta osasta: kyselykielestä sekä tyyppijärjestelmäst�
 
 GraphQL ei ole varsinainen rajapinta, sillä rajapinnan toteuttamisteknologia on määrittelyn ulkopuolella. Useimmiten GraphQL-rajapinnat on toteutettu HTTP-teknologian päälle, mutta muitakin, kuten WebSocketia, voi käytttää. GraphQL ei myöskään määrittele, miten kyselyn vastaus tulee muodostaa, tai milllä ohjelmointikielellä järjestelmmä tulee toteuttaa.
 
-* Ensimmäinen GraphQL-implementaatio toteutetiin JavaScriptillä. (Mistä tieto löytyy?)
 * Osa konventioista on JS-konventioita. Esimerkiksi kentän- ja muuttujien nimet ovat camelCasea ja PascalCasea. https://www.apollographql.com/docs/apollo-server/schema/schema/#naming-conventions
 
 ### Miten GraphQL-sovellus toimii
