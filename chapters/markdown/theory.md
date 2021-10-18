@@ -1,12 +1,6 @@
-\vspace{21.5pt}
-
 # Aineisto ja menetelmät
 
-Keskeisten käsitteiden esittely
-
 ## \gls{ddd}
-(Sovellusalakeskeinen suunnittelu)
-(Liiketoimintavetoinen suunnittelu)
 
 Yleinen ongelma tietokoneohjelmistoja tehtäessä on, että ohjelmoijat tuntevat ohjelmiston erikoisalan heikosti. Esimerkiksi kiinteistötekniikkaa, kirjastokortistoa tai tämän työn tapauksessa laskutusta hoitavan ohjelmiston kehittäjä joutuu käsittelemään monimutkaisia, sovellusalaan sidottuja ongelmia. Ohjelmiston tulisi ratkaista ongelmat oikein, ja toimia virheettömästi kun sitä käytetään.
 
@@ -17,6 +11,7 @@ Eric Evans esittää kirjassaan Domain Driven Design laajan työkalupakin keinoj
 Tavoitteena on, että ohjelmistokehittäjien ja alan asiantuntijoiden välille rakentuu \gls{ubilang}, jonka avulla kaikkien on mahdollista yhteisesti keskustella ohjelmiston toiminnasta ja kehitystarpeista. Tämän kielen käsitteet elävät ohjelmakoodissa, ja muodostavat koodin ytimessä sijaitsevan \gls{domainlayer}
 
 ### \gls{ddd}n rakennuspalikat
+
 Evansin lähtökohta on, että \gls{domainmodel} ilmaistaan nimenomaan ohjelmakoodin kautta. Koodi on kuitenkin lopulta se dokumentti, joka määrittää ohjelman toiminnan.
 
 Evans tarjoaa kirjassaan joukon käteviä työkaluja, joiden avulla \glsentryname{domainmodel} on mahdollista toteuttaa teknisesti.
@@ -28,22 +23,23 @@ Laskutusta käsittelevässä ohjelmassa esimerkiksi laskuilla on identiteetti. K
 Tärkeä osa mallia ovat myös kulkusuunnat \glsentryname{entity}{iden} välillä. Nämä vaikuttavat paitsi ohjelmiston tekniseen monimutkaisuuteen, myös siihen, minkälaisia asioita mallilla on mahdollista ilmaista.
 
 Esimerkiksi lasku voi koostua joukosta laskurivejä. Ohjelman toteutus ja käyttötavat muuttuvat hyvin paljon, jos kulkusuuntaa muutetaan.
- - Tapaus A: lasku tietää, mitkä laskurivit siihen kuuluvat, mutta yksittäinen laskurivi ei tiedä, miltä laskulta on peräisin. 
- - Tapaus B: laskurivi osaa kertoa, mille laskulle se kuuluu, mutta lasku ei kykene listaamaan omia rivejään.
- 
+
+* Tapaus A: lasku tietää, mitkä laskurivit siihen kuuluvat, mutta yksittäinen laskurivi ei tiedä, miltä laskulta on peräisin.
+* Tapaus B: laskurivi osaa kertoa, mille laskulle se kuuluu, mutta lasku ei kykene listaamaan omia rivejään.
+
 Kolmas vaihtoehto on mahdollistaa kulkeminen molempiin suuntiin näiden kahden käsitteen välillä. Tällöin ohjelman tekninen monimutkaisuus kasvaa.
 
 ## Refaktorointi
 
 Yleistä refaktoroinnista
 
- - Refactoring towards deeper insight
- - YAGNI-periaate
- - Automaattiset yksikkötestit (Clean Code vai XP -kirja? - uncle bobin "Three laws of TDD" -blogi)
+* Refactoring towards deeper insight
+* YAGNI-periaate
+* Automaattiset yksikkötestit (Clean Code vai XP -kirja? - uncle bobin "Three laws of TDD" -blogi)
 
 ## GraphQL
 
-- REST-rajapinnan ongelmien kautta GraphQL:n esittely
+* REST-rajapinnan ongelmien kautta GraphQL:n esittely
 
 GraphQL on Facebookin kehittämä kyselykieli, joka on tarkoitettu rajapintojen toteuttamiseen. Sen alkuperäinen suunnitteluperiaate oli tarjota web-asiakasohjelmien kehittäjille aiempaa laajempi vapaus rajapintapyyntöjen laatimiseen. \cite{graphql:spec}
 
@@ -51,17 +47,18 @@ Teknologia koostuu kahdesta osasta: kyselykielestä sekä tyyppijärjestelmäst�
 
 GraphQL ei ole varsinainen rajapinta, sillä rajapinnan toteuttamisteknologia on määrittelyn ulkopuolella. Useimmiten GraphQL-rajapinnat on toteutettu HTTP-teknologian päälle, mutta muitakin, kuten WebSocketia, voi käytttää. GraphQL ei myöskään määrittele, miten kyselyn vastaus tulee muodostaa, tai milllä ohjelmointikielellä järjestelmmä tulee toteuttaa.
 
-- Ensimmäinen GraphQL-implementaatio toteutetiin JavaScriptillä. (Mistä tieto löytyy?)
-- Osa konventioista on JS-konventioita. Esimerkiksi kentän- ja muuttujien nimet ovat camelCasea ja PascalCasea. https://www.apollographql.com/docs/apollo-server/schema/schema/#naming-conventions
+* Ensimmäinen GraphQL-implementaatio toteutetiin JavaScriptillä. (Mistä tieto löytyy?)
+* Osa konventioista on JS-konventioita. Esimerkiksi kentän- ja muuttujien nimet ovat camelCasea ja PascalCasea. https://www.apollographql.com/docs/apollo-server/schema/schema/#naming-conventions
 
 ### Miten GraphQL-sovellus toimii
 
- 1. HTTP-palvelin: yleinen
- 2. GraphQL-kirjasto
-   - Ottaa vastaan kyselyn, tarkistaa sen validiuden skeemaa vasten, ja ohjaa sen halutulle resolver-funktiolle.
- 3. Bisneslogiikka
- 4. Tietokanta
+1. HTTP-palvelin: yleinen
+2. GraphQL-kirjasto
 
+* Ottaa vastaan kyselyn, tarkistaa sen validiuden skeemaa vasten, ja ohjaa sen halutulle resolver-funktiolle.
+
+3. Bisneslogiikka
+4. Tietokanta
 
 ### Graafeista
 
@@ -69,7 +66,7 @@ Graafi eli verkko on tietorakenne, joka koostuu N:stä solmusta ja niitä yhdist
 
 GraphQL:n avulla sovellusala on mahdollista esittää verkon muodossa määrittelemällä GraphQL-skeema. Tämän avulla rajapinta tarjoaa asiakasohjelmalle rakenteen, joka muistuttaa olio-ohjelmointia.\cite{thinkingInGraphsOct2021}
 
-- tähän vielä vähän lisää funtsailua siitä, miten olio-ohjelmoinnin graafimainen ajattelu ohjaa ongelmanratkaisua, ja ehkä myös joku naseva pätkä Evansilta samansuuntaisesti ajattelemiseen
+* tähän vielä vähän lisää funtsailua siitä, miten olio-ohjelmoinnin graafimainen ajattelu ohjaa ongelmanratkaisua, ja ehkä myös joku naseva pätkä Evansilta samansuuntaisesti ajattelemiseen
 
 ### Tyyppijärjestelmä
 
@@ -91,8 +88,7 @@ Laskutuksessa ConsolidatedInvoicella eli koontilaskulla tarkoitetaan yhdistelmä
 
 Tältä rajapinnalta voi pyytää listaa koontilaskuista. GraphQL:n tyyppijärjestelmä takaa, että koontilaskun sisällä on invoices-jäsen, joka sisältää listan Invoice-tyyppisiä olioita, eli siis laskuja.
 
-
-```GraphQL
+```
 type Query {
   consolidatedInvoices [ConsolidatedInvoice]
 }
@@ -110,6 +106,7 @@ type ConsolidatedInvoice {
 ```
 
 ### Skeema
+
 \Gls{dsl} on ohjelmointikieltä korkeamman tason kieli, joka on suunniteltu jollekin kapealle sovellusalueelle. Esimerkkejä \glsentryname{dsl}istä ovat esimerkiksi UNIX-tyyppisistä järjestelmistä tutut *sed*- ja *awk*-kielet. Tällaisen kielen avulla on mahdollista määritellä monimutkaisiakin asioita nopeasti.\cite{Raymond2003Sep} Kieli tarjoaa tavanomaista ohjelmointikieltä ilmaisuvoimaisemman ja täsmällisemmän tavan määritellä asioita.
 
 GraphQL-rajapinnan tyypit, niille tehtävät kyselyt ja mutaatiot kuvataan skeemassa, GraphQL-kielen avulla. Edellä esitetty ConsolidatedInvoice- ja Invoice-olioista koostuva esimerkki on validi GraphQL-skeema. Tämä skeemamäärittelyihin käytettävä kieli on riippumaton ohjelmointikielestä.
@@ -121,6 +118,7 @@ GraphQL-kehityksen tyylejä on useita, ja yksi suosittu tapa on kirjoittaa skeem
 GraphQL-skeemaa voi siis verrata Eric Evansin esittämään ajatukseen \glsentryname{ubilang}sta. Esimerkiksi GraphQL Foundationin materiaaleissa esitetään, että GraphQL-skeemaa tulisi ajatella jaettuna kielenä oman ohjelmointitiimin kesken, ja myös käyttäjien kanssa kommunikoimiseen.\cite{thinkingInGraphsOct2021}
 
 ### Query ja Mutation -juurityypit
+
 Rajapintaan voi tehdä kyselyjä Query-tyyppisen juuriolion kautta. Tämän olion kentät määrittävät, mitä dataa rajapinnalta voidaan pyytää. Kentät ovat ikäänkuin sisäänmenoaukkoja, joiden kautta oliorakenteita voi pyytää.
 
 Kun oheisen esimerkin mukaisesti määritellystä GraphQL-rajapinnasta halutaan pyytää tietoja, tehdään Query-tyypin consolidatedInvoices -kenttään kysely, joka kuvaa halutun oliopuun rakenteen tyyppien avulla:

@@ -1,14 +1,8 @@
-\vspace{21.5pt}
-
 \hypertarget{aineisto-ja-menetelmuxe4t}{%
 \chapter{Aineisto ja menetelmät}\label{aineisto-ja-menetelmuxe4t}}
 
-Keskeisten käsitteiden esittely
-
 \hypertarget{section}{%
 \section{\texorpdfstring{\gls{ddd}}{}}\label{section}}
-
-(Sovellusalakeskeinen suunnittelu) (Liiketoimintavetoinen suunnittelu)
 
 Yleinen ongelma tietokoneohjelmistoja tehtäessä on, että ohjelmoijat
 tuntevat ohjelmiston erikoisalan heikosti. Esimerkiksi
@@ -66,11 +60,17 @@ monimutkaisuuteen, myös siihen, minkälaisia asioita mallilla on
 mahdollista ilmaista.
 
 Esimerkiksi lasku voi koostua joukosta laskurivejä. Ohjelman toteutus ja
-käyttötavat muuttuvat hyvin paljon, jos kulkusuuntaa muutetaan. - Tapaus
-A: lasku tietää, mitkä laskurivit siihen kuuluvat, mutta yksittäinen
-laskurivi ei tiedä, miltä laskulta on peräisin. - Tapaus B: laskurivi
-osaa kertoa, mille laskulle se kuuluu, mutta lasku ei kykene listaamaan
-omia rivejään.
+käyttötavat muuttuvat hyvin paljon, jos kulkusuuntaa muutetaan.
+
+\begin{itemize}
+\tightlist
+\item
+  Tapaus A: lasku tietää, mitkä laskurivit siihen kuuluvat, mutta
+  yksittäinen laskurivi ei tiedä, miltä laskulta on peräisin.
+\item
+  Tapaus B: laskurivi osaa kertoa, mille laskulle se kuuluu, mutta lasku
+  ei kykene listaamaan omia rivejään.
+\end{itemize}
 
 Kolmas vaihtoehto on mahdollistaa kulkeminen molempiin suuntiin näiden
 kahden käsitteen välillä. Tällöin ohjelman tekninen monimutkaisuus
