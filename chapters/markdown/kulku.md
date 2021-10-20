@@ -26,7 +26,10 @@ Hyvityslasku on voitava luoda siten, että yksittäisellä laskulla oleva yksitt
 
 ## Iteraatio 1
 
-Iteraation aloittavassa kokouksessa suunnittelimme yksinkertaisen mallin, jossa hoitokäynnit liittyvät laskuihin, laskut kootaan koontilaskuille ja koontilaskut hyvityslaskuille.
+Iteraation aloittavassa kokouksessa suunnittelimme yksinkertaisen mallin, jossa hoitokäynnit liittyvät laskuihin, laskut kootaan koontilaskuille ja koontilaskut hyvityslaskuille. Tämän mallin tarkoituksena oli luoda yksinkertainen esimerkkisovellus, joka kykenee laskuttamaan käyntejä, ja sen jälkeen lisäämään niitä hyvityslaskulle, sekä näyttämään hyvityslaskun kokonaissumman.
+Malli on esitetty kuvassa \ref{malli1}.
+
+![\label{malli1} Ensimmäinen malli](illustration/malli1.jpg){ height=30%}
 
 Tämän mallin sisältävän ohjelmistoprototyypin toteuttamiseen kului kaksi viikkoa, ja näin iteraatio oli pisin. Kulunutta aikaa selittää, että rakensin prototyypin puhtaalta pöydältä, jolloin aikaa kului myös sovelluksen pohjan pystyttämiseen.
 
@@ -40,7 +43,9 @@ Pyysin Lauraa kertomaan enemmän siitä, mitä käynnin laskuttaminen oikeastaan
 
 Tapaamisen jälkeisen viikon kehitystyötä ohjasi nyt uusi ajattelutapa: käyntiä sinänsä ei liitetä laskuun, vaan käynti laskutetaan, mikäli laskutusperuste täyttyy.
 
-Toisen tapaamisen aikana syntynyt malli on esitetty kuvassa X. Siinä jokaiseen käyntiin voidaan liittää palvelurivi, ja palveluriviin puolestaan hyvitysrivi. Palvelurivi on se, joka lisätään laskulle käynnin sijasta. Kun halutaan tietää, täyttyykö laskutusperuste, voidaan tarkastaa, liittyykö käyntiin palvelurivi.
+![\label{malli2}Toinen malli](illustration/malli2.jpg){ height=50% }
+
+Toisen tapaamisen aikana syntynyt malli on esitetty kuvassa \ref{malli2}. Siinä jokaiseen käyntiin voidaan liittää palvelurivi, ja palveluriviin puolestaan hyvitysrivi. Palvelurivi on se, joka lisätään laskulle käynnin sijasta. Kun halutaan tietää, täyttyykö laskutusperuste, voidaan tarkastaa, liittyykö käyntiin palvelurivi.
 
 Mallin toteuttamisessa kesti vajaat neljä päivää, ja sain sen toimimaan perjantaina iltapäivällä. Kokemus oli mielenkiintoinen.
 
@@ -72,49 +77,19 @@ Vaikutti siltä, että käynnin ja laskun välistä puuttui edelleen jokin käsi
 
 Nyt muistin tämän keskustelun, ja ehdotin sen pohjalta, että laskutuksessa ei käsiteltäisikään suoraan käyntejä vaan palvelumyyntiä. Laura totesi, että myyntiähän kaikki periaatteessa on. Olin itse ajatuksesta todella innoissani, mutta Laura ei vaikuttanut ymmärtävän, mikä löydöksessä oli niin mullistavaa.
 
-Loimme kokouksessa mallin, jossa Käynti muunnetaan SalesItem-olioksi. SalesItem voidaan jakaa SalesShareiksi, ja yksittäisellä laskulla on SalesShareen kytketty SalesRow.
+Loimme kokouksessa mallin, jossa Käynti muunnetaan SalesItem-olioksi. SalesItem voidaan jakaa SalesShareiksi, ja yksittäisellä laskulla on SalesShareen kytketty SalesRow. Malli on esitetty kuvassa \ref{malli3}
+
+![\label{malli3}Kolmas malli](illustration/malli4.jpg){ height=50% }
 
 Kokouksen jälkeen ryhdyin muuttamaan ohjelmaa tämän uuden logiikan mukaiseksi. Tämä vaati erittäin laajoja koodimuutoksia, ja vei kaikkiaan kaksi päivää.
 
 Uusien ominaisuuksien toteuttaminen refaktoroinnin jälkeen oli suoraviivaista, ja tuloksena syntyi ohjelma, joka pääsi alkuperäiseen tavoitteeseensa, jaetun käynnin hyvittämiseen ja uudelleen laskuttamiseen.
 
-## Kaikkea vanhaa roskaa
-
-Työn aluksi valitsimme yhdessä ohjaajani sekä tiimin tuoteomistaja Lauran kanssa aiheen työhön. Laskutusta koskevat osat ohjelmistossa ovat suhteellisen monimutkaisia, ja sisältävät käsitteellisiä epäselvyyksiä. Valitsimme laskutuksen sisältä tapauksen, jossa hoitokäynti tulee voida jakaa usealle eri maksajalle osoitetuille laskuille, ja nämä laskut tulee voida hyvittää itsenäisesti.
-
-Pidimme lyhyitä suunnittelukokouksia, joissa pohdimme, millainen mallin tulisi olla. Kokousten välillä kirjoitin ohjelmiston, joka vastasi pohdintojamme. Seuraavassa kokouksessa katsoimme, miten ohjelma toimii, ja lisäsimme malliin uusia piirteitä.
-
-Käytin apuvälineenä tussitaulua, johon piirsin erilaisia ehdotuksia malleiksi. Oleellista on, että taulun pystyi pyyhkimään nopeasti, ja piirtämään uuden mallin. Otimme myös valokuvia mallinnussession eri vaiheista. En kuitenkaan halunnut, että piirretyt mallit sanelevat ohjelmiston rakennetta. Tärkein mittari on ohjelmakoodi, ja sen ilmaisema rakenne. Piirrokset toimivat apuna, tämän rakenteen kuvaajina.
-
-Ensimmäisesssä kokouksessa hahmottelimme yksinkertaisen mallin, jossa käynnit liitetään laskuihin, laskut koontilaskuihin ja koontilaskut hyvityslaskuihin. Toteutin tämän mallin parin viikon kuluessa, jonka jälkeen pidimme uuden tapaamisen.
-
-```
-+--------------+       +-----------+       +---------------------+
-|  Appointment | ----> |  Invoice  | ----> | ConsolidatedInvoice |
-+--------------+       +-----------+       +---------------------+
-                                                |     +---------------+ 
-                                                ----> | ServiceCredit | 
-                                                      +---------------+ 
-
-```
-
-Tavoitteenani oli jokaisen tapaamisen myötä rakentaa hieman monipuolisempi ja paremmin ohjelmiston käyttäjien tarpeita vastaava malli. Toisinaan tällaiset laajentamispyrkimykset voivat myös johtaa äkilliseen läpimurtoon, jonka myötä syntyy \gls{deepermodel}.\cite{evans:ddd}
-
-Tapaamisissa kävin joka kerta läpi, mitkä käsitteelliset asiat olivat ohjelmoidessa vaivanneet. Esimerkiksi toisella tapaamiskerralla esitin suurimmaksi ongelmaksi sen, että käynnin ja laskun välillä on suora kytkös. Ohjelmoidessa tämä kytkös tuli koko ajan huomioida, ja varoa aiheuttamasta ongelmia. Pyysin Lauraa kertomaan enemmän siitä, mitä käynnin laskuttaminen oikeastaan tarkoittaa, ja hän piti lyhyen yhteenvedon laskuttamisen periaatteista. Huomioni kiinnittyi puheessa esiintyneeseen termiin **Laskutusperuste**. Tämä tuntui valtavan kiinnostavalta, ja lähdimme tarkastelemaan sitä eri puolilta.
-
-Tapaamisen jälkeisen viikon kehitystyötä ohjasi nyt uusi ajattelutapa: käyntiä sinänsä ei liitetä laskuun, vaan käynti laskutetaan, mikäli laskutusperuste täyttyy. Tämän tuloksena syntyi melko yksinkertainen malli:
-
-```
-+--------------+       +--------------+       +----------------+
-|  Appointment | ----> |  ServiceRow  | ----> |  ServiceCredit |
-+--------------+       +--------------+       +----------------+
-```
-
 ## Refaktorointi
 
-Voimakkaita refaktorointeja jokaisen iteraation taitteessa. Näistä en olisi selvinnyt ilman kattavia yksikkötestejä.
+Jouduin tekemään voimakkaita refaktorointeja jokaisen iteraation taitteessa. Näistä en olisi selvinnyt ilman kattavia yksikkötestejä.
 
-## Ubiquitous Language käytännössä
+## \Gls{ubilang} käytännössä
 
 Kuuluisivatkohan nämä oikeastaan tulosten tarkastelun tai yhteenvedon alle?
 

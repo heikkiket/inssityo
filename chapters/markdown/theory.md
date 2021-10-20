@@ -39,25 +39,36 @@ Yleistä refaktoroinnista
 
 ## GraphQL
 
-* REST-rajapinnan ongelmien kautta GraphQL:n esittely
+Monet web-sovellukset perustuvat REST-rajapintoihin. REST on arkkitehtuurityyli, jossa palvelin esittää asiakasohjelmalle joukon resursseja, joita asiakasohjelma voi pyytää ja muunnella tilattomia pyyntöjä käyttäen.\cite{fielding2000architectural}
+
+REST-tyyli on vakiintunut web-sovellusten toteuttamisteknologiaksi, mutta siihen liittyy myös eräitä ongelmia. Mikäli REST-tyyppisestä rajapinnasta halutaan hakea usean eri resurssin verkko, joudutaan tekemään erillinen pyyntö jokaista resurssia kohti. Toisissa tapauksissa taas halutaan vain osa resurssin esittämästä tiedosta, mutta joudutaan silti hakemaan koko resurssi.\cite{betterRESTPrisma}\cite{WhyUseGraphQLApollo}
 
 GraphQL on Facebookin kehittämä kyselykieli, joka on tarkoitettu rajapintojen toteuttamiseen. Sen alkuperäinen suunnitteluperiaate oli tarjota web-asiakasohjelmien kehittäjille aiempaa laajempi vapaus rajapintapyyntöjen laatimiseen. \cite{graphql:spec}
 
-Teknologia koostuu kahdesta osasta: kyselykielestä sekä tyyppijärjestelmästä. Kyselykielellä muotoillaan pyyntö, johon rajapinnan tulee vastata. GraphQL on vahvasti tyypitetty teknologia, ja tyyppijärjestelmä tarkistaa, että rajapintapyyntö on oikein muotoiltu.
+GraphQL on vielä suhteellisen uusi teknologia, eikä siitä löydy kovin paljoa materiaalia. Keskeinen tiedonlähde ovat Facebookin ja GraphQL-säätiön julkaisemat verkkomateriaalit, sekä Apollo-yrityksen GraphQL-teknologiaa käsittelevä materiaali.
 
-GraphQL ei ole varsinainen rajapinta, sillä rajapinnan toteuttamisteknologia on määrittelyn ulkopuolella. Useimmiten GraphQL-rajapinnat on toteutettu HTTP-teknologian päälle, mutta muitakin, kuten WebSocketia, voi käytttää. GraphQL ei myöskään määrittele, miten kyselyn vastaus tulee muodostaa, tai milllä ohjelmointikielellä järjestelmmä tulee toteuttaa.
+GraphQL koostuu kahdesta osasta: kyselykielestä sekä tyyppijärjestelmästä. Kyselykielellä muotoillaan pyyntö, johon GraphQL-palvelun tulee vastata.
 
-* Osa konventioista on JS-konventioita. Esimerkiksi kentän- ja muuttujien nimet ovat camelCasea ja PascalCasea. https://www.apollographql.com/docs/apollo-server/schema/schema/#naming-conventions
+GraphQL ei ole varsinainen rajapinta, sillä rajapinnan toteuttamisteknologia on määrittelyn ulkopuolella. Useimmiten GraphQL-palvelut on toteutettu HTTP-teknologian päälle, mutta muitakin, kuten WebSocketia, voi käytttää. GraphQL ei myöskään määrittele, miten kyselyn vastaus tulee muodostaa, tai milllä ohjelmointikielellä järjestelmä tulee toteuttaa.
+
+Osa konventioista on JavaScript-konventioita. Esimerkiksi kentän- ja muuttujien nimet on tapana kirjoittaa camelCase- ja PascalCase -muodoissa.\cite{GraphQLSchemaBasics} 
+
 
 ### Miten GraphQL-sovellus toimii
 
-1. HTTP-palvelin: yleinen
-2. GraphQL-kirjasto
+![\label{graphqlarkkitehtuuri} Esimerkkiarkkitehtuuri GraphQL-sovellukselle](illustration/GraphQL-arkkitehtuuri.png){ height=50%}
 
-* Ottaa vastaan kyselyn, tarkistaa sen validiuden skeemaa vasten, ja ohjaa sen halutulle resolver-funktiolle.
+Kuvassa \ref{graphqlarkkitehtuuri} esitän yksinkertaisen GraphQL-sovelluksen arkkitehtuurin. Arkkitehtuuri on kerroksittainen, ja rajapinnalle esitettävä pyyntö liikkuu siinä ylhäältä alaspäin.
 
-3. Bisneslogiikka
-4. Tietokanta
+Ensiksi pyyntö saapuu HTTP-palvelimeen. Tämä palvelin on käytännössä ohjelmointikielestä riippuen kirjasto, joka vastaanottaa HTTP-pyyntöjä ja osaa käsitellä niitä. Tyypillisesti GraphQL-rajapinnassa on vain yksi `graphql`-niminen resurssi, jolle pyynnöt esitetään.
+
+HTTP-kerros ottaa pyynnön vastaan, ja lukee sen body-osassa olevan merkkijonomuotoisen GraphQL-kyselyn. Tämä kysely on tehty GraphQL-kyselykielellä. Rajapinta antaa kyselyn GraphQL-kirjastolle.
+
+Kirjasto ottaa kyselyn vastaan, ja tarkistaa sen oikeellisuuden GraphQL-skeemaa vasten. Mikäli kysely on muodoltaan oikeanlainen, kirjasto ohjaa sen eteenpäin resolvereiksi kutsutuille funktioille. Resolver-funktiot eivät ole osa kirjastoa, vaan sovelluksen kehittäjä kirjoittaa ne. Käytännössä resolver-funktio on nk. puhdas funktio, jonka tehtävänä on tuottaa vastaus yksittäiseen GraphQL-kyselyn kenttään.
+
+Laskutusta käsittelevässä esimerkissä rajapinnan invoices-kenttää voisi vastata `invoices_resolver` -niminen funktio.
+
+Resolver-funktioiden kerros on alin kerros, josta GraphQL-palvelu tietää. Sen alla oleva ohjelmistologiikka on riippumaton rajapinnan toteutustavasta. Tyypillisesti siellä voi sijaita sovelluksen liiketoimintalogiikka, ja tietokanta.
 
 ### Graafeista
 
@@ -107,6 +118,8 @@ type ConsolidatedInvoice {
 ### Skeema
 
 \Gls{dsl} on ohjelmointikieltä korkeamman tason kieli, joka on suunniteltu jollekin kapealle sovellusalueelle.\cite{landin1966next} Esimerkkejä \glsentryname{dsl}istä ovat esimerkiksi UNIX-tyyppisistä järjestelmistä tutut *sed*- ja *awk*-kielet. Tällaisen kielen avulla on mahdollista määritellä monimutkaisiakin asioita nopeasti.\cite{Raymond2003} Kieli tarjoaa tavanomaista ohjelmointikieltä ilmaisuvoimaisemman ja täsmällisemmän tavan määritellä asioita.
+
+\glsentryname{dsl}iä voi käyttää monella eri tavalla
 
 GraphQL-rajapinnan tyypit, niille tehtävät kyselyt ja mutaatiot kuvataan skeemassa, GraphQL-kielen avulla. Edellä esitetty ConsolidatedInvoice- ja Invoice-olioista koostuva esimerkki on validi GraphQL-skeema. Tämä skeemamäärittelyihin käytettävä kieli on riippumaton ohjelmointikielestä.
 

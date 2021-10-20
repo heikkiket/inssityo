@@ -16,6 +16,16 @@
 ,	publisher	= {Oxford University Press}
 }
 
+@book{fielding2000architectural
+,	title	= {Architectural Styles and the Design of Network-based Software Architectures}
+,	publisher	= {University of California, Irvine}
+,	author	= {Fielding, Roy Thomas}
+,	year	= {2000}
+, url = {https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm},
+}
+
+
+
 @book{Raymond2003,
 	title = {{The Art of UNIX Programming}},
   author = {{Eric S. Raymond}},
@@ -33,6 +43,58 @@
 ,	pages	= {157--166}
 ,	year	= {1966}
 ,	publisher	= {ACM}
+}
+
+@Article{Spi00b,
+	Title="Notable Design Patterns for Domain Specific Languages",
+	Author="Diomidis Spinellis",
+	Journal="Journal of Systems and Software",
+	ISSN="0164-1212",
+	Pages="91--99",
+	Year="2001",
+	Month=feb,
+	Volume=56,
+	Number=1,
+	DOI="10.1016/S0164-1212(00)00089-3",
+	tags="plang",
+	URL=    "http://www.spinellis.gr/pubs/jrnl/2000-JSS-DSLPatterns/html/dslpat.html"
+	}
+
+
+
+
+
+@article{Cardelli+Wegner:1985
+,	author	= {Luca Cardelli and 
+
+                  Peter Wegner}
+,	title	= {On Understanding Types, Data Abstraction, and Polymorphism}
+,	journal	= {ACM Computing Surveys}
+,	volume	= {17}
+,	number	= {4}
+,	pages	= {471--522}
+,	year	= {1985}
+}
+
+@book{booch2008object
+,	title	= {Object-oriented analysis and design with applications}
+,	author	= {Booch, Grady and Maksimchuk, Robert A and Engel, Michael W and Young, Bobbi J and Conallen, Jim and Houston, Kelli A}
+,	volume	= {3}
+,	year	= {2008}
+,	publisher	= {Addison-Wesley}
+}
+
+%----------------------------------------------------------------------------------------
+%	WEB, VIDEO, SOCIAL MEDIA,...
+%----------------------------------------------------------------------------------------
+
+@online{graphql:spec,
+author = "Facebook",
+title = "GraphQL Spec",
+year = "2018",
+publisher = "{}",
+url = "spec.graphql.org",
+urldate = {2021-10-06}
 }
 
 @online{SchemaDriven2017Nov,
@@ -56,30 +118,31 @@
 @online{thinkingInGraphsOct2021,
 	title = {{Thinking in Graphs {$\vert$} GraphQL}},
   author= {GraphQL Foundation},
-	year = {2021},
-	month = {Oct},
 	note = {[Online; accessed 16. Oct. 2021]},
 	url = {https://graphql.org/learn/thinking-in-graphs}
 }
 
-@article{Cardelli+Wegner:1985
-,	author	= {Luca Cardelli and 
-
-                  Peter Wegner}
-,	title	= {On Understanding Types, Data Abstraction, and Polymorphism}
-,	journal	= {ACM Computing Surveys}
-,	volume	= {17}
-,	number	= {4}
-,	pages	= {471--522}
-,	year	= {1985}
+@online{betterRESTPrisma,
+	title = {{GraphQL vs REST - A comparison}},
+  author= {Prisma},
+	note = {[Online; accessed 19. Oct. 2021]},
+	url = {https://www.howtographql.com/basics/1-graphql-is-the-better-rest}
 }
 
-@book{booch2008object
-,	title	= {Object-oriented analysis and design with applications}
-,	author	= {Booch, Grady and Maksimchuk, Robert A and Engel, Michael W and Young, Bobbi J and Conallen, Jim and Houston, Kelli A}
-,	volume	= {3}
-,	year	= {2008}
-,	publisher	= {Addison-Wesley}
+@online{WhyUseGraphQLApollo,
+	title = {{Why use GraphQL?}},
+	journal = {Apollo GraphQL Blog},
+	year = {2020},
+	month = {Nov},
+	note = {[Online; accessed 19. Oct. 2021]},
+	url = {https://www.apollographql.com/blog/graphql/basics/why-use-graphql}
+}
+
+@online{GraphQLSchemaBasics,
+	title = {{GraphQL schema basics}},
+	journal = {Apollo GraphQL Docs},
+	note = {[Online; accessed 19. Oct. 2021]},
+	url = {https://www.apollographql.com/docs/apollo-server/schema/schema/#naming-conventions}
 }
 
 @online{pythonGloss2021Oct,
@@ -100,68 +163,12 @@
 	url = {https://github.com/graphql/graphql-js}
 }
 
-@book{tobias:book,
-author = "Tobias Oetiker and Hubert Partl and Irene Hyna and Elisabeth Schlegl",
-title = "The {N}ot {S}o {S}hort {I}ntroduction to \LaTeX{}2e",
-year = "2010",
-address = "Olten, Switzerland",
-url = "https://tobi.oetiker.ch/lshort/",
-urldate = {2021-06-21}
-}
-
-@book{kopka:guide,
-author = "Kopka, Helmut",
-title = "Guide to \LaTeX{}",
-publisher = "Addison-Wesley",
-year = "2004",
-address = "Boston",
-isbn = {0321173856}
-}
-
-%----------------------------------------------------------------------------------------
-%	WEB, VIDEO, SOCIAL MEDIA,...
-%----------------------------------------------------------------------------------------
-
-@online{graphql:spec,
-author = "Facebook",
-title = "GraphQL Spec",
-year = "2018",
-publisher = "{}",
-url = "spec.graphql.org",
-urldate = {2021-10-06}
-}
-
-
-@video{youtube:biblatex,
-author = " ShareLaTeX",
-title = "\LaTeX{} Tutorial pt 5 - Bibliographies and Natbib",
-year = "2013",
-url = "https://www.youtube.com/watch?v=-N2qtTnP1sg",
-urldate = {2019-11-05}
-}
-
 %----------------------------------------------------------------------------------------
 %	SOFTWARE, MANUAL,...
 %----------------------------------------------------------------------------------------
 
-@manual{ctan:biblatex,
-author = "Philip Kime and Moritz Wemheuer and Philipp Lehman",
-title = "The biblatex Package",
-subtitle = "Programmable Bibliographies and Citations",
-version = "3.16",
-year = "2020",
-url = "http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf",
-urldate = {2021-06-16}
-}
 
 %----------------------------------------------------------------------------------------
 %	LEGAL, LAW, CONSTITUTION, CHARTER, PATENT, STANDARD,...
 %----------------------------------------------------------------------------------------
 
-@legal{un:udhr,
-  organization = {United Nations},
-  title = {The Universal Declaration of Human Rights},
-  url = {https://www.un.org/en/about-us/universal-declaration-of-human-rights},
-  urldate = {2021-06-18},
-  year = 1948
-}
