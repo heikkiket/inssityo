@@ -227,13 +227,12 @@ koodissa.
 \subsection{Tyyppijärjestelmä}\label{tyyppijuxe4rjestelmuxe4}}
 
 Tietokoneet käsittelevät dataa ottamatta sen enempää kantaa sen
-\textbackslash{}gls{[}tyyppiin{]}\{tyyppi\}. Pohjimmiltaan data on vain
-bittijonoja muistissa, tai elementtejä joukossa. Kun tällaista
-järjestämätöntä ja tyypittämätöntä joukkoa ryhdytään käsittelemään, on
-välttämätöntä järjestää se erilaisiin kategorioihin. Tämä tiedon
-luokittelu synnyttää tyyppijärjestelmän, mutta järjestelmä ei ole
-formaalisti määritelty, eikä tietokone voi niin ollen tehdä
-tyyppitarkistusta.
+\glsdisp{tyyppi}{tyyppiin}. Pohjimmiltaan data on vain bittijonoja
+muistissa, tai elementtejä joukossa. Kun tällaista järjestämätöntä ja
+tyypittämätöntä joukkoa ryhdytään käsittelemään, on välttämätöntä
+järjestää se erilaisiin kategorioihin. Tämä tiedon luokittelu synnyttää
+tyyppijärjestelmän, mutta järjestelmä ei ole formaalisti määritelty,
+eikä tietokone voi niin ollen tehdä tyyppitarkistusta.
 
 Tyypitys tarkoittaa määrättyjä rajoituksia, joiden avulla voidaan
 varmistaa muuttujan oikeellisuus. Staattinen tyypitys on menetelmä,
@@ -337,7 +336,7 @@ toimii}\label{miten-graphql-sovellus-toimii}}
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth,height=0.5\textheight]{illustration/GraphQL-arkkitehtuuri.png}
+\includegraphics{illustration/GraphQL-arkkitehtuuri.png}
 \caption{\label{graphqlarkkitehtuuri} Esimerkkiarkkitehtuuri
 GraphQL-sovellukselle}
 \end{figure}
@@ -401,12 +400,11 @@ halutaan hakea tietoja, tehdään Query-tyypin consolidatedInvoices
 }
 \end{verbatim}
 
-Kyselyssä\ref{testfoo} määritellään kentät, jotka palautuvassa datassa
-halutaan nähdä. Näin myös palautuvan oliopuun syvyyttä voidaan
-kontrolloida. Oheisessa esimerkissä haetaan paitsi lista
-koontilaskuista, myös jokaisen koontilaskun alle invoices-kenttään lista
-siihen kuuluvista laskuista. Näin edetään verkkoa pitkin tarvittavan
-datan luo.
+Kyselyssä määritellään kentät, jotka palautuvassa datassa halutaan
+nähdä. Näin myös palautuvan oliopuun syvyyttä voidaan kontrolloida.
+Oheisessa esimerkissä haetaan paitsi lista koontilaskuista, myös
+jokaisen koontilaskun alle invoices-kenttään lista siihen kuuluvista
+laskuista. Näin edetään verkkoa pitkin tarvittavan datan luo.
 
 Mutation-juurityyppiä puolestaan käytetään datan muunnoksiin.
 Mutation-tyypin sisältämiin kenttiin lähetetään kysely, jossa mukana

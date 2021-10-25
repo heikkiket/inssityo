@@ -12,7 +12,7 @@ Käytin yksinkertaista notaatiota, jossa merkitsin asioita laatikoilla, ja niide
 
 Piirsin aluksi käynnin. Niitä voi kuulua laskulle yksi tai useampia. Laskut voidaan koostaa koontilaskuiksi. Koontilaskuja tai niiden osia taas voidaan hyvittää luomalla hyvityslaskuja.
 
-![\label{diarymalli1}: Ensimmäinen malli](illustration/malli1.jpg){ height=30%}
+![\label{diarymalli1}: Ensimmäinen malli](illustration/malli1.jpg)
 
 Oikeastaan käynnillä voi olla monta erillistä asiaa, ne ovat laskutettavia toimenpiteitä. Palaverin lopuksi aikaansaatu kaavio on kuvassa \ref{diarymalli1}.
 
@@ -66,7 +66,7 @@ Ehdotin mallia, jossa **Appointment** voidaan viedä **Invoicelle** **ServiceRow
 
 Pyyhin taulun puhtaaksi, ja kokeilimme uudestaan. Tein **Invoice** -olion, jonka alle laitoin **ServiceRow** -nimisen olion. Invoicea vastaamaan piirsin **CreditNote** -olion, jonka alle **ServiceCreditRow**. Sivummas piirsin Appointment-olion, ja pohdimme, mikä sen suhde voisi olla laskutukseen.
 
-![\label{diarymalli2}Toinen malli](illustration/malli2.jpg){ height=50% }
+![\label{diarymalli2}Toinen malli](illustration/malli2.jpg)
 
 Yhtäkkiä minulla välähti: mitä, jos tehtäisiin ikäänkuin loki **Appointment**-olion sisälle: sinne tallennettaisiin lukitustapahtuma, kun **Appointment** liitetään laskulle luomalla sitä vastaava **ServiceRow**. Ja vastaavasti kun **ServiceRow** hyvitettäisiin **ServiceCreditRown** avulla, voitaisiin luoda avaustapahtuma. Näin ollen **Appointment**-luokan alla olisi lista tapahtumia, ja listan avulla nähtäisiin sekä laskutushistoria, että myös käynnin tämänhetkinen laskutustilanne: Laskuttamatta vai avoinna? Esitän mallin kuvassa \ref{diarymalli2}.
 
@@ -77,7 +77,7 @@ Niinpä pyyhin taas koko taulun puhtaaksi, ja lähdimme taas uudelleen liikkeell
 
 Nyt Käynnin alle lisättiin erillinen, laskutustarkoituksiin käytettävä olio, jonka nimeksi pistettiin **BasisForInvoicing**. Tämä BasisForInvoicing voidaan jakaa osiin, ja jokainen osa sisältää oman erillisen listansa laskutustapahtumista: onko osa liitetty laskuun, vai onko se hyvitetty ja taas siis avoinna.
 
-![\label{diarymalli3}Kolmas malli](illustration/malli3.jpg){ height=50% }
+![\label{diarymalli3}Kolmas malli](illustration/malli3.jpg)
 
 Tämä tuntui meistä hyvältä mallilta, ja sen pohjalta ryhdyin koodaamaan. Tätä mallia esittää kuva \ref{diarymalli3}.
 Sovittiin uusi palaveri viikon päähän.

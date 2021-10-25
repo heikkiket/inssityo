@@ -86,7 +86,7 @@ Käsitteiden verkkoa kuvaa myös Eric Evans Domain Driven Design -kirjassa. Kein
 
 ### Tyyppijärjestelmä
 
-Tietokoneet käsittelevät dataa ottamatta sen enempää kantaa sen \gls[tyyppiin]{tyyppi}. Pohjimmiltaan data on vain bittijonoja muistissa, tai elementtejä joukossa. Kun tällaista järjestämätöntä ja tyypittämätöntä joukkoa ryhdytään käsittelemään, on välttämätöntä järjestää se erilaisiin kategorioihin. Tämä tiedon luokittelu synnyttää tyyppijärjestelmän, mutta järjestelmä ei ole formaalisti määritelty, eikä tietokone voi niin ollen tehdä tyyppitarkistusta.
+Tietokoneet käsittelevät dataa ottamatta sen enempää kantaa sen \glsdisp{tyyppi}{tyyppiin}. Pohjimmiltaan data on vain bittijonoja muistissa, tai elementtejä joukossa. Kun tällaista järjestämätöntä ja tyypittämätöntä joukkoa ryhdytään käsittelemään, on välttämätöntä järjestää se erilaisiin kategorioihin. Tämä tiedon luokittelu synnyttää tyyppijärjestelmän, mutta järjestelmä ei ole formaalisti määritelty, eikä tietokone voi niin ollen tehdä tyyppitarkistusta.
 
 Tyypitys tarkoittaa määrättyjä rajoituksia, joiden avulla voidaan varmistaa muuttujan oikeellisuus. Staattinen tyypitys on menetelmä, jossa ekspressioiden tyyppi voidaan määrittää staattisen analyysin avulla, siis jo käännösaikaisesti. Vahva tyypitys taas mahdollistaa tyypin tarkistamisen luotettavasti ajon aikana. \cite{Cardelli+Wegner:1985}
 
@@ -137,7 +137,7 @@ GraphQL-skeemaa voi siis verrata Eric Evansin esittämään ajatukseen \glsentry
 
 ### Miten GraphQL-sovellus toimii
 
-![\label{graphqlarkkitehtuuri} Esimerkkiarkkitehtuuri GraphQL-sovellukselle](illustration/GraphQL-arkkitehtuuri.png){ height=50%}
+![\label{graphqlarkkitehtuuri} Esimerkkiarkkitehtuuri GraphQL-sovellukselle](illustration/GraphQL-arkkitehtuuri.png)
 
 Kuvassa \ref{graphqlarkkitehtuuri} esitän yksinkertaisen GraphQL-sovelluksen arkkitehtuurin. Arkkitehtuuri on kerroksittainen, ja rajapinnalle esitettävä pyyntö liikkuu siinä ylhäältä alaspäin.
 
@@ -172,7 +172,7 @@ Kun oheisen esimerkin mukaisesti määritellystä GraphQL-rajapinnasta halutaan 
 }
 ```
 
-Kyselyssä\ref{testfoo} määritellään kentät, jotka palautuvassa datassa halutaan nähdä. Näin myös palautuvan oliopuun syvyyttä voidaan kontrolloida. Oheisessa esimerkissä haetaan paitsi lista koontilaskuista, myös jokaisen koontilaskun alle invoices-kenttään lista siihen kuuluvista laskuista. Näin edetään verkkoa pitkin tarvittavan datan luo.
+Kyselyssä määritellään kentät, jotka palautuvassa datassa halutaan nähdä. Näin myös palautuvan oliopuun syvyyttä voidaan kontrolloida. Oheisessa esimerkissä haetaan paitsi lista koontilaskuista, myös jokaisen koontilaskun alle invoices-kenttään lista siihen kuuluvista laskuista. Näin edetään verkkoa pitkin tarvittavan datan luo.
 
 Mutation-juurityyppiä puolestaan käytetään datan muunnoksiin. Mutation-tyypin sisältämiin kenttiin lähetetään kysely, jossa mukana olevat parametrit kertovat, miten dataa muokataan. Parametrit ovat yhtä lailla tyypitettyjä kuin rajapinnan kentät, ja GraphLQ-kirjasto tarkistaa niiden tyypin oikeellisuuden. Mutation-komennot voivat myös palauttaa oliorakenteita.
 

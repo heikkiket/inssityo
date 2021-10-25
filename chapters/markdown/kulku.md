@@ -49,7 +49,7 @@ Laura selitti kärsivällisesti kirjanpidon alkeita, jotka olivat minulle enimm�
 Suunnittelimme yksinkertaisen mallin, jossa hoitokäynnit liittyvät laskuihin ja laskut kootaan koontilaskuille. Yksittäiset käynnit voidaan lisätä myös hyvityslaskulle. Tämän mallin tarkoituksena oli luoda yksinkertainen esimerkkisovellus, joka kykenee laskuttamaan käyntejä, ja sen jälkeen lisäämään niitä hyvityslaskulle, sekä näyttämään hyvityslaskun kokonaissumman.
 Malli on esitetty kuvassa \ref{malli1}.
 
-![\label{malli1} Ensimmäinen malli](illustration/malli1.jpg){ height=30%}
+![\label{malli1} Ensimmäinen malli](illustration/malli1.jpg)
 
 Tämän mallin sisältävän ohjelmistoprototyypin toteuttamiseen kului kaksi viikkoa, ja näin iteraatio oli prosessin pisin. Myöhemmät iteraatiot kestivät noin viikon. Kulunutta aikaa selittää, että rakensin prototyypin puhtaalta pöydältä, jolloin aikaa kului myös sovelluksen pohjan pystyttämiseen.
 
@@ -63,7 +63,7 @@ Pyysin Lauraa kertomaan enemmän siitä, mitä käynnin laskuttaminen oikeastaan
 
 Käytimme tapaamisen loppuosan tämän idean kehittelemiseen. Päädyimme ajatukseen, jossa laskulle lisätään käynnin sijasta palvelurivi, joka viittaa käyntiin. Tapaamisen jälkeisen viikon kehitystyötä ohjasi nyt uusi ajattelutapa: käyntiä sinänsä ei liitetä laskuun, vaan käynti laskutetaan, mikäli laskutusperuste täyttyy.
 
-![\label{malli2}Toinen malli](illustration/malli2.jpg){ height=50% }
+![\label{malli2}Toinen malli](illustration/malli2.jpg)
 
 Yksi toisen tapaamisen aikana syntyneistä malleista on esitetty kuvassa \ref{malli2}. Siinä laskulle liitetään palvelurivi, joka vastaa yksittäistä hoitokäyntiä. Mikäli käynti hyvitetään, palveluriviä vastaa hyvityslaskuun kiinnitetty hyvitysrivi.
 
@@ -77,9 +77,9 @@ Perjantaihin tultaessa olin refaktoroinut prototyyppiohjelmaa ja sen jälkeen k�
 
 Yllättäen perjantaina puolen päivän jälkeen kaikki yksikkötestit menivät läpi, käyttäjätarina valmistui, ja ohjelmistoprototyypin toiminnassa tuntui tapahtuvan laadullinen hyppäys. Loppujen kahden käyttäjätarinan toteuttaminen onnistui kahdessa tunnissa, ja vaati vain joitain rivejä koodia. \Glsentryname{domainmodel} oli kehittynyt paremmaksi.
 
-Ohjelmoidessa syntynyt tietomalli sisälsi samat asiat, joista kokouksessa oli puhuttu, mutta niiden suhteet olivat toisenlaiset. Olin tuottanut ominaisuudet yksikkötesti yksikkötestiltä, ja tämä malli oli yksinkertaisin, jolla kaikki testit menivät läpi. Malli on esitetty kuvassa\ref{finalmodel1}
+Ohjelmoidessa syntynyt tietomalli sisälsi samat asiat, joista kokouksessa oli puhuttu, mutta niiden suhteet olivat toisenlaiset. Olin tuottanut ominaisuudet yksikkötesti yksikkötestiltä, ja tämä malli oli yksinkertaisin, jolla kaikki testit menivät läpi. Malli on esitetty kuvassa \ref{finalmodel1}
 
-![\label{finalmodel1} Kuva, jossa käyntiin kytkeytyy palvelurivi ja palveluriviin hyvitysrivi][illustration/final-idea-1] 
+![\label{finalmodel1} Kuva, jossa käyntiin kytkeytyy palvelurivi ja palveluriviin hyvitysrivi](illustration/final-idea-1.jpg) 
 
 ### Iteraatio 3
 
@@ -107,7 +107,7 @@ Nyt muistin tämän keskustelun, ja ehdotin sen pohjalta, että laskutuksessa ei
 
 Loimme kokouksessa mallin, jossa Käynti muunnetaan myynniksi eli SalesItem-olioksi. Nyt käynneistä ei tarvitse välittää lainkaan laskuja käsiteltäessä. SalesItem puolestaan voidaan jakaa maksajille suunnatuiksi osuuksiksi, SalesShareiksi, ja yksittäisellä laskulla on SalesShareen kytketty SalesRow. Malli on esitetty kuvassa \ref{malli3}
 
-![\label{malli3}Kolmas malli](illustration/malli4.jpg){ height=50% }
+![\label{malli3}Kolmas malli](illustration/malli4.jpg)
 
 Kokouksen jälkeen minua odotti jälleen refaktorointityö, joka oli projektin suurin. Arvioni on, että käynnin perinpohjainen irrottaminen koko laskutuslogiikasta ja kahden uuden käsitteen laittaminen näiden väliin olivat keskeisiä syitä sille, miksi muutostyö oli niin työläs.
 

@@ -19,3 +19,6 @@ markdown:
 	pandoc "chapters/markdown/Liite 1 diary.md" -o chapters/diary.tex --top-level-division=chapter
 
 all: markdown latex
+
+clean:
+	rm main.acn main.acr main.alg main.aux main.bcf main.blg main.glg main.glo main.gls main.ist main.log main.out main.run.xml main.toc main.upa main.upb
