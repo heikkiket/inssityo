@@ -16,4 +16,4 @@ voiko tämän merkittävän nivelkohdan uudistamisen kanssa yhtä aikaa myös ko
 Työssä perehdytään GraphQL-rajapinnan toimintaan Domain Driven Designin
 näkökulmasta. Tuloksena syntyy toimintamalli, jonka avulla tietomallia voidaan kohentaa.
 
-Työ tehdään ohjelmistopalveluyritys Nordhealth Oy:n tilauksesta
+Työ tehdään ohjelmistopalveluyritys Nordhealth Oy:n tilauksesta.

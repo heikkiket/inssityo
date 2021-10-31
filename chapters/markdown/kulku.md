@@ -22,13 +22,13 @@ Malli laadittiin englanninkielisillä käsitteillä, koska Nordhealth on viime v
 
 Päätin, että jokainen iteraatio aloitetaan minun ja tuoteomistaja Lauran välisellä suunnittelukokouksella, jonka pääasiallisena tavoitteena oli keskustellen ja piirtäen etsiä toimivaa ohjelmiston tietomallia. Prosessin kuluessa tavaksi vakiintui, että kokouksen aluksi käytiin nopeasti läpi siihen asti aikaansaadun ohjelmistoprototyypin toiminnallisuus.
 
-Pyrin noudattamaan työskentelyssä Eric Evansin esittämää tiedon rouhimisen periaatetta, jossa suunnittelu ja ohjelmistokehitys limittyvät keskenään. Iteraation aikana ohjelmoin uuden version ohjelmistoprototyypistä, kokouksessa syntyneiden ajatusten pohjalta. Kehitin ohjelmistoa testivetoisesti: kirjoitin ensin yksikkötestiä siihen saakka, että Python-tulkki ilmoitti virheestä, ja sen jälkeen tuotantokoodia sen verran, että yksikkötestin suorittaminen onnistui.
+Pyrin noudattamaan työskentelyssä Eric Evansin esittämää tiedon rouhimisen periaatetta, jossa suunnittelu ja ohjelmistokehitys limittyvät keskenään. Iteraation aikana ohjelmoin uuden version ohjelmistoprototyypistä, kokouksessa syntyneiden ajatusten pohjalta. Kehitin ohjelmistoa testivetoisesti: kirjoitin ensin epäonnistuvan yksikkötestin ja sen jälkeen tuotantokoodia sen verran, että yksikkötestin suorittaminen onnistui.
 
 ## Teknologiavalinnat
 
 Kirjoitin esimerkkiohjelmiston tyypilliseksi web-sovellukseksi, jossa palvelinohjelmisto ja selaimessa toimiva asiakasohjelma kommunikoivat keskenään HTTP-pyyntöjen avulla. Valitsin palvelinohjelmiston kehityskieleksi Python-kielen, koska se sopii hyvin Nordhealthissa käytössä oleviin teknologiavalintoihin. Python on myös syntaksiltaan suoraviivainen ja tässä mielessä helppokäyttöinen kieli.
 
-Pythonin kanssa käytettäväksi HTTP-kirjastoksi valitsin Falcon-kirjaston puhtaasti sen yksinkertaisuuden vuoksi. Ohjelmaan tarvittiin tuki vain yhdelle HTTP-resurssille, joka vastaa pyyntöihin JSON-muotoisella dokumentilla. GraphQL-kirjastoista valitsin Ariadne-kirjaston, koska se on tarkoitettu skeema edellä tapahtuvaan kehitystyöhön.
+Pythonin kanssa käytettäväksi HTTP-kirjastoksi valitsin Falcon-kirjaston\cite{FalconPython} puhtaasti sen yksinkertaisuuden vuoksi. Muita vaihtoehtoja olivat Django ja Flas\cite{FlaskPython}, mutta molemmat niistä sisälsivät paljon toimintoja, joita ei tässä projektissa tarvittu. Niissä on mukana esimerkiksi tuki sivupohjille, jota rajapintaa kehitettäessä ei tarvita. Ohjelmaan tarvittiin tuki vain yhdelle HTTP-resurssille, joka vastaa pyyntöihin JSON-muotoisella dokumentilla. GraphQL-kirjastoista harkitsin Ariadne\cite{AriadnePython}- ja Graphene\cite{GraphenePython} -kirjastojen välillä. Valitsin Ariadnen, koska se on tarkoitettu skeema edellä tapahtuvaan kehitystyöhön.
 
 Yksikkötestijärjestelmänä käytin Pytest-kirjastoa. Tietokantaa sovellukselle ei tarvittu, vaan rakenteet voidaan tallentaa muistiin ajonaikaisesti. Tämä helpottaa myös ohjelmiston tietorakenteen refaktorointeja, sillä tietokantaa ei ole tarve muokata tai luoda uudelleen ohjelmiston mallin muuttuessa.
 
@@ -40,7 +40,7 @@ Esitän seuraavaksi prosessin etenemisen iteraatio kerrallaan. Olen valinnut tä
 
 Malleja esittävissä kuvissa käyttämäni notaatio on hyvin alkeellinen, eikä millään tapaa muodollinen. Se muistuttaa etäisesti UML-kielen luokkakaavioita, ja sen keskeisin tarkoitus on luoda jaettu ymmärrys eri käsitteiden välisistä suhteista.
 
-### Iteraatio 1
+### Iteraatio 1: projekti käynnistyy, kirjanpidon alkeita
 
 Iteraation aloittavassa kokouksessa kävimme läpi laskutuksen perusperiaatteita. Käsittelimme laajasti koko ongelmakenttää, ja pohdimme mahdollisia ratkaisuja laskutuksen liepeillä oleviin kysymyksiin. Näistä monet jäivät toteutetun prototyypin ulkopuolelle, mutta ne selkiyttivät käsitystä ongelmakentän luonteesta.
 
@@ -55,11 +55,11 @@ Tämän mallin sisältävän ohjelmistoprototyypin toteuttamiseen kului kaksi vi
 
 Ensimmäisessä iteraatiossa syntynyt ohjelmisto ei malliltaan täysin vastannut tätä ensimmäisen kokouksen piirrosta. Yksinkertaisuuden vuoksi oletin, että käynnillä on aina vakiohintainen toimenpide, jolloin Toimenpide-olio jäi mallista pois. Tehdessä huomasin myös, että koontilaskun ja hyvityslaskun välille ei tarvita mitään suoranaista yhteyttä. Riittää, että käynti on yhdistetty näihin molempiin.
 
-### Iteraatio 2
+### Iteraatio 2: malli syvenee
 
 Iteraation aloittavassa kokouksessa kävimme läpi syntyneen ohjelmistoprototyypin. Läpikäynnin jälkeen olin hieman epävarma, miten tapaamista tulisi jatkaa. Päätin ottaa puheeksi minua koko viikon ajan vaivanneen käyntien ja laskujen läheisen kytköksen. Ohjelmoidessa tuntui väärältä ja kömpelöltä, että käynti lisätään suoraan laskulle ja vielä hyvityslaskullekin.
 
-Pyysin Lauraa kertomaan enemmän siitä, mitä käynnin laskuttaminen oikeastaan tarkoittaa, ja hän piti lyhyen yhteenvedon laskuttamisen periaatteista. Huomioni kiinnittyi puheessa esiintyneeseen termiin **Laskutusperuste**. Tämä tuntui valtavan kiinnostavalta, ja Laura avasi asiaa tarkemmin. Kun laskulle lisätään laskutettavia asioita, täytyy siihen olla jokin peruste.
+Pyysin Lauraa kertomaan enemmän siitä, mitä käynnin laskuttaminen oikeastaan tarkoittaa, ja hän kuvasi, millaisissa tilanteissa laskuja voidaan luoda. Huomioni kiinnittyi puheessa esiintyneeseen termiin **Laskutusperuste**. Tämä tuntui valtavan kiinnostavalta, ja Laura avasi asiaa tarkemmin. Kun laskulle lisätään laskutettavia asioita, täytyy siihen olla jokin peruste.
 
 Käytimme tapaamisen loppuosan tämän idean kehittelemiseen. Päädyimme ajatukseen, jossa laskulle lisätään käynnin sijasta palvelurivi, joka viittaa käyntiin. Tapaamisen jälkeisen viikon kehitystyötä ohjasi nyt uusi ajattelutapa: käyntiä sinänsä ei liitetä laskuun, vaan käynti laskutetaan, mikäli laskutusperuste täyttyy.
 
@@ -81,7 +81,7 @@ Ohjelmoidessa syntynyt tietomalli sisälsi samat asiat, joista kokouksessa oli p
 
 ![\label{finalmodel1} Kuva, jossa käyntiin kytkeytyy palvelurivi ja palveluriviin hyvitysrivi](illustration/final-idea-1.jpg) 
 
-### Iteraatio 3
+### Iteraatio 3: malli osoittaa joustavuutensa
 
 Kolmannen iteraation aluksi pidimme jälleen suunnittelukokouksen. Tämän tapaamisen keskeisimpänä ongelmana oli, miten jo kertaalleen laskutettu ja hyvitetty käynti voidaan laskuttaa uudelleen.
 
@@ -97,7 +97,7 @@ Tämä listamuoto on esitetty kuvassa \ref{finalmodel1}. Siinä tarkastellaan pa
 
 Kolmas iteraatio oli iteraatioista lyhin, ja se kesti vain noin neljä päivää.
 
-### Iteraatio 4
+### Iteraatio 4: piilossa ollut käsite löytyy
 
 Neljännen tapaamisen keskeinen ongelma oli, että käynti tuntui olevan edelleen liian vahvasti kytketty laskuun. Yksittäistä käyntiä vastasi yksi palvelurivi. Tämä käy ongelmalliseksi, mikäli käynti halutaan jakaa kahdelle maksajalle. Jo ensimmäisessä tapaamisessa oli käynyt selväksi, että ainut siisti tapa jakaa käynti kahdelle maksajalle on tehdä kaksi erillistä laskua. Käyntiin kytkettyä palveluriviä ei kuitenkaan voi lisätä molemmille laskuille.
 
@@ -121,6 +121,21 @@ Refaktoroiminen ei ole tässä tyylissä pelkästään tekninen keino pitää ko
 
 Toinen keskeinen keino kaikenkattavan kielen kehittämiseen tässä prosessissa oli suunnittelutapaamistemme kielen tarkka seuraaminen. Pyrin nappaamaan Lauran kanssa käydyistä keskusteluista termejä, joita käytimme, ja etenkin termejä, joita Laura käytti.
 
-Eric Evans mainitsee, että \glsdisp{ubilang}{kaikenkattavan kielen} rakentamisessa oleellista on löytää sanat, joita alan asiantuntijat käyttävät.
+Eric Evans mainitsee, että \glsdisp{ubilang}{kaikenkattavan kielen} rakentamisessa oleellista on löytää sanat, joita alan asiantuntijat käyttävät\cite{evans:ddd}.
 
-GraphQL-skeemat tuntuivat heijastavan todella osuvasti rakentamiamme käsitekarttoja. Useimmiten oli mahdollista siirtää rakentamamme käsitteiden verkko sellaisenaan GraphQL-skeeman sisälle. Tämä myös tarkoitti, että palvelinohjelman ja asiakasohjelman välinen rajapinta sai ensimmäisenä kyvyt uuden käsitekartan version käsittelemiseen.
+## \glsdisp{ddd}{sovellusaluevetoisen suunnittelun} käsitteiden hyödyntäminen
+Käytin tietomallin koodia rakentaessani apuna Evansin esittelemiä käsitteitä. Useat käsitteet, kuten käynnit ja laskut, kuvasin \glslink{entity}{yksilötyyppeinä}. Käsitteistä koostuvat kokonaisuudet ovat \glsdisp{aggregate}{aggregaatti}-rakenteissa. Esimerkiksi laskun sisältämät laskurivit tai myynnin sisältämät myyntiosuudet.
+
+Koska yksinkertaisessa prototyyppisovelluksessani ei ole ollenkaan tietokantaa, toteutin käsitteille Evansin mallin mukaisesti \glsdisp{repository}{repositoriot}. Käytännössä ne ovat vain yksinkertaisia luokkia, jotka pitävät sisällään linkitetyn listan olioita.
+
+Laskujen luominen operaationa puolestaan oli niin monimutkainen, että siihen tarvitsin Eric Evansin esimerkin mukaisesti erillisen tehdasluokan.
+
+## GraphQL-rajapinnan ja sovellusaluemallin yhteys
+
+GraphQL-skeemat tuntuivat heijastavan todella osuvasti rakentamiamme käsitekarttoja. Useimmiten oli mahdollista siirtää rakentamamme käsitteiden verkko sellaisenaan GraphQL-skeeman sisälle. Tein tämän monesti ensimmäisenä osana ohjelmointijaksoa. Tämä myös tarkoitti, että palvelinohjelman ja asiakasohjelman välinen rajapinta sai ensimmäisenä kyvyt uuden käsitekartan version käsittelemiseen.
+
+Koska GraphQL on riippumaton käytetystä ohjelmointikielestä, myös malli irtautui niistä välittömistä teknologioista, joilla prototyyppisovelluksen rakensin. Voidaan siis sanoa, että GraphQL-rajapintakehityksessä sovellusalueen käsitteet saavat merkittävämmän roolin kuin alla käytettävät täsmälliset teknologiavalinnat.
+
+Huonommin GraphQL-rajapinta kuvasi mallin dynaamisia muutoksia. Mutaatioiden avulla voidaan ilmaista, minkälaisia toimintoja malliin voidaan kohdistaa, ja toiminnon onnistuminen voidaan toki havaita muuttuneena mallina. Rajapinnasta ei kuitenkaan suoraan päällepäin näe, missä ovat mallin dynaamiset nivelkohdat.
+
+Esimerkiksi laskutusta käsittelevässä mallissa tällainen nivelkohta on käynnin ja myynnin välissä. Kun käynti muuttuu myynniksi laskulle lisättäessä, tapahtuu käsitteellinen muutos, joka antaa prototyyppisovellukselle sen sisältämän voiman ja joustavuuden.
