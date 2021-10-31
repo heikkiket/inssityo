@@ -13,7 +13,7 @@ alojen asiantuntijat puolestaan tietävät, miten sovellusalan ongelmat
 ratkaistaan, mutta heiltä puuttuu taito suunnitella ohjelmistoja.
 
 Tämän ongelman ylittäminen on aihe, jota Eric Evans käsittelee
-kirjassaan Domain Driven Design\cite{evans:ddd}. Evansin mielestä
+kirjassaan Domain Driven Design.\cite{evans:ddd} Evansin mielestä
 jokaisen monimutkaisemman ohjelmiston sisässä on \gls{domainmodel}
 (Domain model), eli malli siitä, miten kyseinen ohjelmisto ratkaisee
 sovellusalan ongelmat. Malli voi kuitenkin olla piilotettu, ja saattaa
@@ -109,6 +109,20 @@ kokonaisuuden rakentaminen ei enää onnistu yksinkertaisella laskun
 luontikomennolla, vaan tarvitaan erillinen tehdas-luokka, jolta voi
 pyytää eri tavoin rakennettuja laskuja.
 
+Mielenkiintoinen käsite Evansilla on \gls{repository}. Se edustaa
+projektissa tiedon tallennuspaikkaa, kuten vaikka tietokantaa. Ajatus
+on, että \glsdisp{domainmodel}{sovellusaluemallin} tasolla ei esitetä
+konkreettista tiedontallennustoteutusta, vaan ainoastaan abstrakti
+tiedon tallennuspaikka, \emph{repositorio}. Tähän repositorioon on
+mahdollista kohdistaa erilaisia hakuja sekä muokkausoperaatioita, ja
+repositorio palauttaa käytettäväksi kokoelman olioita, jotka edustavat
+\glsdisp{domainmodel}{sovellusaluemallin} käsitteitä.
+
+Esimerkiksi laskut on mahdollista hakea laskurepositoriosta, johon on
+toteutettu tarvittavat hakumetodit esimerkiksi laskunumeron tai laskun
+päiväyksen perusteella. Näin sovellusaluemallia kehitettäessä ei
+tarvitse pohtia, mihin tieto on tallennettu ja mistä se haetaan.
+
 \hypertarget{mallin-hiominen-refaktoroimalla}{%
 \section{Mallin hiominen
 refaktoroimalla}\label{mallin-hiominen-refaktoroimalla}}
@@ -146,10 +160,10 @@ epäonnistumiseksi. 3. Tuotantokoodia saa kirjoittaa vain sen verran,
 että yksikkötesti menee läpi.\cite[luku 9]{martin2008clean}
 
 Joustavan järjestelmän suunnittelussa on myös hyvä seurata nk.
-YAGNI-periaatetta\footnote{``You Aren't Going to Need It''}. Kyseinen
-periaate edellyttää, että vain sellainen koodi kirjoitetaan, jolle on
-tarvetta. Luokkiin tai moduuleihin ei lisätä metodeita eikä toimintoja
-varmuuden varalta. \cite{jeffries1998}
+YAGNI-periaatetta\footnote{``You Aren't Gonna Need It.'' suom. ``Et sinä
+  sitä tarvitse.''}. Kyseinen periaate edellyttää, että vain sellainen
+koodi kirjoitetaan, jolle on tarvetta. Luokkiin tai moduuleihin ei
+lisätä metodeita eikä toimintoja varmuuden varalta. \cite{jeffries1998}
 
 Evans toteaa, että joustava rakenne on monesti seurausta siitä, että
 \gls{domainmodel} kehittyy paremmaksi. Joustava ohjelmisto ei ole
@@ -174,19 +188,21 @@ taas halutaan vain osa resurssin esittämästä tiedosta, mutta joudutaan
 silti hakemaan koko
 resurssi.\cite{betterRESTPrisma}\cite{WhyUseGraphQLApollo}
 
-gls\{graphql\} on Facebookin kehittämä kyselykieli, joka on tarkoitettu
+\gls{graphql} on Facebookin kehittämä kyselykieli, joka on tarkoitettu
 rajapintojen toteuttamiseen. Sen alkuperäinen suunnitteluperiaate oli
 tarjota web-asiakasohjelmien kehittäjille aiempaa laajempi vapaus
 rajapintapyyntöjen laatimiseen. \cite{graphql:spec}
 
 GraphQL on vielä suhteellisen uusi teknologia, eikä siitä löydy kovin
-paljoa materiaalia. Keskeinen tiedonlähde ovat Facebookin ja
-GraphQL-säätiön julkaisemat verkkomateriaalit, sekä Apollo Graph
--yrityksen GraphQL-teknologiaa käsittelevä materiaali.
+paljoa materiaalia. Keskeinen tiedonlähde ovat
+Facebookin\cite{graphql:spec} ja GraphQL-säätiön\cite{GraphQLOrg}
+julkaisemat verkkomateriaalit, sekä Apollo Graph -yrityksen
+GraphQL-teknologiaa käsittelevä materiaali.\cite{ApolloGraphQL}
 
 GraphQL koostuu kahdesta osasta: kyselykielestä sekä
 tyyppijärjestelmästä. Kyselykielellä muotoillaan pyyntö, johon
-GraphQL-palvelun tulee vastata.
+GraphQL-palvelun tulee vastata. Tyyppijärjestelmä taas tarkistaa pyynnön
+oikeellisuuden.
 
 GraphQL ei ole varsinainen rajapinta, sillä rajapinnan
 toteuttamisteknologia on määrittelyn ulkopuolella. Useimmiten
@@ -272,8 +288,8 @@ taustaosan ja käyttöliittymän, joten tällä rajalla tehtävän
 tyyppitarkistuksen voi ajatella ehkäisevän virheitä ja parantavan
 ohjelmiston luotettavuutta.
 
-Oheisessa esimerkissä kuvaan rajapinnan edustamien tyyppien, ja sitä
-myötä sen palauttamien olioiden väliset suhteet.
+Oheisessa koodiesimerkissä \ref{listing1} kuvaan rajapinnan edustamien
+tyyppien, ja sitä myötä sen palauttamien olioiden väliset suhteet.
 ConsolidatedInvoice-tyyppisessä oliossa on sisällä invoices-kenttä, joka
 on lista Invoice-tyyppisiä olioita.
 
@@ -284,7 +300,9 @@ Tältä rajapinnalta voi pyytää listaa koontilaskuista. GraphQL:n
 tyyppijärjestelmä takaa, että koontilaskun sisällä on invoices-jäsen,
 joka sisältää listan Invoice-tyyppisiä olioita, eli siis laskuja.
 
-\begin{verbatim}
+\begin{code}
+  \begin{minted}{graphql}
+
 type Query {
   consolidatedInvoices [ConsolidatedInvoice]
 }
@@ -299,7 +317,10 @@ type ConsolidatedInvoice {
   number: Int
   invoices: [Invoice]
 }
-\end{verbatim}
+  \end{minted}
+\captionof{listing}{Esimerkki GraphQL-skeemasta, joka määrittelee yksinkertaisen rajapinnan.}
+  \label{listing1}
+\end{code}
 
 \hypertarget{skeema}{%
 \subsection{Skeema}\label{skeema}}
@@ -331,10 +352,10 @@ tekniselle toteutukselle, että myös graafisen asiakasohjelman
 laatimiselle.\cite{SchemaDriven2017Nov},\cite{SchemaDrivenDesign2021Jul}
 
 GraphQL-skeemaa voi siis verrata Eric Evansin esittämään ajatukseen
-\glsentryname{ubilang}sta. Esimerkiksi GraphQL Foundationin
-materiaaleissa esitetään, että GraphQL-skeemaa tulisi ajatella jaettuna
-kielenä oman ohjelmointitiimin kesken, ja myös käyttäjien kanssa
-kommunikoimiseen.\cite{thinkingInGraphs}
+\glsdisp{ubilang}{kaikenkattavasta kielestä}. Esimerkiksi GraphQL
+Foundationin materiaaleissa esitetään, että GraphQL-skeemaa tulisi
+ajatella jaettuna kielenä oman ohjelmointitiimin kesken, ja myös
+käyttäjien kanssa kommunikoimiseen.\cite{thinkingInGraphs}
 
 \hypertarget{miten-graphql-sovellus-toimii}{%
 \subsection{Miten GraphQL-sovellus
@@ -390,11 +411,14 @@ olion kentät määrittävät, mitä dataa rajapinnalta voidaan kysellä.
 Kentät ovat ikäänkuin sisäänmenoaukkoja, joiden kautta oliorakenteita
 voi pyytää.
 
-Kun oheisen esimerkin mukaisesti määritellystä GraphQL-rajapinnasta
-halutaan hakea tietoja, tehdään Query-tyypin consolidatedInvoices
--kenttään kysely, joka kuvaa halutun oliopuun rakenteen tyyppien avulla:
+Kun oheisen koodiesimerkin \ref{listing1} mukaisesti määritellystä
+GraphQL-rajapinnasta halutaan hakea tietoja, tehdään Query-tyypin
+consolidatedInvoices -kenttään kysely, joka kuvaa halutun oliopuun
+rakenteen tyyppien avulla. Tätä kuvaa koodiesimerkki \ref{listing2}.
 
-\begin{verbatim}
+\begin{code}
+  \begin{minted}{graphql}
+
 {
   consolidatedInvoices {
     number
@@ -404,7 +428,10 @@ halutaan hakea tietoja, tehdään Query-tyypin consolidatedInvoices
     }
   }
 }
-\end{verbatim}
+\end{minted}
+\captionof{listing}{Kysely, joka pyytää consolidatedInvoices-olioita}
+  \label{listing2}
+\end{code}
 
 Kyselyssä määritellään kentät, jotka palautuvassa datassa halutaan
 nähdä. Näin myös palautuvan oliopuun syvyyttä voidaan kontrolloida.
@@ -419,29 +446,38 @@ lailla tyypitettyjä kuin rajapinnan kentät, ja GraphLQ-kirjasto
 tarkistaa niiden tyypin oikeellisuuden. Mutation-komennot voivat myös
 palauttaa oliorakenteita.
 
-Oheisessa esimerkissä määritellään invoice-niminen operaatio uuden
-laskun luomiseen. Operaatiolle on merkitty paluuarvo, joka on
-Invoice-tyypin olio. Käytännössä operaatio voisi siis palauttaa juuri
-luodun laskun.
+Oheisessa koodiesimerkissä \ref{listing3} määritellään invoice-niminen
+operaatio uuden laskun luomiseen. Operaatiolle on merkitty paluuarvo,
+joka on Invoice-tyypin olio. Käytännössä operaatio voisi siis palauttaa
+juuri luodun laskun.
 
-\begin{verbatim}
+\begin{code}
+  \begin{minted}{graphql}
 Mutation {
   invoice(customerId: Int, appointmentDate: String): Invoice
 }
-\end{verbatim}
+\end{minted}
+\captionof{listing}{Esimerkki GraphQL-mutaatiosta}
+  \label{listing3}
+\end{code}
 
 Kun tällaista mutaatiota käytetään, kutsuun liitetään myös kyselyosa,
-jossa listataan ne kentät, jotka palautuvasta oliosta halutaan. Tässä
-tapauksessa pyydetään laskunumero ja laskun summa.
+jossa listataan ne kentät, jotka palautuvasta oliosta halutaan.
+Koodiesimerkissä \ref{listing4} pyydetään laskunumero ja laskun summa.
 
-\begin{verbatim}
+\begin{code}
+  \begin{minted}{graphql}
+
 {
 invoice(customerId: 1, appoitnmentDate: "2021-09-21") {
     number
     sum
   }
 }
-\end{verbatim}
+\end{minted}
+\captionof{listing}{Esimerkki parametreja käyttävästä GraphQL-kyselystä}
+  \label{listing4}
+\end{code}
 
 \hypertarget{graphql-ja}{%
 \section{\texorpdfstring{GraphQL ja
@@ -457,10 +493,10 @@ perustuva rajapinta, jossa rajapinnan tarjoama tieto on jäsennetty
 olioiksi ja niiden välisiksi suhteiksi.
 
 Voidaan siis esittää kysymys, kuinka hyvin GraphQL-rajapinta soveltuu
-\glsentryname{ddd} tarpeisiin? On helppo kuvitella, että olioverkolla on
-mahdollista heijastaa \glsentryname{domainmodel}, ja jopa mallintaa se
-lähes yksi yhteen. Toisaalta GraphQL-rajapinta palauttaa dataa, kun taas
-olio-ohjelmoinnin keinon luotu olioverkko voi esittää dynaamisen ja
-muuttuvan mallin. Onko GraphQL toimiva väline ohjelmiston tietomallin
-parantamiseen? Tätä kysymystä lähden työni käytännön osassa
-selvittämään.
+\glsdisp{ddd}{sovellusaluevetoisen suunnittelun} tarpeisiin? On helppo
+kuvitella, että olioverkolla on mahdollista heijastaa
+\glsentryname{domainmodel}, ja jopa mallintaa se lähes yksi yhteen.
+Toisaalta GraphQL-rajapinta palauttaa dataa, kun taas olio-ohjelmoinnin
+keinon luotu olioverkko voi esittää dynaamisen ja muuttuvan mallin. Onko
+GraphQL toimiva väline ohjelmiston tietomallin parantamiseen? Tätä
+kysymystä lähden työni käytännön osassa selvittämään.
