@@ -4,7 +4,7 @@
 
 Yleinen ongelma tietokoneohjelmistoja tehtäessä on, että ohjelmoijat tuntevat ohjelmiston erikoisalan heikosti. Esimerkiksi kiinteistötekniikkaa, kirjastokortistoa tai tämän työn tapauksessa terapiaklinikan toimintaa hoitavan ohjelmiston kehittäjä joutuu käsittelemään monimutkaisia, sovellusalaan sidottuja ongelmia. Näiden alojen asiantuntijat puolestaan tietävät, miten sovellusalan ongelmat ratkaistaan, mutta heiltä puuttuu taito suunnitella ohjelmistoja.
 
-Tämän ongelman ylittäminen on aihe, jota Eric Evans käsittelee kirjassaan Domain Driven Design.\cite{evans:ddd} Evansin mielestä jokaisen monimutkaisemman ohjelmiston sisässä on \gls{domainmodel} (Domain model), eli malli siitä, miten kyseinen ohjelmisto ratkaisee sovellusalan ongelmat. Malli voi kuitenkin olla piilotettu, ja saattaa olla, etteivät ohjelmiston kehittäjät tiedosta mallin olemassaoloa. Tämän mallin tuominen näkyväksi on \glsentryname{ddd}n päätavoite.
+Tämän ongelman ylittäminen on aihe, jota Eric Evans käsittelee kirjassaan Domain Driven Design.\cite{evans:ddd} Evansin mielestä jokaisen monimutkaisemman ohjelmiston sisässä on \gls{domainmodel} (Domain model), eli malli siitä, miten kyseinen ohjelmisto ratkaisee sovellusalan ongelmat. Malli voi kuitenkin olla piilossa ohjelmakoodin sisällä, ja saattaa olla, etteivät ohjelmiston kehittäjät edes tiedosta mallin olemassaoloa. Tämän mallin tuominen näkyväksi on sovellusaluevetoisen suunnittelun päätavoite.
 
 \Gls{crunching} (Knowledge crunching) on keskeinen väline sovellusaluemallin rakentamiseen. Evans kuvaa prosessin, jossa kehittäjät luonnostelevat yhdessä sovellusalueen asiantuntijoiden kanssa \glsdisp{domainmodel}{sovellusaluemallin}. Malli kytketään tiiviisti yhteen ohjelmakoodin kanssa vuorottelemalla suunnittelun ja ohjelmistokehityksen välillä. \cite[s. 13]{evans:ddd}
 
@@ -58,9 +58,9 @@ Kattavasti yksikkötestattua koodia on myös helppo muunnella. Sen rakenteeseen 
 2. Yksikkötestiä saa kirjoittaa vain sen verran kuin vaaditaan sen epäonnistumiseen. Kääntäjän tai tulkin raportoima virhe lasketaan epäonnistumiseksi.
 3. Tuotantokoodia saa kirjoittaa vain sen verran, että yksikkötesti menee läpi.\cite[luku 9]{martin2008clean}
 
-Joustavan järjestelmän suunnittelussa on myös hyvä seurata nk. YAGNI-periaatetta[^1]. Kyseinen periaate edellyttää, että vain sellainen koodi kirjoitetaan, jolle on tarvetta. Luokkiin tai moduuleihin ei lisätä metodeita eikä toimintoja varmuuden varalta. \cite{jeffries1998}
+Joustavan järjestelmän suunnittelussa on myös hyvä seurata nk. YAGNI-periaatetta[^2]. Kyseinen periaate edellyttää, että vain sellainen koodi kirjoitetaan, jolle on tarvetta. Luokkiin tai moduuleihin ei lisätä metodeita eikä toimintoja varmuuden varalta. \cite{jeffries1998}
 
-[^1]: "You Aren't Gonna Need It." suom. "Et sinä sitä tarvitse."
+[^2]: "You Aren't Gonna Need It." suom. "Et sinä sitä tarvitse."
 
 Evans toteaa, että joustava rakenne on monesti seurausta siitä, että \gls{domainmodel} kehittyy paremmaksi. Joustava ohjelmisto ei ole monimutkainen, eikä se piilota toiminnallisuuksiaan outojen rajapintojen taakse. Joustava ohjelmisto koostuu mahdollisimman pienestä määrästä löyhästi toisiinsa kytkeytyviä käsitteitä.\cite[luku 10]{evans:ddd}
 
@@ -78,14 +78,14 @@ GraphQL koostuu kahdesta osasta: kyselykielestä sekä tyyppijärjestelmästä. 
 
 GraphQL ei ole varsinainen rajapinta, sillä rajapinnan toteuttamisteknologia on määrittelyn ulkopuolella. Useimmiten GraphQL-palvelut on toteutettu \gls{http}-teknologian päälle, mutta muitakin, kuten WebSocketia, voi käytttää. GraphQL ei myöskään määrittele, miten kyselyn vastaus tulee muodostaa, tai milllä ohjelmointikielellä järjestelmä tulee toteuttaa.
 
-Osa konventioista on JavaScript-konventioita. Esimerkiksi kentän- ja muuttujien nimet on tapana kirjoittaa camelCase- ja PascalCase -muodoissa.\cite{GraphQLSchemaBasics} 
+Osa konventioista on JavaScript-konventioita. Esimerkiksi kentän- ja muuttujien nimet on tapana kirjoittaa camelCase- ja PascalCase -muodoissa, eli vaihdellen suuria ja pieniä kirjaimia sanan sisällä samoin kuin kyseiset sanat tässä virkkeessä on tehty.\cite{GraphQLSchemaBasics} 
 
 
 ### Verkoista
 
 \gls{verkko} eli graafi on tietorakenne, joka koostuu N:stä solmusta ja niitä yhdistävistä kaarista.\cite{pozrikidis2014introduction} Verkkojen avulla on mahdollista esittää monenlaisia asioiden välisiä suhteita, kuten esimerkiksi reittikartta usean kaupungin välisistä teistä.
 
-Olio-ohjelmoinnin tyyli esittää ratkaistavan ongelmakentän olioiden välisinä verkkoina. Ohjelmassa ei ole juuri lainkaan jaettua tilan käsittelyä, vaan kaikki kaikki tai lähes kaikki ohjelman sisältämä tieto on olioissa. Näin käsiteltävät ongelmakokonaisuudet saadaan jaettua pienempiin, hallittavan kokoisiin osiin. \cite{booch2008object}
+Olio-ohjelmoinnin tyyli esittää ratkaistavan ongelmakentän olioiden välisinä verkkoina. Ohjelmassa ei ole juuri lainkaan jaettua tilan käsittelyä, vaan kaikki tai lähes kaikki ohjelman sisältämä tieto on olioissa. Näin käsiteltävät ongelmakokonaisuudet saadaan jaettua pienempiin, hallittavan kokoisiin osiin. \cite{booch2008object}
 
 GraphQL:n avulla sovellusala on mahdollista esittää verkon muodossa määrittelemällä GraphQL-skeema. Tämän avulla rajapinta tarjoaa asiakasohjelmalle rakenteen, joka muistuttaa olio-ohjelmointia.\cite{thinkingInGraphs}
 
@@ -97,9 +97,9 @@ Käsitteiden verkkoa kuvaa myös Eric Evans Domain Driven Design -kirjassa. Kein
 
 Tietokoneet käsittelevät dataa ottamatta sen enempää kantaa sen \glsdisp{tyyppi}{tyyppiin}. Pohjimmiltaan data on vain bittijonoja muistissa, tai elementtejä joukossa. Kun tällaista järjestämätöntä ja tyypittämätöntä joukkoa ryhdytään käsittelemään, on välttämätöntä järjestää se erilaisiin kategorioihin. Tämä tiedon luokittelu synnyttää tyyppijärjestelmän, mutta järjestelmä ei ole formaalisti määritelty, eikä tietokone voi niin ollen tehdä tyyppitarkistusta.
 
-Tyypitys tarkoittaa määrättyjä rajoituksia, joiden avulla voidaan varmistaa muuttujan oikeellisuus. Staattinen tyypitys on menetelmä, jossa ekspressioiden tyyppi voidaan määrittää staattisen analyysin avulla, siis jo käännösaikaisesti. Vahva tyypitys taas mahdollistaa tyypin tarkistamisen luotettavasti ajon aikana. \cite{Cardelli+Wegner:1985}
+Tyypitys tarkoittaa määrättyjä rajoituksia, joiden avulla voidaan varmistaa muuttujan oikeellisuus. Staattinen tyypitys on menetelmä, jossa lausekkeiden tyyppi voidaan määrittää staattisen analyysin avulla, siis jo käännösaikaisesti. Vahva tyypitys taas mahdollistaa tyypin tarkistamisen luotettavasti ajon aikana. \cite{Cardelli+Wegner:1985}
 
-GraphQL-rajapinta koostuu tyypeistä, joita rajapinnalle lähetettävä kysely käyttää. Kyselyssä määritetään pyydettävät tyypit ja niiden kentät. Rajapinta palauttaa takaisin oliota edustavan joukon kenttiä \gls{hakurakenne}-muodossa. \cite{graphql:spec}
+GraphQL-rajapinta koostuu tyypeistä, joita rajapinnalle lähetettävä kysely käyttää. Kyselyssä määritetään pyydettävät tyypit ja niiden kentät. Rajapinta palauttaa takaisin oliota edustavan joukon kenttiä \gls{hakurakenne}-muodossa, eli tietorakenteena, joka koostuu avain-arvo -pareista. \cite{graphql:spec}
 
 GraphQL:ää käyttävät sovellukset on kuitenkin useimmiten kirjoitettu dynaamisesti tyypitetyillä kielillä. Esimerkiksi alkuperäinen GraphQL-referenssi-implementaatio on kirjoitettu JavaScriptillä.\cite{graphqlRefImple2021Oct}
 

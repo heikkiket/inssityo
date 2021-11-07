@@ -16,9 +16,10 @@ Tämän ongelman ylittäminen on aihe, jota Eric Evans käsittelee
 kirjassaan Domain Driven Design.\cite{evans:ddd} Evansin mielestä
 jokaisen monimutkaisemman ohjelmiston sisässä on \gls{domainmodel}
 (Domain model), eli malli siitä, miten kyseinen ohjelmisto ratkaisee
-sovellusalan ongelmat. Malli voi kuitenkin olla piilotettu, ja saattaa
-olla, etteivät ohjelmiston kehittäjät tiedosta mallin olemassaoloa.
-Tämän mallin tuominen näkyväksi on \glsentryname{ddd}n päätavoite.
+sovellusalan ongelmat. Malli voi kuitenkin olla piilossa ohjelmakoodin
+sisällä, ja saattaa olla, etteivät ohjelmiston kehittäjät edes tiedosta
+mallin olemassaoloa. Tämän mallin tuominen näkyväksi on
+sovellusaluevetoisen suunnittelun päätavoite.
 
 \Gls{crunching} (Knowledge crunching) on keskeinen väline
 sovellusaluemallin rakentamiseen. Evans kuvaa prosessin, jossa
@@ -213,7 +214,9 @@ ohjelmointikielellä järjestelmä tulee toteuttaa.
 
 Osa konventioista on JavaScript-konventioita. Esimerkiksi kentän- ja
 muuttujien nimet on tapana kirjoittaa camelCase- ja PascalCase
--muodoissa.\cite{GraphQLSchemaBasics}
+-muodoissa, eli vaihdellen suuria ja pieniä kirjaimia sanan sisällä
+samoin kuin kyseiset sanat tässä virkkeessä on
+tehty.\cite{GraphQLSchemaBasics}
 
 \hypertarget{verkoista}{%
 \subsection{Verkoista}\label{verkoista}}
@@ -225,8 +228,8 @@ kuten esimerkiksi reittikartta usean kaupungin välisistä teistä.
 
 Olio-ohjelmoinnin tyyli esittää ratkaistavan ongelmakentän olioiden
 välisinä verkkoina. Ohjelmassa ei ole juuri lainkaan jaettua tilan
-käsittelyä, vaan kaikki kaikki tai lähes kaikki ohjelman sisältämä tieto
-on olioissa. Näin käsiteltävät ongelmakokonaisuudet saadaan jaettua
+käsittelyä, vaan kaikki tai lähes kaikki ohjelman sisältämä tieto on
+olioissa. Näin käsiteltävät ongelmakokonaisuudet saadaan jaettua
 pienempiin, hallittavan kokoisiin osiin. \cite{booch2008object}
 
 GraphQL:n avulla sovellusala on mahdollista esittää verkon muodossa
@@ -258,15 +261,15 @@ eikä tietokone voi niin ollen tehdä tyyppitarkistusta.
 
 Tyypitys tarkoittaa määrättyjä rajoituksia, joiden avulla voidaan
 varmistaa muuttujan oikeellisuus. Staattinen tyypitys on menetelmä,
-jossa ekspressioiden tyyppi voidaan määrittää staattisen analyysin
-avulla, siis jo käännösaikaisesti. Vahva tyypitys taas mahdollistaa
-tyypin tarkistamisen luotettavasti ajon aikana.
-\cite{Cardelli+Wegner:1985}
+jossa lausekkeiden tyyppi voidaan määrittää staattisen analyysin avulla,
+siis jo käännösaikaisesti. Vahva tyypitys taas mahdollistaa tyypin
+tarkistamisen luotettavasti ajon aikana. \cite{Cardelli+Wegner:1985}
 
 GraphQL-rajapinta koostuu tyypeistä, joita rajapinnalle lähetettävä
 kysely käyttää. Kyselyssä määritetään pyydettävät tyypit ja niiden
 kentät. Rajapinta palauttaa takaisin oliota edustavan joukon kenttiä
-\gls{hakurakenne}-muodossa. \cite{graphql:spec}
+\gls{hakurakenne}-muodossa, eli tietorakenteena, joka koostuu avain-arvo
+-pareista. \cite{graphql:spec}
 
 GraphQL:ää käyttävät sovellukset on kuitenkin useimmiten kirjoitettu
 dynaamisesti tyypitetyillä kielillä. Esimerkiksi alkuperäinen

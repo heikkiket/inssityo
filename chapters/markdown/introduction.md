@@ -11,9 +11,9 @@ selkeitä nivelkohtia, avautuu mahdollisuus tehdä hedelmällisiä parannuksia.
 
 Web-sovelluksessa eräs merkittävimpiä nivelkohtia on sovelluksen käyttöliittymän
 ja logiikkaosan välinen HTTP-rajapinta. Tässä insinöörityössä tarkastellaan,
-voiko tämän merkittävän nivelkohdan uudistamisen kanssa yhtä aikaa myös kohentaa ohjelmiston sisäistä logiikkaa.
+voiko tämän merkittävän nivelkohdan uudistamisen kanssa yhtä aikaa myös parantaa ohjelmiston sisäistä logiikkaa.
 
 Työssä perehdytään GraphQL-rajapinnan toimintaan Domain Driven Designin
-näkökulmasta. Tuloksena syntyy toimintamalli, jonka avulla tietomallia voidaan kohentaa.
+näkökulmasta. Tuloksena syntyy työmalli, jonka avulla ohjelmiston tietomallia voidaan kohentaa.
 
 Työ tehdään ohjelmistopalveluyritys Nordhealth Oy:n tilauksesta.

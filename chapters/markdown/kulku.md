@@ -14,7 +14,7 @@ Hyvityslasku on voitava luoda siten, että yksittäisellä laskulla oleva yksitt
 
 ## Työskentelytavat
 
-Päätin tehdä työn lyhyissä iteraatioissa, ketterän kehityksen periaatteita seuraten. Tämä tyyli soveltuu hyvin yhteen tietomallin kehittämisen kanssa, sillä Evansin kirjassa kuvattu työtapa on samankaltainen. Lyhyet iteraatiot ovat nykyään tyypillinen tapa tehdä ohjelmistoa. [kenen mukaan?] En asettanut iteraatioille mitään ennalta määrättyä kestoa.
+Päätin tehdä työn lyhyissä iteraatioissa, ketterän kehityksen periaatteita seuraten. Tämä tyyli soveltuu hyvin yhteen tietomallin kehittämisen kanssa, sillä Evansin kirjassa kuvattu työtapa on samankaltainen. Lyhyet iteraatiot ovat nykyään tyypillinen tapa tehdä ohjelmistoa.\cite{ConsultancyEu2020May}\cite{AgileIteration} En asettanut iteraatioille mitään ennalta määrättyä kestoa.
 
 Sovellusaluevetoisessa suunnittelussa oleellista on ohjelmoijan ja sovellusalueen asiantuntijan välinen kommunikaatio. Asetin siis tiimimme tuoteomistaja Lauran sovellusalueen asiantuntijan rooliin, ja käytin häntä kuvitteellisen asiakkaan edustajana. Tämä rooli sopi Lauralle erinomaisesti johtuen hänen työkokemuksestaan fysioterapeuttina ja yritäjänä.
 
@@ -28,7 +28,7 @@ Pyrin noudattamaan työskentelyssä Eric Evansin esittämää tiedon rouhimisen 
 
 Kirjoitin esimerkkiohjelmiston tyypilliseksi web-sovellukseksi, jossa palvelinohjelmisto ja selaimessa toimiva asiakasohjelma kommunikoivat keskenään HTTP-pyyntöjen avulla. Valitsin palvelinohjelmiston kehityskieleksi Python-kielen, koska se sopii hyvin Nordhealthissa käytössä oleviin teknologiavalintoihin. Python on myös syntaksiltaan suoraviivainen ja tässä mielessä helppokäyttöinen kieli.
 
-Pythonin kanssa käytettäväksi HTTP-kirjastoksi valitsin Falcon-kirjaston\cite{FalconPython} puhtaasti sen yksinkertaisuuden vuoksi. Muita vaihtoehtoja olivat Django ja Flas\cite{FlaskPython}, mutta molemmat niistä sisälsivät paljon toimintoja, joita ei tässä projektissa tarvittu. Niissä on mukana esimerkiksi tuki sivupohjille, jota rajapintaa kehitettäessä ei tarvita. Ohjelmaan tarvittiin tuki vain yhdelle HTTP-resurssille, joka vastaa pyyntöihin JSON-muotoisella dokumentilla. GraphQL-kirjastoista harkitsin Ariadne\cite{AriadnePython}- ja Graphene\cite{GraphenePython} -kirjastojen välillä. Valitsin Ariadnen, koska se on tarkoitettu skeema edellä tapahtuvaan kehitystyöhön.
+Pythonin kanssa käytettäväksi HTTP-kirjastoksi valitsin Falcon-kirjaston\cite{FalconPython} puhtaasti sen yksinkertaisuuden vuoksi. Muita vaihtoehtoja olivat Django ja Flask\cite{FlaskPython}, mutta molemmat niistä sisälsivät paljon toimintoja, joita ei tässä projektissa tarvittu. Niissä on mukana esimerkiksi tuki sivupohjille, jota rajapintaa kehitettäessä ei tarvita. Ohjelmaan tarvittiin tuki vain yhdelle HTTP-resurssille, joka vastaa pyyntöihin JSON-muotoisella dokumentilla. GraphQL-kirjastoista harkitsin Ariadne\cite{AriadnePython}- ja Graphene\cite{GraphenePython} -kirjastojen välillä. Valitsin Ariadnen, koska se on tarkoitettu skeema edellä tapahtuvaan kehitystyöhön.
 
 Yksikkötestijärjestelmänä käytin Pytest-kirjastoa. Tietokantaa sovellukselle ei tarvittu, vaan rakenteet voidaan tallentaa muistiin ajonaikaisesti. Tämä helpottaa myös ohjelmiston tietorakenteen refaktorointeja, sillä tietokantaa ei ole tarve muokata tai luoda uudelleen ohjelmiston mallin muuttuessa.
 
@@ -46,10 +46,9 @@ Iteraation aloittavassa kokouksessa kävimme läpi laskutuksen perusperiaatteita
 
 Laura selitti kärsivällisesti kirjanpidon alkeita, jotka olivat minulle enimmäkseen uutta tietoa. Keskeinen oivallus oli, että kirjanpidossa kirjanpitoaineistoa ei saa luomisen jälkeen enää muuttaa. Jos laskua halutaan myöhemmin korjata, on luotava erillinen kirjanpitotosite, jolla oikaisu tehdään. Tätä kutsutaan tässä yhteydessä hyvityslaskuksi.
 
-Suunnittelimme yksinkertaisen mallin, jossa hoitokäynnit liittyvät laskuihin ja laskut kootaan koontilaskuille. Yksittäiset käynnit voidaan lisätä myös hyvityslaskulle. Tämän mallin tarkoituksena oli luoda yksinkertainen esimerkkisovellus, joka kykenee laskuttamaan käyntejä, ja sen jälkeen lisäämään niitä hyvityslaskulle, sekä näyttämään hyvityslaskun kokonaissumman.
-Malli on esitetty kuvassa \ref{malli1}.
-
 ![\label{malli1} Ensimmäinen malli](illustration/malli1.jpg)
+
+Suunnittelimme yksinkertaisen mallin, jossa hoitokäynnit liittyvät laskuihin ja laskut kootaan koontilaskuille. Yksittäiset käynnit voidaan lisätä myös hyvityslaskulle. Tämän mallin tarkoituksena oli luoda yksinkertainen esimerkkisovellus, joka kykenee laskuttamaan käyntejä, ja sen jälkeen lisäämään niitä hyvityslaskulle, sekä näyttämään hyvityslaskun kokonaissumman. Malli on esitetty kuvassa \ref{malli1}.
 
 Tämän mallin sisältävän ohjelmistoprototyypin toteuttamiseen kului kaksi viikkoa, ja näin iteraatio oli prosessin pisin. Myöhemmät iteraatiot kestivät noin viikon. Kulunutta aikaa selittää, että rakensin prototyypin puhtaalta pöydältä, jolloin aikaa kului myös sovelluksen pohjan pystyttämiseen.
 
@@ -61,9 +60,9 @@ Iteraation aloittavassa kokouksessa kävimme läpi syntyneen ohjelmistoprototyyp
 
 Pyysin Lauraa kertomaan enemmän siitä, mitä käynnin laskuttaminen oikeastaan tarkoittaa, ja hän kuvasi, millaisissa tilanteissa laskuja voidaan luoda. Huomioni kiinnittyi puheessa esiintyneeseen termiin **Laskutusperuste**. Tämä tuntui valtavan kiinnostavalta, ja Laura avasi asiaa tarkemmin. Kun laskulle lisätään laskutettavia asioita, täytyy siihen olla jokin peruste.
 
-Käytimme tapaamisen loppuosan tämän idean kehittelemiseen. Päädyimme ajatukseen, jossa laskulle lisätään käynnin sijasta palvelurivi, joka viittaa käyntiin. Tapaamisen jälkeisen viikon kehitystyötä ohjasi nyt uusi ajattelutapa: käyntiä sinänsä ei liitetä laskuun, vaan käynti laskutetaan, mikäli laskutusperuste täyttyy.
-
 ![\label{malli2}Toinen malli](illustration/malli2.jpg)
+
+Käytimme tapaamisen loppuosan tämän idean kehittelemiseen. Päädyimme ajatukseen, jossa laskulle lisätään käynnin sijasta palvelurivi, joka viittaa käyntiin. Tapaamisen jälkeisen viikon kehitystyötä ohjasi nyt uusi ajattelutapa: käyntiä sinänsä ei liitetä laskuun, vaan käynti laskutetaan, mikäli laskutusperuste täyttyy.
 
 Yksi toisen tapaamisen aikana syntyneistä malleista on esitetty kuvassa \ref{malli2}. Siinä laskulle liitetään palvelurivi, joka vastaa yksittäistä hoitokäyntiä. Mikäli käynti hyvitetään, palveluriviä vastaa hyvityslaskuun kiinnitetty hyvitysrivi.
 
@@ -75,11 +74,11 @@ Koodin refaktoroimisessa kului aluksi päivä, ja sen jälkeen uuden, palveluriv
 
 Perjantaihin tultaessa olin refaktoroinut prototyyppiohjelmaa ja sen jälkeen käyttänyt kolme päivää ensimmäisen käyttäjätarinan parissa. Vaikutti, että aikataulu pettää, eikä mitään tule valmiiksi maanantaille sovittuun seuraavaan tapaamiseen.
 
+![\label{finalmodel1} Kuva, jossa käyntiin kytkeytyy palvelurivi ja palveluriviin hyvitysrivi](illustration/final-idea-1.jpg) 
+
 Yllättäen perjantaina puolen päivän jälkeen kaikki yksikkötestit menivät läpi, käyttäjätarina valmistui, ja ohjelmistoprototyypin toiminnassa tuntui tapahtuvan laadullinen hyppäys. Loppujen kahden käyttäjätarinan toteuttaminen onnistui kahdessa tunnissa, ja vaati vain joitain rivejä koodia. \Glsentryname{domainmodel} oli kehittynyt paremmaksi.
 
 Ohjelmoidessa syntynyt tietomalli sisälsi samat asiat, joista kokouksessa oli puhuttu, mutta niiden suhteet olivat toisenlaiset. Olin tuottanut ominaisuudet yksikkötesti yksikkötestiltä, ja tämä malli oli yksinkertaisin, jolla kaikki testit menivät läpi. Malli on esitetty kuvassa \ref{finalmodel1}
-
-![\label{finalmodel1} Kuva, jossa käyntiin kytkeytyy palvelurivi ja palveluriviin hyvitysrivi](illustration/final-idea-1.jpg) 
 
 ### Iteraatio 3: malli osoittaa joustavuutensa
 
@@ -105,9 +104,9 @@ Vaikutti siltä, että käynnin ja laskun välistä puuttui edelleen jokin käsi
 
 Nyt muistin tämän keskustelun, ja ehdotin sen pohjalta, että laskutuksessa ei käsiteltäisikään suoraan käyntejä vaan palvelumyyntiä. Laura totesi, että kaikki laskuille laitettava on lopulta myyntiä - ikäänkuin se olisi ollut itsestäänselvyys! Ohjelmoijalle tämä oivallus oli kuitenkin uusi tieto, ja se avasi täysin uuden näkökulman laskutukseen.
 
-Loimme kokouksessa mallin, jossa Käynti muunnetaan myynniksi eli SalesItem-olioksi. Nyt käynneistä ei tarvitse välittää lainkaan laskuja käsiteltäessä. SalesItem puolestaan voidaan jakaa maksajille suunnatuiksi osuuksiksi, SalesShareiksi, ja yksittäisellä laskulla on SalesShareen kytketty SalesRow. Malli on esitetty kuvassa \ref{malli3}
-
 ![\label{malli3}Kolmas malli](illustration/malli4.jpg)
+
+Loimme kokouksessa mallin, jossa Käynti muunnetaan myynniksi eli SalesItem-olioksi. Nyt käynneistä ei tarvitse välittää lainkaan laskuja käsiteltäessä. SalesItem puolestaan voidaan jakaa maksajille suunnatuiksi osuuksiksi, SalesShareiksi, ja yksittäisellä laskulla on SalesShareen kytketty SalesRow. Malli on esitetty kuvassa \ref{malli3}
 
 Kokouksen jälkeen minua odotti jälleen refaktorointityö, joka oli projektin suurin. Arvioni on, että käynnin perinpohjainen irrottaminen koko laskutuslogiikasta ja kahden uuden käsitteen laittaminen näiden väliin olivat keskeisiä syitä sille, miksi muutostyö oli niin työläs.
 

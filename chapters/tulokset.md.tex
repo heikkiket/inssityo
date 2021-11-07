@@ -9,11 +9,24 @@ Prototyyppiohjelma on yksinkertainen yhden sivun selainsovellus. Sen
 avulla voi luoda käyntejä, laskuttaa niitä, koota laskuja
 koontilaskuiksi ja hyvittää yksittäisiä laskurivejä.
 
+\begin{figure}
+\centering
+\includegraphics{illustration/screenshots/Laskurakkine.png}
+\caption{\label{rakkine_default-view}Laskujen lisäysnäkymä}
+\end{figure}
+
 Ohjelman pääkäyttöliittymä on esitetty kuvassa
 \ref{rakkine_default-view}
 
 Laskujen sisältöjä voi tarkastella, ja ohjelma laskee laskujen avoimet
 summat.
+
+\begin{figure}
+\centering
+\includegraphics{illustration/screenshots/Dividing.png}
+\caption{\label{rakkine_dividing}Esimerkki käynnin jakamisesta usealle
+maksajalle}
+\end{figure}
 
 Lisäksi käyttöliittymästä voi valita maksajan luotavalle laskulle.
 Mikäli maksajia valitaan useampia, ohjelma jakaa käynnit kahdelle eri
@@ -21,8 +34,8 @@ maksajalle. Tämä on esitetty kuvassa \ref{rakkine_dividing}
 
 \begin{figure}
 \centering
-\includegraphics{illustration/screenshots/Laskurakkine.png}
-\caption{\label{rakkine_default-view}Laskujen lisäysnäkymä}
+\includegraphics{illustration/screenshots/List-view.png}
+\caption{\label{rakkine_list-view}Ohjelman listanäkymä}
 \end{figure}
 
 Erillisessä listanäkymässä (Kuva \ref{rakkine_list-view}) voi
@@ -33,12 +46,6 @@ summa avoin, laskutettu vai hyvitetty.
 
 \begin{figure}
 \centering
-\includegraphics{illustration/screenshots/List-view.png}
-\caption{\label{rakkine_list-view}Ohjelman listanäkymä}
-\end{figure}
-
-\begin{figure}
-\centering
 \includegraphics{illustration/screenshots/credited.png}
 \caption{\label{rakkine_credited}Ohjelma näyttää, että yksittäinen
 laskurivi on hyvitetty}
@@ -46,13 +53,6 @@ laskurivi on hyvitetty}
 
 Kuvassa \ref{rakkine_credited} on esitetty miten ohjelma näyttää
 hyvitetyn laskurivin.
-
-\begin{figure}
-\centering
-\includegraphics{illustration/screenshots/Dividing.png}
-\caption{\label{rakkine_dividing}Esimerkki käynnin jakamiesta usealle
-maksajalle}
-\end{figure}
 
 Käytin asiakasohjelman tekemiseen niin vähän aikaa kuin mahdollista. Se
 näkyy tyylin hiomattomuutena. Luonnosmaisen näköinen ulkoasu myös
@@ -67,6 +67,12 @@ Viiden viikon aikana syntyi pieni malli laskutukseen tietorakenteen
 parantamiseksi. Lisäksi löytyi kaksi pientä ideaa, joita voi hyödyntää,
 kun ohjelmistoa kehitetään.
 
+\begin{figure}
+\centering
+\includegraphics{illustration/malli4.jpg}
+\caption{\label{finalmodel1-again}Lopullinen malli}
+\end{figure}
+
 Pieni malli laskutuksen parantamiseksi on esitetty kuvassa
 \ref{finalmodel1-again}. Se pitää sisällään ajatuksen käynnin
 muuttumisesta myynniksi, kun se saapuu laskutuksen piiriin. Oma
@@ -76,8 +82,8 @@ hyödylliseltä idealta.
 
 \begin{figure}
 \centering
-\includegraphics{illustration/malli4.jpg}
-\caption{\label{finalmodel1-again}Lopullinen malli}
+\includegraphics{illustration/final-idea-1.jpg}
+\caption{\label{finalidea1}Idea 1}
 \end{figure}
 
 Kaksi pientä ideaa ovat molemmat käyttökelpoisia erillään mallista.
@@ -87,8 +93,8 @@ yksinkertaisen ja joustavan myynnin laskutus- ja hyvityslogiikan.
 
 \begin{figure}
 \centering
-\includegraphics{illustration/final-idea-1.jpg}
-\caption{\label{finalidea1}Idea 1}
+\includegraphics{illustration/final-idea-2.jpg}
+\caption{\label{finalidea2}Idea 2}
 \end{figure}
 
 Toinen pieni idea on, että käynti kannattaisi erottaa selkeästi laskulle
@@ -96,9 +102,3 @@ tulevasta myynnistä. Tällöin on mahdollista myös esimerkiksi vaihtaa
 myöhemmin maksajaa, jolta käynti laskutetaan, ilman että jo
 muodostettuihin laskuihin tarvitsee kajota. Tämä ajatus on esitetty
 kuvassa \ref{finalidea2}.
-
-\begin{figure}
-\centering
-\includegraphics{illustration/final-idea-2.jpg}
-\caption{\label{finalidea2}Idea 2}
-\end{figure}
