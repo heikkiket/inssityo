@@ -2,9 +2,11 @@
 
 ## Nordhealth Oy lyhyesti
 
-Nordhealth Oy on vuonna 2001 perustettu ohjelmistopalveluyritys, joka tekee toiminnanohjausjärjestelmiä kahdelle eri toimialalle: Provet Cloud -järjestelmää eläinlääkäriklinikoille ja Diarium-järjestelmää terapeuteille. Molemmat järjestelmät ovat web-pohjaisia sovelluksia. Niitä käytetään kirjautumalla web-selaimen kautta.
+Nordhealth Oy on vuonna 2001 perustettu ohjelmistopalveluyritys, joka tekee toiminnanohjausjärjestelmiä kahdelle eri toimialalle: Provet Cloud\cite{ProvetCloudHomepage} -järjestelmää eläinlääkäriklinikoille ja Diarium-järjestelmää\cite{DiariumHomepage} terapeuteille. Molemmat järjestelmät ovat web-pohjaisia sovelluksia. Niitä siis käytetään web-selaimen kautta.
 
-Nordhealthia voisi luonnehtia tyypilliseksi ohjelmistoalan yritykseksi: se tekee erityisalalle suunnattua toiminnanohjausjärjestelmää. Tyypillinen on myös järjestelmien kehityskaari: alunperin ne ovat olleet työpöytäsovelluksia, ja siitä Nordhealth on muuntanut ne LAMP-alustalla toimiviksi web-sovelluksiksi. Kun Web on kehittynyt, on otettu suunnaksi sovellusten siirtäminen julkiseen pilveen, ja käyttöliittymän rakentaminen erilliseksi yhden sivun JavaScript-sovellukseksi.
+Nordhealthia voisi luonnehtia tyypilliseksi ohjelmistoalan yritykseksi: se tekee erityisalalle suunnattua toiminnanohjausjärjestelmää. Tyypillinen on myös järjestelmien kehityskaari: alunperin ne ovat olleet työpöytäsovelluksia, ja siitä Nordhealth on muuntanut ne LAMP[^1]-alustalla toimiviksi web-sovelluksiksi. Kun Web on kehittynyt, on otettu suunnaksi sovellusten siirtäminen julkiseen pilveen, ja käyttöliittymän rakentaminen erilliseksi yhden sivun JavaScript-sovellukseksi.
+
+[^1]: Linux, Apache, MySQL, PHP
 
 Diarium on Nordhealthin kahdesta järjestelmästä vanhempi. Se on suunnattu terapeuteille: fysio-, toiminta-, puhe- ja psykoterapeuteille. Järjestelmä on laajentunut yksinkertaisesta potilaskortistojärjestelmästä suurenkin terapia-alan yrityksen tarpeita vastaavaksi toiminnanohjausjärjestelmäksi, ja se on lisäksi myös Valviran tarkoittama A-luokan potilastietojärjestelmä. Diariumia käyttävä terapeutti voi siis lähettää käyntikirjaukset potilastiedon sähköiseen Kanta-rekisteriin.
 
@@ -12,7 +14,7 @@ Diarium on Nordhealthin kahdesta järjestelmästä vanhempi. Se on suunnattu ter
 
 Diariumin ikä näkyy tietomallin monimutkaisuutena. Vuosien saatossa tehty kehitystyö on tehnyt ohjelmiston joistain osista hankalia ymmärtää. Ohjelman kehittäminen on myös aloitettu aikana, jolloin sovelluksia ei automaattisesti tehty yhden sivun sovelluksiksi. Nykyään tämä kuitenkin on normi, ja ohjelmaan on jo vuosia kehitetty REST-rajapintaan nojaavia toiminnallisuuksia.
 
-Voisiko sisäistä rajapintaa rakentaessa myös parantaa ohjelmiston sisäistä tietomallia? Tämä säästäisi aikaa ja vaivaa, ja nopeuttaisi ohjelmiston jatkokehitystä.
+Voisiko rajapintaa rakentaessa myös parantaa ohjelmiston sisäistä tietomallia? Tämä säästäisi aikaa ja vaivaa, ja nopeuttaisi ohjelmiston jatkokehitystä.
 
 ## Insinöörityön tavoite
 
