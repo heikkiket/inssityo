@@ -1,49 +1,69 @@
 # Työn teoriataustaa
 
-## \gls{ddd}
+## \Gls{ddd}
 
 Yleinen ongelma tietokoneohjelmistoja tehtäessä on, että ohjelmoijat tuntevat ohjelmiston erikoisalan heikosti. Esimerkiksi kiinteistötekniikkaa, kirjastokortistoa tai tämän työn tapauksessa terapiaklinikan toimintaa hoitavan ohjelmiston kehittäjä joutuu käsittelemään monimutkaisia, sovellusalaan sidottuja ongelmia. Näiden alojen asiantuntijat puolestaan tietävät, miten sovellusalan ongelmat ratkaistaan, mutta heiltä puuttuu taito suunnitella ohjelmistoja.
 
 Tämän ongelman ylittäminen on aihe, jota Eric Evans käsittelee kirjassaan Domain Driven Design.\cite{evans:ddd} Evansin mielestä jokaisen monimutkaisemman ohjelmiston sisässä on \gls{domainmodel} (Domain model), eli malli siitä, miten kyseinen ohjelmisto ratkaisee sovellusalan ongelmat. Malli voi kuitenkin olla piilossa ohjelmakoodin sisällä, ja saattaa olla, etteivät ohjelmiston kehittäjät edes tiedosta mallin olemassaoloa. Tämän mallin tuominen näkyväksi on sovellusaluevetoisen suunnittelun päätavoite.
 
-\Gls{crunching} (Knowledge crunching) on keskeinen väline sovellusaluemallin rakentamiseen. Evans kuvaa prosessin, jossa kehittäjät luonnostelevat yhdessä sovellusalueen asiantuntijoiden kanssa \glsdisp{domainmodel}{sovellusaluemallin}. Malli kytketään tiiviisti yhteen ohjelmakoodin kanssa vuorottelemalla suunnittelun ja ohjelmistokehityksen välillä. \cite[s. 13]{evans:ddd}
+\Gls{crunching} (Knowledge crunching) on keskeinen väline sovellusaluemallin rakentamiseen. Evans kuvaa prosessin, jossa kehittäjät luonnostelevat yhdessä sovellusalueen asiantuntijoiden kanssa \glsdisp{domainmodel}{sovellusaluemallin}. Tämä prosessi on tyypillisesti kehittäjien vetämä, ja se koostaa yhteen informaatiota monenlaisista lähteistä: sovellusalueen asiantuntijoilta, järjestelmän käyttäjiltä, ohjelmoijien aiemmasta kokemuksesta jne. 
 
-Tavoitteena on, että ohjelmistokehittäjien ja alan asiantuntijoiden välille rakentuu \gls{ubilang}, jonka avulla kaikkien on mahdollista yhteisesti keskustella ohjelmiston toiminnasta ja kehitystarpeista. Tämän kielen käsitteet elävät ohjelmakoodissa, ja muodostavat koodin ytimessä sijaitsevan \glslink{domainlayer}{liiketoimintalogiikan tason}(Domain layer).
+Malli kytketään tiiviisti yhteen ohjelmakoodin kanssa vuorottelemalla suunnittelun ja ohjelmistokehityksen välillä. Varhaiset prototyyppiversiot ohjelmistosta toimivat jatkosuunnittelun materiaalina. Kun prosessia jatketaan, malli muuttuu ja syvenee. Evansin mukaan tämä on seurausta siitä, että ohjelmoijien ymmärrys sovellusalueesta syvenee.\cite{evans:ddd}
+
+Tavoitteena on, että ohjelmistokehittäjien ja alan asiantuntijoiden välille rakentuu \gls{ubilang}, jonka avulla kaikkien on mahdollista yhteisesti keskustella ohjelmiston toiminnasta ja kehitystarpeista. \gls{ubilang} yhdistää ja yhdenmukaistaa myös ohjelmiston eri osien parissa toimivien kehittäjien kielenkäyttöä.
+
+Kaikenkattavan kielen käsitteitä ovat luokkien nimet ja ohjelmiston keskeiset operaatiot. Se myös sisältää käsitteet, joilla voidaan kuvata käsitteiden käyttöä rajoittavat ja hallinnoivat keskeiset säännöt. Kaikenkattavan kielen käsitteet elävät ohjelmakoodissa, ja muodostavat koodin ytimessä sijaitsevan \glsentryname{domainmodel}in.
+
+Evans painottaa, että kaikenkattavaan kieleen tehtävä muutos muuttaa myös \glsentryname{domainmodel}ia ja ohjelmakoodia.
+
+Koodina kuvattu \glsentryname{domainmodel} tulee myös eriyttää ohjelmassa omaksi arkkitehtuuriseksi tasokseen. Onnistuneesti erotettu sovellusalakohtainen logiikka muodostaa sovelluksen \glslink{domainlayer}{liiketoimintalogiikan tason} (Domain layer).
 
 ### \glsdisp{ddd}{sovellusaluevetoisen suunnittelun} rakennuspalikat
 
-Evansin lähtökohta on, että \glsentryname{domainmodel} ilmaistaan nimenomaan ohjelmakoodin kautta. Koodi on kuitenkin lopulta se dokumentti, joka määrittää ohjelman toiminnan.
+Koska Evansin lähtökohta on, että \glsentryname{domainmodel} ilmaistaan nimenomaan ohjelmakoodin kautta, tarvitaan joukko käytännön työkaluja, joiden avulla \glsentryname{domainmodel} on mahdollista toteuttaa teknisesti. Käyn seuraavaksi läpi muutamia keskeisimpiä.
 
-Evans tarjoaa kirjassaan joukon käteviä työkaluja, joiden avulla \glsentryname{domainmodel} on mahdollista toteuttaa teknisesti.
+\Gls{entity} edustaa käytännössä kaikkea, jolla on identiteetti. Esimerkiksi kahdella ihmisellä voi olla sama nimi, mutta he ovat silti identiteetiltään eri henkilöitä. \glsentryname{entity} voi myös muuttaa muotoaan, esimerkiksi ihminen kasvaa aikuiseksi ja vaikkapa vaihtaa sukunimensä. Identiteetti säilyy silti. Todella suuri osa \glsentryname{domainmodel}{sta} koostuu juuri \glsdisp{entity}{yksilötyypeistä}, sillä niitä on suurin osa kaikenkattavan kielen käsitteistä.
 
-\Gls{entity} edustaa käytännössä kaikkea, jolla on identiteetti. Esimerkiksi kahdella ihmisellä voi olla sama nimi, mutta he ovat silti identiteetiltään eri henkilöitä. \glsentryname{entity} voi myös muuttaa muotoaan, esimerkiksi ihminen kasvaa aikuiseksi ja vaikkapa vaihtaa sukunimensä. Identiteetti säilyy silti. Todella suuri osa \glsentryname{domainmodel}{sta} koostuu juuri \glsdisp{entity}{yksilötyypeistä}.
+Esimerkiksi terapeutin kahdesta eri hoitokäynnistä luomilla laskuilla on identiteetti. Kahdella laskulla voi olla sisällytettynä samat hoitotoimenpiteet ja maksajakin voi olla sama, mutta silti laskut ovat omia erillisiä kokonaisuuksiaan.
 
-Laskutusta käsittelevässä ohjelmassa esimerkiksi laskuilla on identiteetti. Kahdella laskulla voi olla sisällytettynä samat tuotteet ja maksajakin voi olla sama, mutta silti laskut ovat omia erillisiä kokonaisuuksiaan.
-
-Tärkeä osa mallia ovat myös olioiden väliset suhteet. Tosielämässä kaikki liittyy kaikkeen, mutta sovellusalueen sisäinen logiikka tarvitsee vain osajoukon kaikista suhteista toimiakseen. Huolellisesti valitut suhteet olioiden välillä ilmaisevat enemmän mallin perimmäisestä tarkoituksesta.
+Käsitteiden lisäksi tärkeä osa mallia ovat käsitteiden väliset suhteet. Tosielämässä kaikki liittyy kaikkeen, mutta sovellusalueen sisäinen logiikka tarvitsee vain osajoukon kaikista suhteista toimiakseen. Huolellisesti valitut suhteet käsitteiden välillä paljastavat hyödyllistä tietoa mallin perimmäisestä tarkoituksesta.
 
 Myös \gls{kulkusuunta} \glsdisp{entity}{yksilötyyppien} välillä on tärkeä. Se vaikuttaa paitsi ohjelmiston tekniseen monimutkaisuuteen, myös siihen, minkälaisia asioita mallilla on mahdollista ilmaista.
 
-Esimerkiksi lasku voi koostua joukosta laskurivejä. Ohjelman toteutus ja käyttötavat muuttuvat hyvin paljon, jos kulkusuuntaa muutetaan.
+Esimerkiksi käynnin ja laskun välinen suhde voi olla yksi- tai kaksisuuntainen, ja tämä vaikuttaa huomattavasti ohjelmiston toimintaan.
 
-* Tapaus A: lasku tietää, mitkä laskurivit siihen kuuluvat, mutta yksittäinen laskurivi ei tiedä, miltä laskulta on peräisin.
-* Tapaus B: laskurivi osaa kertoa, mille laskulle se kuuluu, mutta lasku ei kykene listaamaan omia rivejään.
+* Tapaus A: käynniltä löytyy tieto, mille laskulle se on lisätty, mutta lasku ei osaa kertoa, mikä käynti sillä on laskutettuna.
+* Tapaus B: lasku tietää, mikä käynti sille on lisätty, mutta käynniltä ei voi kysyä, millä laskulla se on.
 
-Kolmas vaihtoehto on mahdollistaa kulkeminen molempiin suuntiin näiden kahden käsitteen välillä. Tällöin ohjelman tekninen monimutkaisuus kasvaa.
+Kolmas vaihtoehto on mahdollistaa kulkeminen molempiin suuntiin näiden kahden käsitteen välillä. Tällöin malli on monipuolisempi, mutta myös ohjelman tekninen monimutkaisuus kasvaa. Mikäli käsitteiden väliset suhteet on toteutettu teknisesti viittauksina olioiden välillä, viittauksia täytyy päivittää mahdollisesti kahteen eri paikkaan, ja lisäksi varoa, ettei viittauksista muodostu kehämäisiä. Onkin tärkeää pyrkiä rajoittamaan olioiden väliset suhteet ja kulkusuunnat mahdollisimman vähäisiksi, jotta ohjelma pysyy teknisesti mahdollisimman yksinkertaisena.
 
-On tärkeää pyrkiä rajoittamaan olioiden väliset suhteet ja kulkusuunnat mahdollisimman vähäisiksi, jotta ohjelma pysyy teknisesti mahdollisimman yksinkertaisena.
+Toisinaan sovellusalueeseen kuuluvat oliot muodostavat ryhmiä, joissa yksi olio on juuriolio, ja muut riippuvat tästä. Tällaisia ryhmiä Evans kutsuu nimellä \gls{aggregate}. Esimerkiksi laskurivi on hyödytön ilman laskua, jolle se kuuluu. Lasku ja laskurivi muodostavatkin aggregaatin - kokonaisuuden, jota käsitellään aina ryhmänä. Esimerkiksi tietokannasta ei kysytä yksittäisiä laskurivejä, vaan aina ensiksi lasku, ja sitten siihen kuuluvat rivit. Samoin ohjelmassa ei anneta suoraa viittausta laskuriviin laskun ulkpuolelle, vaan laskurivin kanssa toimiminen tapahtuu laskun tarjoamien toimintojen kautta.
 
-Toisinaan sovellusalueeseen kuuluvat oliot muodostavat ryhmiä, joissa yksi olio on juuriolio, ja muut riippuvat tästä. Tällaisia ryhmiä Evans kutsuu nimellä \gls{aggregate}. Esimerkiksi laskurivi on hyödytön ilman laskua, jolle se kuuluu. Lasku ja laskurivi muodostavatkin aggregaatin - kokonaisuuden, jota käsitellään aina ryhmänä.
+Kun monimutkaisempia sovellusalueen käsitteitä koostetaan, on toisinaan hyödyllistä siirtää koostamistyö kokonaan erilliseksi oliokseen. Näitä olioita Evans kutsuu tehdas-luokiksi (factory), samaan tapaan kuin olio-ohjelmoinnin perinteessä muutenkin. Tehdas-luokan tehtävänä on koostaa useasta alikäsitteestä koostuva kokonaisuus.
 
-Kun monimutkaisempia sovellusalueen käsitteitä koostetaan, on toisinaan hyödyllistä siirtää koostamistyö kokonaan erilliseksi oliokseen. Näitä olioita Evans kutsuu tehdas-luokiksi (factory), samaan tapaan kuin olio-ohjelmoinnin perinteessä muutenkin.
+Esimerkiksi laskulla voi olla maksaja, joukko laskutettavia asioita, ja niitä vastaavat laskurivit ja juokseva numerointi. Tällaisen kokonaisuuden rakentaminen ei enää onnistu yksinkertaisella laskun luontikomennolla, vaan tarvitaan erillinen tehdas-luokka, jolta voi pyytää eri tavoin rakennettuja laskuja. Tämä luokka voi varmistaa, että jokainen lasku saa uniikin numeronsa, että kaikki laskuun kuuluvat laskurivit ovat paikallaan ja että maksajan perustiedot ovat myös laskulla mukana ja käytettävissä.
 
-Tehdas-luokan tehtävänä on koostaa useasta alikäsitteestä koostuva kokonaisuus.
+Mielenkiintoinen käsite Evansilla on \gls{repository}. Se edustaa projektissa tiedon tallennuspaikkaa, kuten vaikka tietokantaa. Ajatus on, että \glsdisp{domainmodel}{sovellusaluemallin} tasolla ei esitetä konkreettista tiedontallennustoteutusta, vaan ainoastaan abstrakti tietovarasto , *repositorio*. Tähän repositorioon on mahdollista kohdistaa erilaisia hakuja sekä muokkausoperaatioita, ja repositorio palauttaa käytettäväksi kokoelman olioita, jotka edustavat \glsdisp{domainmodel}{sovellusaluemallin} käsitteitä.
 
-Esimerkiksi laskulla voi olla maksaja, joukko laskutettavia asioita, ja niitä vastaavat laskurivit ja juokseva numerointi. Tällaisen kokonaisuuden rakentaminen ei enää onnistu yksinkertaisella laskun luontikomennolla, vaan tarvitaan erillinen tehdas-luokka, jolta voi pyytää eri tavoin rakennettuja laskuja.
+Esimerkiksi laskut on mahdollista hakea laskurepositoriosta, johon on toteutettu tarvittavat hakumetodit esimerkiksi laskunumeron tai laskun päiväyksen perusteella. Näin sovellusaluemallia kehitettäessä ei tarvitse pohtia, mihin tieto on tallennettu ja millaisella kyselyllä se haetaan. Esitän listauksessa \ref{repository} hyvin yksinkertaisen repositorioluokan laskujen hakemiseksi.
 
-Mielenkiintoinen käsite Evansilla on \gls{repository}. Se edustaa projektissa tiedon tallennuspaikkaa, kuten vaikka tietokantaa. Ajatus on, että \glsdisp{domainmodel}{sovellusaluemallin} tasolla ei esitetä konkreettista tiedontallennustoteutusta, vaan ainoastaan abstrakti tiedon tallennuspaikka, *repositorio*. Tähän repositorioon on mahdollista kohdistaa erilaisia hakuja sekä muokkausoperaatioita, ja repositorio palauttaa käytettäväksi kokoelman olioita, jotka edustavat \glsdisp{domainmodel}{sovellusaluemallin} käsitteitä.
+\begin{code}
+  \begin{minted}{python}
+  
+  Class InvoiceRepository:
+  
+    def get_all():
+      return self.invoices
+      
+    def find_by_date(date)
+      return self.invoices.filter(date)
 
-Esimerkiksi laskut on mahdollista hakea laskurepositoriosta, johon on toteutettu tarvittavat hakumetodit esimerkiksi laskunumeron tai laskun päiväyksen perusteella. Näin sovellusaluemallia kehitettäessä ei tarvitse pohtia, mihin tieto on tallennettu ja mistä se haetaan.
+\end{minted}
+\captionof{listing}{Yksinkertainen esimerkki abstraktista repositoriosta.}
+  \label{repository}
+\end{code}
+
+Esitetty repositorio tallentaa tiedon vain olion sisään, mutta metodit voisivat yhtä hyvin sisältää esimerkiksi SQL-kutsuja, tai jonkin ORM-järjestelmän käyttökutsuja.
 
 ## Mallin hiominen refaktoroimalla
 
@@ -66,32 +86,36 @@ Evans toteaa, että joustava rakenne on monesti seurausta siitä, että \gls{dom
 
 ## GraphQL-teknologian kuvaus
 
-Monet web-sovellukset perustuvat \glsentryname{rest} (Representational State Transfer) -rajapintoihin. \glsentryname{rest} on arkkitehtuurityyli, jossa palvelin esittää asiakasohjelmalle joukon resursseja, joita asiakasohjelma voi pyytää ja muunnella tilattomia pyyntöjä käyttäen.\cite{fielding2000architectural}
+Useimmat sovellukset ovat nykyään web-sovelluksia, ja useimmat web-sovellukset puolestaan perustuvat \glsentryname{rest} (Representational State Transfer) -rajapintoihin. \glsentryname{rest} on arkkitehtuurityyli, jossa palvelin esittää asiakasohjelmalle joukon resursseja, joita asiakasohjelma voi pyytää ja muunnella tilattomia pyyntöjä käyttäen.\cite{fielding2000architectural}
 
 REST-tyyli on vakiintunut web-sovellusten toteuttamisteknologiaksi, mutta siihen liittyy myös eräitä ongelmia. Mikäli REST-tyyppisestä rajapinnasta halutaan hakea usean eri resurssin verkko, joudutaan tekemään erillinen pyyntö jokaista resurssia kohti. Toisissa tapauksissa taas halutaan vain osa resurssin esittämästä tiedosta, mutta joudutaan silti hakemaan koko resurssi.\cite{betterRESTPrisma}\cite{WhyUseGraphQLApollo}
 
-\gls{graphql} on Facebookin kehittämä kyselykieli, joka on tarkoitettu rajapintojen toteuttamiseen. Sen alkuperäinen suunnitteluperiaate oli tarjota web-asiakasohjelmien kehittäjille aiempaa laajempi vapaus rajapintapyyntöjen laatimiseen. \cite{graphql:spec}
+\gls{graphql} on Facebookin kehittämä kyselykieli, jolla edellämainittuja ongelmia pyritään ratkaisemaan. Sen alkuperäinen suunnitteluperiaate oli tarjota web-asiakasohjelmien kehittäjille aiempaa laajempi vapaus rajapintapyyntöjen laatimiseen. GraphQL esittää datan olioiden keskinäisenä verkkona. \cite{graphql:spec}
 
 GraphQL on vielä suhteellisen uusi teknologia, eikä siitä löydy kovin paljoa materiaalia. Keskeinen tiedonlähde ovat Facebookin\cite{graphql:spec} ja GraphQL-säätiön\cite{GraphQLOrg} julkaisemat verkkomateriaalit, sekä Apollo Graph -yrityksen GraphQL-teknologiaa käsittelevä materiaali.\cite{ApolloGraphQL}
 
 GraphQL koostuu kahdesta osasta: kyselykielestä sekä tyyppijärjestelmästä. Kyselykielellä muotoillaan pyyntö, johon GraphQL-palvelun tulee vastata. Tyyppijärjestelmä taas tarkistaa pyynnön oikeellisuuden.
 
-GraphQL ei ole varsinainen rajapinta, sillä rajapinnan toteuttamisteknologia on määrittelyn ulkopuolella. Useimmiten GraphQL-palvelut on toteutettu \gls{http}-teknologian päälle, mutta muitakin, kuten WebSocketia, voi käytttää. GraphQL ei myöskään määrittele, miten kyselyn vastaus tulee muodostaa, tai milllä ohjelmointikielellä järjestelmä tulee toteuttaa.
+GraphQL ei ole varsinainen rajapinta, sillä palvelun toteuttamisteknologia on määrittelyn ulkopuolella. Useimmiten GraphQL-palvelut on toteutettu \gls{http}-teknologian päälle, mutta muitakin, kuten WebSocketia, voi käytttää. GraphQL ei myöskään määrittele, miten kyselyn vastaus tulee muodostaa, tai milllä ohjelmointikielellä järjestelmä tulee toteuttaa.
 
-Osa konventioista on JavaScript-konventioita. Esimerkiksi kentän- ja muuttujien nimet on tapana kirjoittaa camelCase- ja PascalCase -muodoissa, eli vaihdellen suuria ja pieniä kirjaimia sanan sisällä samoin kuin kyseiset sanat tässä virkkeessä on tehty.\cite{GraphQLSchemaBasics} 
+Aivan täysin kielineutraali GraphQL ei silti ole. Osa konventioista on JavaScript-konventioita. Esimerkiksi kentän- ja muuttujien nimet on tapana kirjoittaa camelCase- ja PascalCase -muodoissa, eli vaihdellen suuria ja pieniä kirjaimia sanan sisällä samoin kuin kyseiset sanat tässä virkkeessä on tehty.\cite{GraphQLSchemaBasics} 
 
 
 ### Verkoista
+
+GraphQL esittää datan olioiden välisenä verkkona.
 
 \gls{verkko} eli graafi on tietorakenne, joka koostuu N:stä solmusta ja niitä yhdistävistä kaarista.\cite{pozrikidis2014introduction} Verkkojen avulla on mahdollista esittää monenlaisia asioiden välisiä suhteita, kuten esimerkiksi reittikartta usean kaupungin välisistä teistä.
 
 Olio-ohjelmoinnin tyyli esittää ratkaistavan ongelmakentän olioiden välisinä verkkoina. Ohjelmassa ei ole juuri lainkaan jaettua tilan käsittelyä, vaan kaikki tai lähes kaikki ohjelman sisältämä tieto on olioissa. Näin käsiteltävät ongelmakokonaisuudet saadaan jaettua pienempiin, hallittavan kokoisiin osiin. \cite{booch2008object}
 
-GraphQL:n avulla sovellusala on mahdollista esittää verkon muodossa määrittelemällä GraphQL-skeema. Tämän avulla rajapinta tarjoaa asiakasohjelmalle rakenteen, joka muistuttaa olio-ohjelmointia.\cite{thinkingInGraphs}
+GraphQL:n avulla sovellusala on mahdollista esittää verkon muodossa määrittelemällä GraphQL-tyyppien verkko. Tämän avulla rajapinta tarjoaa asiakasohjelmalle rakenteen, joka muistuttaa olio-ohjelmoinnin olioverkkoja.\cite{thinkingInGraphs}
 
 Juuri verkkorakenne tekee olio-ohjelmoinnista tehokkaan välineen tosielämän ongelmien ratkaisemiseen. Oliot voivat edustaa ohjelman \gls{domainmodel}n käsitteitä, ja verkko muodostaa niiden välisen käsitekartan.
 
 Käsitteiden verkkoa kuvaa myös Eric Evans Domain Driven Design -kirjassa. Keino rakentaa \glsentryname{ubilang} kehittäjien ja alan asiantuntijoiden välille on antaa tärkeille käsitteille nimet, sijoittaa ne mallissa oikeisiin suhteisiin keskenään ja myös toteuttaa ne koodissa.
+
+Jotta tietokone saa käsitteistä täyden hyödyn irti, on käsitteet jaettava muodollisesti määritettyihin tyyppeihin.
 
 ### Tyyppijärjestelmä
 
@@ -101,7 +125,7 @@ Tyypitys tarkoittaa määrättyjä rajoituksia, joiden avulla voidaan varmistaa 
 
 GraphQL-rajapinta koostuu tyypeistä, joita rajapinnalle lähetettävä kysely käyttää. Kyselyssä määritetään pyydettävät tyypit ja niiden kentät. Rajapinta palauttaa takaisin oliota edustavan joukon kenttiä \gls{hakurakenne}-muodossa, eli tietorakenteena, joka koostuu avain-arvo -pareista. \cite{graphql:spec}
 
-GraphQL:ää käyttävät sovellukset on kuitenkin useimmiten kirjoitettu dynaamisesti tyypitetyillä kielillä. Esimerkiksi alkuperäinen GraphQL-referenssi-implementaatio on kirjoitettu JavaScriptillä.\cite{graphqlRefImple2021Oct}
+GraphQL:ää käyttävät sovellukset on kuitenkin useimmiten kirjoitettu dynaamisesti tyypitetyillä kielillä, jotka eivät sisällä tyyppitarkistuksia, tai tarkistukset ovat ajonaikaisia ja vapaaehtoisia. Esimerkiksi alkuperäinen GraphQL-referenssi-implementaatio on kirjoitettu JavaScriptillä.\cite{graphqlRefImple2021Oct}
 
 Samoin Python-kieli on dynaamisesti tyypitetty, ja olioiden tunnistamisessa se käyttää duck-tyypitykseksi kutsuttua menetelmää. Duck-tyypityksessä olion tyyppiä ei tarkasteta välttämättä edes ajonaikaisesti, vaan oletetaan sen sisältämien jäsenten perusteella.\cite{pythonGloss2021Oct} Jos esimerkiksi oliosta löytyvät kentät *summa* ja *laskunumero*, oletetaan, että olio on lasku.
 
@@ -138,6 +162,8 @@ type ConsolidatedInvoice {
 
 ### Skeema
 
+GraphQL:n olioverkko kuvataan täsmäkielellä määritellyn skeeman avulla.
+
 \Gls{dsl} on ohjelmointikieltä korkeamman tason kieli, joka on suunniteltu jollekin kapealle sovellusalueelle.\cite{landin1966next} Esimerkkejä \glsentryname{dsl}istä ovat esimerkiksi UNIX-tyyppisistä järjestelmistä tutut *sed*- ja *awk*-kielet. Tällaisen kielen avulla on mahdollista määritellä monimutkaisiakin asioita nopeasti.\cite{Raymond2003} Kieli tarjoaa tavanomaista ohjelmointikieltä ilmaisuvoimaisemman ja täsmällisemmän tavan määritellä asioita.
 
 Eräs täsmäkielen kanssa hyödynnettävä suunnittelumalli on kielen käyttäminen tietorakenteiden abstraktioon.\cite{Spi00b} GraphQL-rajapinnassa on kysymys juuri tästä.
@@ -154,9 +180,9 @@ GraphQL-skeemaa voi siis verrata Eric Evansin esittämään ajatukseen \glsdisp{
 
 ![\label{graphqlarkkitehtuuri} Esimerkkiarkkitehtuuri GraphQL-sovellukselle](illustration/GraphQL-arkkitehtuuri.png)
 
-Kuvassa \ref{graphqlarkkitehtuuri} esitän yksinkertaisen GraphQL-sovelluksen arkkitehtuurin. Arkkitehtuuri on kerroksittainen, ja rajapinnalle esitettävä pyyntö liikkuu siinä ylhäältä alaspäin.
+Kuvassa \ref{graphqlarkkitehtuuri} esitän yksinkertaisen GraphQL-sovelluksen arkkitehtuurin. Arkkitehtuuri on kerroksittainen, ja rajapinnalle esitettävä pyyntö liikkuu siinä ylhäältä alaspäin. Koska GraphQL on teknologianeutraali, tämä on vain yksi, toki suhteellisen tyypillinen esimerkki mahdollisesta GraphQL-sovelluksesta.
 
-Ensiksi pyyntö saapuu HTTP-palvelimeen. Tämä palvelin on käytännössä ohjelmointikielestä riippuen kirjasto, joka vastaanottaa HTTP-pyyntöjä ja osaa käsitellä niitä. Tyypillisesti GraphQL-rajapinnassa on vain yksi `graphql`-niminen resurssi, jolle pyynnöt esitetään.
+Ensiksi pyyntö saapuu HTTP-palvelimeen. Tämä palvelin on käytännössä ohjelmointikielestä riippuen kirjasto, joka vastaanottaa HTTP-pyyntöjä ja osaa käsitellä niitä. Tyypillisesti GraphQL-rajapinnassa on vain yksi `graphql`-niminen resurssi, jolle pyynnöt esitetään. Pyynnöt ovat aina POST-tyyppisiä.
 
 HTTP-kerros ottaa pyynnön vastaan, ja lukee sen body-osassa olevan merkkijonomuotoisen GraphQL-kyselyn. Tämä kysely on tehty GraphQL-kyselykielellä. Rajapinta antaa kyselyn GraphQL-kirjastolle.
 
@@ -164,7 +190,7 @@ Kirjasto ottaa kyselyn vastaan, ja tarkistaa sen oikeellisuuden GraphQL-skeemaa 
 
 Laskutusta käsittelevässä esimerkissä rajapinnan invoices-kenttää voisi vastata `invoices_resolver` -niminen funktio.
 
-Resolver-funktioiden kerros on alin kerros, josta GraphQL-palvelu tietää. Sen alla oleva ohjelmistologiikka on riippumaton rajapinnan toteutustavasta. Tyypillisesti siellä voi sijaita sovelluksen liiketoimintalogiikka ja infrastruktuuri, kuten esimerkiksi tiedon tallennusteknologia.
+Resolver-funktioiden kerros on alin kerros, josta GraphQL-palvelu tietää. Sen alla oleva ohjelmistologiikka on riippumaton rajapinnan olemassaolosta. Tyypillisesti siellä voi sijaita sovelluksen liiketoimintalogiikka ja infrastruktuuri, kuten esimerkiksi tiedon tallennusteknologia.
 
 
 ### Query ja Mutation -juurityypit
@@ -173,7 +199,7 @@ GraphQL-palveluissa on muutama oletuksena määritelty tyyppi, joita kutsutaan j
 
 Rajapintaan voi tehdä kyselyjä Query-tyyppisen juuriolion kautta. Tämän olion kentät määrittävät, mitä dataa rajapinnalta voidaan kysellä. Kentät ovat ikäänkuin sisäänmenoaukkoja, joiden kautta oliorakenteita voi pyytää.
 
-Kun oheisen koodiesimerkin \ref{listing1} mukaisesti määritellystä GraphQL-rajapinnasta halutaan hakea tietoja, tehdään Query-tyypin consolidatedInvoices -kenttään kysely, joka kuvaa halutun oliopuun rakenteen tyyppien avulla. Tätä kuvaa koodiesimerkki \ref{listing2}.
+Kun aiemman koodiesimerkin \ref{listing1} mukaisesti määritellystä GraphQL-rajapinnasta halutaan hakea tietoja, tehdään Query-tyypin consolidatedInvoices -kenttään kysely, joka kuvaa halutun oliopuun rakenteen tyyppien avulla. Tätä kuvaa koodiesimerkki \ref{listing2}.
 
 \begin{code}
   \begin{minted}{graphql}
@@ -193,11 +219,11 @@ Kun oheisen koodiesimerkin \ref{listing1} mukaisesti määritellystä GraphQL-ra
 \end{code}
 
 
-Kyselyssä määritellään kentät, jotka palautuvassa datassa halutaan nähdä. Näin myös palautuvan oliopuun syvyyttä voidaan kontrolloida. Oheisessa esimerkissä haetaan paitsi lista koontilaskuista, myös jokaisen koontilaskun alle invoices-kenttään lista siihen kuuluvista laskuista. Näin edetään verkkoa pitkin tarvittavan datan luo.
+Kyselyssä määritellään kentät, jotka palautuvassa datassa halutaan nähdä. Näin myös palautuvan oliopuun syvyyttä voidaan kontrolloida. Oheisessa esimerkissä haetaan paitsi lista koontilaskuista, myös jokaisen koontilaskun alle invoices-kenttään lista siihen kuuluvista laskuista. Niistä pyydetään jokaisesta laskunumero ja laskun summa. Näin edetään verkkoa pitkin tarvittavan datan luo.
 
 Mutation-juurityyppiä puolestaan käytetään datan muunnoksiin. Mutation-tyypin sisältämiin kenttiin lähetetään kysely, jossa mukana olevat parametrit kertovat, miten dataa muokataan. Parametrit ovat yhtä lailla tyypitettyjä kuin rajapinnan kentät, ja GraphLQ-kirjasto tarkistaa niiden tyypin oikeellisuuden. Mutation-komennot voivat myös palauttaa oliorakenteita.
 
-Oheisessa koodiesimerkissä \ref{listing3} määritellään invoice-niminen operaatio uuden laskun luomiseen. Operaatiolle on merkitty paluuarvo, joka on Invoice-tyypin olio. Käytännössä operaatio voisi siis palauttaa juuri luodun laskun.
+Oheisessa koodiesimerkissä \ref{listing3} määritellään invoice-niminen operaatio uuden laskun luomiseen. Operaatiolle on merkitty paluuarvo, joka on Invoice-tyyppinen olio. Käytännössä operaatio siis palauttaa juuri luodun laskun.
 
 \begin{code}
   \begin{minted}{graphql}

@@ -31,7 +31,9 @@ Viiden viikon aikana syntyi pieni malli laskutukseen tietorakenteen parantamisek
 
 ![\label{finalmodel1-again}Lopullinen malli](illustration/malli4.jpg)
 
-Pieni malli laskutuksen parantamiseksi on esitetty kuvassa \ref{finalmodel1-again}. Se pitää sisällään ajatuksen käynnin muuttumisesta myynniksi, kun se saapuu laskutuksen piiriin. Oma erikoisuutensa on myös käynnin jakamiseen liittyvä jakoperuste. Prototyypissä emme ottaneet kantaa, millä perusteella käynnin hinnan osittaminen eri maksajille tapahtuu. Käytännössä ohjelmassa on eri maksajatahojen kanssa tehtyjä sopimuksia, jotka määrittelevät ehtoja maksuosuuden suuruudesta. Jakoperuste on siis dynaamisesti muuttuva käsite, joka riippuu haluttuihin maksajiin ja käyntiin kytkettyyn hoitojaksoon yhdistyvistä sopimuksista.
+Pieni malli laskutuksen parantamiseksi on esitetty kuvassa \ref{finalmodel1-again}. Se pitää sisällään ajatuksen käynnin muuttumisesta myynniksi, kun se saapuu laskutuksen piiriin. Oma erikoisuutensa on myös käynnin jakamiseen liittyvä jakoperuste.
+
+Prototyypissä emme ottaneet kantaa, millä perusteella käynnin hinnan osittaminen eri maksajille tapahtuu. Käytännössä ohjelmassa on eri maksajatahojen kanssa tehtyjä sopimuksia, jotka määrittelevät ehtoja maksuosuuden suuruudesta. Jakoperuste on siis dynaamisesti muuttuva käsite, joka riippuu haluttuihin maksajiin ja käyntiin kytkettyyn hoitojaksoon yhdistyvistä sopimuksista.
 
 ![\label{finalidea1}Idea 1](illustration/final-idea-1.jpg)
 

@@ -36,8 +36,8 @@ koontilaskun) säilyessä avoimena.
 Päätin tehdä työn lyhyissä iteraatioissa, ketterän kehityksen
 periaatteita seuraten. Tämä tyyli soveltuu hyvin yhteen tietomallin
 kehittämisen kanssa, sillä Evansin kirjassa kuvattu työtapa on
-samankaltainen. Lyhyet iteraatiot ovat nykyään tyypillinen tapa tehdä
-ohjelmistoa.\cite{ConsultancyEu2020May}\cite{AgileIteration} En
+samankaltainen. Lisäksi lyhyet iteraatiot ovat nykyään tyypillinen tapa
+tehdä ohjelmistoa.\cite{ConsultancyEu2020May}\cite{AgileIteration} En
 asettanut iteraatioille mitään ennalta määrättyä kestoa.
 
 Sovellusaluevetoisessa suunnittelussa oleellista on ohjelmoijan ja
@@ -64,7 +64,8 @@ limittyvät keskenään. Iteraation aikana ohjelmoin uuden version
 ohjelmistoprototyypistä, kokouksessa syntyneiden ajatusten pohjalta.
 Kehitin ohjelmistoa testivetoisesti: kirjoitin ensin epäonnistuvan
 yksikkötestin ja sen jälkeen tuotantokoodia sen verran, että
-yksikkötestin suorittaminen onnistui.
+yksikkötestin suorittaminen onnistui. Käytin valmistunutta prototyyppiä
+jatkokeskustelujen pohjana.
 
 \hypertarget{teknologiavalinnat}{%
 \section{Teknologiavalinnat}\label{teknologiavalinnat}}
@@ -72,9 +73,9 @@ yksikkötestin suorittaminen onnistui.
 Kirjoitin esimerkkiohjelmiston tyypilliseksi web-sovellukseksi, jossa
 palvelinohjelmisto ja selaimessa toimiva asiakasohjelma kommunikoivat
 keskenään HTTP-pyyntöjen avulla. Valitsin palvelinohjelmiston
-kehityskieleksi Python-kielen, koska se sopii hyvin Nordhealthissa
-käytössä oleviin teknologiavalintoihin. Python on myös syntaksiltaan
-suoraviivainen ja tässä mielessä helppokäyttöinen kieli.
+kehityskieleksi Python-kielen, koska sitä käytetään Nordhealthilla
+muutenkin. Python on myös syntaksiltaan suoraviivainen ja tässä mielessä
+helppokäyttöinen, prototyyppien rakentamiseen soveltuva kieli.
 
 Pythonin kanssa käytettäväksi HTTP-kirjastoksi valitsin
 Falcon-kirjaston\cite{FalconPython} puhtaasti sen yksinkertaisuuden
@@ -95,9 +96,9 @@ refaktorointeja, sillä tietokantaa ei ole tarve muokata tai luoda
 uudelleen ohjelmiston mallin muuttuessa.
 
 Asiakassovelluksen kirjoitin Vue.js -JavaScript-kirjastoa käyttäen,
-koska se sopii hyvin Nordhealthissa käytössä oleviin teknologioihin.
-GraphQL-rajapinnan kanssa kommunikoimiseen käytin Apollo-kirjastoa, ja
-sen Vueen integroivaa Vue Apollo -kirjastoa.
+koska se on Nordhealthilla käytössä jo ennestään. GraphQL-rajapinnan
+kanssa kommunikoimiseen käytin Apollo-kirjastoa, ja sen Vueen
+integroivaa Vue Apollo -kirjastoa.
 
 \hypertarget{kuvaus-prosessin-etenemisestuxe4-iteraatio-iteraatiolta}{%
 \section{Kuvaus prosessin etenemisestä iteraatio
@@ -225,9 +226,13 @@ ja palveluriviin hyvitysrivi}
 
 Yllättäen perjantaina puolen päivän jälkeen kaikki yksikkötestit menivät
 läpi, käyttäjätarina valmistui, ja ohjelmistoprototyypin toiminnassa
-tuntui tapahtuvan laadullinen hyppäys. Loppujen kahden käyttäjätarinan
-toteuttaminen onnistui kahdessa tunnissa, ja vaati vain joitain rivejä
-koodia. \Glsentryname{domainmodel} oli kehittynyt paremmaksi.
+tuntui tapahtuvan laadullinen hyppäys. Vaikutti, kuin prototyyppiohjelma
+olisi oppinut itsekseen jotain laskutuksesta. Ohjelman logiikka toimi
+paremmin kuin mitä itse ymmärsin laskutuksesta.
+
+Loppujen kahden käyttäjätarinan toteuttaminen onnistui kahdessa
+tunnissa, ja vaati vain joitain rivejä koodia.
+\Glsentryname{domainmodel} oli syventynyt.
 
 Ohjelmoidessa syntynyt tietomalli sisälsi samat asiat, joista
 kokouksessa oli puhuttu, mutta niiden suhteet olivat toisenlaiset. Olin
@@ -290,7 +295,7 @@ omissa malleissaan ``myyntiä''.
 
 Nyt muistin tämän keskustelun, ja ehdotin sen pohjalta, että
 laskutuksessa ei käsiteltäisikään suoraan käyntejä vaan palvelumyyntiä.
-Laura totesi, että kaikki laskuille laitettava on lopulta myyntiä -
+Laura totesi, että kaikki laskuille laitettava on lopulta myyntiä ---
 ikäänkuin se olisi ollut itsestäänselvyys! Ohjelmoijalle tämä oivallus
 oli kuitenkin uusi tieto, ja se avasi täysin uuden näkökulman
 laskutukseen.
@@ -301,24 +306,29 @@ laskutukseen.
 \caption{\label{malli3}Kolmas malli}
 \end{figure}
 
-Loimme kokouksessa mallin, jossa Käynti muunnetaan myynniksi eli
+Loimme kokouksessa mallin, jossa käynti muunnetaan myynniksi eli
 SalesItem-olioksi. Nyt käynneistä ei tarvitse välittää lainkaan laskuja
 käsiteltäessä. SalesItem puolestaan voidaan jakaa maksajille
 suunnatuiksi osuuksiksi, SalesShareiksi, ja yksittäisellä laskulla on
 SalesShareen kytketty SalesRow. Malli on esitetty kuvassa \ref{malli3}
 
 Kokouksen jälkeen minua odotti jälleen refaktorointityö, joka oli
-projektin suurin. Arvioni on, että käynnin perinpohjainen irrottaminen
-koko laskutuslogiikasta ja kahden uuden käsitteen laittaminen näiden
-väliin olivat keskeisiä syitä sille, miksi muutostyö oli niin työläs.
+projektin suurin. Käynnin perinpohjainen irrottaminen koko
+laskutuslogiikasta ja kahden uuden käsitteen laittaminen näiden väliin
+vaativat laajan remontin koko ohjelman toimintalogiikkaan.
 
 Uusien ominaisuuksien toteuttaminen refaktoroinnin jälkeen oli
-suoraviivaista, ja tuloksena syntyi ohjelma, joka pääsi alkuperäiseen
-tavoitteeseensa, jaetun käynnin hyvittämiseen ja uudelleen
-laskuttamiseen.
+huomattavan suoraviivaista, ja tuloksena syntyi ohjelma, joka pääsi
+alkuperäiseen tavoitteeseensa, jaetun käynnin hyvittämiseen ja uudelleen
+laskuttamiseen. Ohjelma oli muutamassa viikossa laajentunut yllättävän
+monipuoliseksi, vaikka sitä ei pinnalle päin heti huomannutkaan.
 
 \hypertarget{huomioita-prosessista}{%
 \section{Huomioita prosessista}\label{huomioita-prosessista}}
+
+Pienen prototyyppiohjelman kehittäminen oli valtavan hyödyllistä, ja se
+tuotti tukun tärkeitä oivalluksia siitä, miten sovellusaluevetoista
+suunnittelua tehdään, ja mikä on GraphQL:n merkitys prosessissa.
 
 Mallia kehittäessä vaadittujen voimakkaiden refaktorointijaksojen määrä
 yllätti. Ennalta kirjallisuudesta luettuna ei refaktoroinnin määrää
@@ -337,7 +347,8 @@ käytimme, ja etenkin termejä, joita Laura käytti.
 
 Eric Evans mainitsee, että \glsdisp{ubilang}{kaikenkattavan kielen}
 rakentamisessa oleellista on löytää sanat, joita alan asiantuntijat
-käyttävät\cite{evans:ddd}.
+käyttävät. Etenkin puuttuvien käsitteiden tunnistaminen puheen seasta
+auttaa paljon mallin parantamisessa.\cite{evans:ddd}
 
 \hypertarget{kuxe4sitteiden-hyuxf6dyntuxe4minen}{%
 \section{\texorpdfstring{\glsdisp{ddd}{sovellusaluevetoisen suunnittelun}
@@ -356,9 +367,12 @@ tietokantaa, toteutin käsitteille Evansin mallin mukaisesti
 yksinkertaisia luokkia, jotka pitävät sisällään linkitetyn listan
 olioita.
 
-Laskujen luominen operaationa puolestaan oli niin monimutkainen, että
+Laskujen luominen puolestaan oli operaationa niin monimutkainen, että
 siihen tarvitsin Eric Evansin esimerkin mukaisesti erillisen
-tehdasluokan.
+tehdasluokan. Senkin jälkeen operaatio oli melko monimutkainen. Vielä
+prototyyppiohjelman kehityksen päättyessä minulla oli vahva tunne, että
+tehdasluokkaan jääneet sotkuiset koodin osat olivat seurausta jostakin
+puuttuvasta käsitteestä.
 
 \hypertarget{graphql-rajapinnan-ja-sovellusaluemallin-yhteys}{%
 \section{GraphQL-rajapinnan ja sovellusaluemallin
@@ -388,3 +402,11 @@ Esimerkiksi laskutusta käsittelevässä mallissa tällainen nivelkohta on
 käynnin ja myynnin välissä. Kun käynti muuttuu myynniksi laskulle
 lisättäessä, tapahtuu käsitteellinen muutos, joka antaa
 prototyyppisovellukselle sen sisältämän voiman ja joustavuuden.
+
+GraphQL-rajapinta myös lisäsi yhden ylimääräisen tason monimutkaisuutta:
+skeemaa piti päivittää erikseen, mutta pelkillä skeeman muutoksilla ei
+vielä ollut mahdollista selvittää mallin toimivuutta. Pelkästään
+ohjelmakoodissa toteutettu sovellusaluemalli olisi ollut
+yksinkertaisempi muokata. Toisaalta myös REST-rajapinta olisi
+todennäköisesti tuonut vastaavaa monimutkaisuutta, kun sovellusaluemalli
+olisi pitänyt esittää joukkona resurseja.

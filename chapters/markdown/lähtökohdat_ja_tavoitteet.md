@@ -12,9 +12,11 @@ Diarium on Nordhealthin kahdesta järjestelmästä vanhempi. Se on suunnattu ter
 
 ## Tarve työlle
 
-Diariumin ikä näkyy tietomallin monimutkaisuutena. Vuosien saatossa tehty kehitystyö on tehnyt ohjelmiston joistain osista hankalia ymmärtää. Ohjelman kehittäminen on myös aloitettu aikana, jolloin sovelluksia ei automaattisesti tehty yhden sivun sovelluksiksi. Nykyään tämä kuitenkin on normi, ja ohjelmaan on jo vuosia kehitetty REST-rajapintaan nojaavia toiminnallisuuksia.
+Diariumin ikä näkyy tietomallin monimutkaisuutena. Vuosien saatossa tehty kehitystyö on tehnyt ohjelmiston joistain osista hankalia ymmärtää. Ohjelman kehittäminen on myös aloitettu aikana, jolloin sovelluksia ei automaattisesti tehty yhden sivun sovelluksiksi.
 
-Voisiko rajapintaa rakentaessa myös parantaa ohjelmiston sisäistä tietomallia? Tämä säästäisi aikaa ja vaivaa, ja nopeuttaisi ohjelmiston jatkokehitystä.
+Nykyään tämä kuitenkin on normi, ja ohjelmaan on jo vuosia kehitetty REST-rajapintaan nojaavia toiminnallisuuksia. Samalla kehitystyön myötä on huomattu, että REST soveltuu huonosti joihinkin monimutkaisen toiminnanohjausjärjestelmän vaatimiin tehtäviin. 
+
+Olisiko REST-rajapinnalle sopivampi vaihtoehto? Entä voisiko rajapintaa rakentaessa myös parantaa ohjelmiston sisäistä tietomallia? Tämä säästäisi aikaa ja vaivaa, ja nopeuttaisi ohjelmiston jatkokehitystä.
 
 ## Insinöörityön tavoite
 
