@@ -100,6 +100,33 @@ Esittelen työmallin kuvassa \ref{tyomalli}.
 \caption{\label{tyomalli} Kuva työmallista}
 \end{figure}
 
+\hypertarget{tyuxf6mallin-vahvuuksia}{%
+\section{Työmallin vahvuuksia}\label{tyuxf6mallin-vahvuuksia}}
+
+Tämän työmallin tuloksena syntyvä ohjelmisto tai ohjelmiston osa on
+notkea ja helposti muokattavissa. Lisäksi sen rakenne mukailee hyvin
+läheisesti sovellusalan sisäistä logiikkaa. Tämä läheinen yhteys tekee
+helpoksi tietomallin jatkokehittämisen, kuten uusien ominaisuuksien
+lisäämisen tai olemassaolevien muuttamisen. Kun sovellusalan
+toimintatavat muuttuvat, vastaa ohjelmistoon tehtävän muutoksen suuruus
+sovellusalalla tapahtuvan muutoksen suuruutta.
+
+Tiheän kehityssyklinsä vuoksi tämä työmalli on myös suhteellisen
+hallittava ja ennustettava: ohjelmiston toimintojen tila on
+liiketoimintaeksperttien tutustuttavissa viikoittain. Tätä tietoa on
+mahdollista käyttää jäljellä olevan työmäärän arvioinnissa. Tiheä
+kehityssykli ja käyttäjätarinoihin pohjaava työlista myös suojaavat
+tarpeettoman työn tekemiseltä. Prosessissa syntyy lähinnä sellaista
+koodia, joka tarvitaan käyttäjälle näkyvien ominaisuuksien
+toteuttamiseen.
+
+Koska työtyyli on keskusteleva ja ohjelmiston rakenne pyritään pitämään
+avoimena muutoksille, on muutoksien tekeminen mahdollista koko
+kehitysprosessin ajan, ja tarvittaessa vielä hyvinkin loppuvaiheessa
+prosessia. GraphQL-rajapintaskeeman kehittäminen on hyvä tapa
+dokumentoida tätä jaettua kieltä ja erottaa kielen käsitteet muusta
+koodista.
+
 \hypertarget{tyuxf6mallin-haasteita}{%
 \section{Työmallin haasteita}\label{tyuxf6mallin-haasteita}}
 
@@ -118,3 +145,39 @@ ympärillä vastaa tällaista tekemisen tapaa. Liiketoimintavetoisella
 suunnittelulla on vaikutuksia paitsi ohjelmistotuotannon prosessiin,
 myös sitä ympäröiviin prosesseihin, kuten asiakastarpeiden kokoamiseen
 ja tulevan kehitystyön suunnittelemiseen.
+
+\hypertarget{tyuxf6mallin-vaihtoehtojen-punnitsemista}{%
+\section{Työmallin vaihtoehtojen
+punnitsemista}\label{tyuxf6mallin-vaihtoehtojen-punnitsemista}}
+
+Monimutkaisten sovellusalueiden kanssa työskenteleminen on haaste joka
+tapauksessa. Olisi houkuttelevaa ajatella, että tällaisen
+monimutkaisuuden hallitseminen, asiakkaan tarpeiden ymmärtäminen ja
+tietomallin hahmotteleminen kuuluisi jollekulle muulle kuin
+ohjelmoijalle. Tällöin liiketoiminta-alasta ymmärtävä henkilö voisi
+kirjoittaa määrittelydokumentin, ja ohjelmoijan tehtäväksi jäisi
+määrittelyn mukaisen ohjelmiston toteuttaminen. Tällaisen työtavan
+haasteena kuitenkin on, että koodi ja määrittely voivat erkaantua
+nopeastikin toisistaan. Käytettävään ohjelmointiympäristöön liittyvät
+rajoitteet saattavat estää määrittelyn mukaisen mallin toteuttamisen.
+Tällöin malli lohkeaa kahdeksi: määrittelyn mukainen, tarkkaan
+suunniteltu malli jää paperille, ja koodiin päätyy kehitystyön ohessa
+nopeasti improvisoitu vaihtoehtoinen versio.
+
+Toinen vaihtoehto on ketterä, iteratiivinen kehitystyyli ilman
+kaikenkattavaa kieltä. Tässä prosessissa käyttäjävaatimuksia toteutetaan
+viikko viikolta, ja kehittäjät saavat iteraation päätyttyä palautetta
+siihen mennessä valmiiksi saadun ohjelmiston pohjalta. Yhteistä kieltä
+ei kuitenkaan pyritä rakentamaan, eikä kehittäjien edellytetä
+kirjoittavan sovellusalueen logiikkaa mukailevaa koodia. Riskinä on,
+että kehitystyön kuluessa ilmaantuu sellaisia käyttäjävaatimuksia, joita
+on hankala sovittaa olemassaolevaan ohjelmistoon. Koska koodi ei noudata
+yhteistä jaettua kieltä, voi kehittäjien koodiin kirjoittama malli
+poiketa suurestikin siitä, miten sovellusalueen ekspertit asiat
+ymmärtävät.
+
+Molemmissa edellä esitetyissä vaihtoehtoisissa tyyleissä kehitystahti
+hidastuu ja työ vaikeutuu prosessin edetessä, mikäli esitetyt riskit
+toteutuvat. Myös riski koodin laadun heikentymisestä on olemassa, mikäli
+ohjelmistoon joudutaan nopeasti tekemään muutoksia uusien
+käyttäjävaatimusten pohjalta.
