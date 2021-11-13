@@ -3,7 +3,7 @@
 
 % Acronyms, abbreviations, etc.
 
-\newacronym{lamp}{LAMP}{Linux, Apache, MySQL, PHP}
+\newacronym{lamp}{LAMP}{LAMP (Linux, Apache, MySQL, PHP)}
 \newacronym{orm}{ORM}{Object-relational mapper, oliot tietokantatauluiksi muuntava teknologia}
 \newacronym{sql}{SQL}{Structured Query Language}
 \newacronym{io}{I/O}{Input/Output}
@@ -14,94 +14,124 @@
 \newacronym{url}{URL}{Uniform Resource Locator}
 \newacronym{doi}{DOI}{Digital Object Identifier}
 
+
+\newacronym{html}{HTML}{HyperText Markup Language}
+
+
 % Glossary entries
 \newglossaryentry{ddd}{
-  name={sovellusaluevetoinen suunnittelu},
-  description={engl. Domain Driven Design, myös Liiketoimintavetoinen suunnittelu}
+  name={Sovellusaluevetoinen suunnittelu},
+  text={sovellusaluevetoinen suunnittelu},
+  description={Menetelmä, jossa ohjelmistoa kehitetään läheisessä yhteistyössä sovellusalueen asiantuntijoiden kanssa. (myös: Liiketoimintavetoinen suunnittelu.) Engl. Domain Driven Design}
   }
 \newglossaryentry{domain}{
-  name={sovellusalue},
+  name={Sovellusalue},
+  text={sovellusalue},
   description={Erityisala, jota sovellus käsittelee. Esimerkiksi pankkitoiminta tai vähittäiskauppa. myös: liiketoimintataso}
 }
 
 \newglossaryentry{crunching}{
-  name={tiedon rouhinta},
-  description={engl. Knowledge crunghing}
+  name={Tiedon rouhinta},
+  text={tiedon rouhinta},
+  description={Prosessi, jossa tunnistetaan sovellusalan erityiskäsitteitä ohjelmoijan ja sovellusalueen asiantuntijan välisen kommunikaation avulla. Engl. Knowledge crunghing}
   }
 \newglossaryentry{dsl}{
-  name={täsmäkieli},
-  description={engl. Domain-Specific language}
+  name={Täsmäkieli},
+  text={täsmäkieli},
+  description={Erityisalaan liittyvä formaali kieli. Esimerkiksi ohjelmointi- tai kuvauskieli. Engl. Domain-Specific language}
   }
 \newglossaryentry{ubilang}{
-  name={kaikenkattava kieli},
-  description={engl. Ubiquitous language}
+  name={Kaikenkattava kieli},
+  text={kaikenkattava kieli},
+  description={Kokoelma käsitteitä ja sanastoa, joiden avulla ohjelmoijat ja sovellusalueen asiantuntijat keskustelevat kehitettävästä ohjelmistosta. Muotoutuu tiedon rouhintaprosessin tuloksena. Engl. Ubiquitous language}
   }
 \newglossaryentry{domainmodel}{
-  name={sovellusaluemalli},
-  description={engl. Domain Model}
+  name={Sovellusaluemalli},
+  text={sovellusaluemalli},
+  description={Käsitteistä ja niiden välisistä suhteista koostuva, ohjelmakoodin muotoon kaapattava malli käsiteltävästä sovellusalueesta. Engl. Domain Model}
   }
 \newglossaryentry{domainlayer}{
-	name={liiketoimintalogiikan taso},
-	description={engl. Domain layer},
+	name={Liiketoimintalogiikan taso},
+	text={liiketoimintalogiikan taso},
+	description={Ohjelmiston sisäinen osa, joka pitää sisällään liiketoimintaan liittyvän ohjelmalogiikan. Engl. Domain layer},
 }
 \newglossaryentry{entity}{
-	name={yksilötyyppi},
-	description={engl. Entity},
+	name={Yksilötyyppi},
+	text={yksilötyyppi},
+	description={Ohjelmassa esiintyvä olio, jolla on identiteetti. Esimerkiksi yksittäinen asiakas tai lasku. Engl. Entity},
 }
 \newglossaryentry{deepermodel}{
-  name={syvempi malli},
-  description={engl. Deeper Model}
+  name={Syvempi malli},
+  text={syvempi malli},
+  description={Sovellusaluevetoisen suunnittelun myötä parantunut sovellusaluemalli. Syvempi malli tavoittaa aiempaa paremmin sovellusalan perimmäisen luonteen. Engl. Deeper Model}
 }
 \newglossaryentry{hakurakenne}{
-  name={assosiaatiotaulu},
-  description={engl. Map. suom. myös {\em hakurakenne\/} ja {\em sanakirja\/}. Tietorakenne, joka sisältää joukon avain-arvo -pareja.}
+  name={Assosiaatiotaulu},
+  text={assosiaatiotaulu},
+  description={Engl. Map. suom. myös {\em hakurakenne\/} ja {\em sanakirja\/}. Tietorakenne, joka sisältää joukon avain-arvo -pareja}
 }
 
 \newglossaryentry{rest}{
   name={REST},
-  description={Representational State Transfer. Arkkitehtoninen tyyli rajapintojen määrittelemiseen etenkin Web-sovelluksissa.}
+  text={REST},
+  description={Representational State Transfer. Arkkitehtoninen tyyli rajapintojen määrittelemiseen etenkin Web-sovelluksissa}
 }
 
 \newglossaryentry{graphql}{
   name={GraphQL},
-  description={Facebookin kirjoittama kyselykieli, joka esittää manipuloitavan datan olioverkkona.}
+  text={GraphQL},
+  description={Facebookin kirjoittama kyselykieli, joka esittää manipuloitavan datan olioverkkona}
 }
 
 \newglossaryentry{http}{
   name={HTTP},
-  description={Hypertext Transfer Protocol. Webin perusprotokolla, jota käytetään hypertekstidokumenttien siirtoon.}
+  text={HTTP},
+  description={Hypertext Transfer Protocol. Webin perusprotokolla, jota käytetään hypertekstidokumenttien siirtoon}
 }
 
 \newglossaryentry{verkko}{
-  name={verkko},
-  description={Tietorakenne, joka koostuu solmuista ja kaarista.}
+  name={Verkko},
+  text={verkko},
+  description={Tietorakenne, joka koostuu solmuista ja kaarista}
 }
 
 \newglossaryentry{domainexpert}{
-  name={alan asiantuntija},
-  description={Sovellusalueen esimerkiksi työnsä puolesta hyvin tunteva henkilö}
-}
-
-\newglossaryentry{deepmodel}{
-  name={syvä malli},
+  name={Alan asiantuntija},
+  text={alan asiantuntija},
   description={Sovellusalueen esimerkiksi työnsä puolesta hyvin tunteva henkilö}
 }
 
 \newglossaryentry{kulkusuunta}{
-  name={kulkusuunta},
-  description={olioita yhdistävän kytköksen suunta}
+  name={Kulkusuunta},
+  text={kulkusuunta},
+  description={Olioita yhdistävän kytköksen suunta}
 }
 
 \newglossaryentry{puhdasfunktio}{
-  name={puhdas funktio},
-  description={Funktio, jonka palauttama tulos riippuu vain sen saamien parametrien arvoista. Puhdas funktio ei aiheuta sivuvaikutuksia esimerkiksi tulostamalla ruudulle tai tallentamalla tiedostoon.}
+  name={Puhdas funktio},
+  text={puhdas funktio},
+  description={Funktio, jonka palauttama tulos riippuu vain sen saamien parametrien arvoista. Puhdas funktio ei aiheuta sivuvaikutuksia esimerkiksi tulostamalla ruudulle tai tallentamalla tiedostoon}
 }
 
 \newglossaryentry{tyyppi}{
-  name={tyyppi},
-  description={lausekkeeseen sidottu määritys lausekkeen palauttaman arvon tietotyypistä. Esimerkiksi kokonaisluku tai merkkijono.}
+  name={Tyyppi},
+  text={tyyppi},
+  description={Lausekkeeseen sidottu määritys lausekkeen palauttaman arvon tietotyypistä. Esimerkiksi kokonaisluku tai merkkijono}
 }
 
-\newglossaryentry{aggregate}{name=aggregaatti, description=useiden olioiden kokoelma}
-\newglossaryentry{repository}{name=repositorio, description=rajapinta tiedon tallennusvälineeseen}
-\newglossaryentry{factory}{name=tehdas-olio, description={olio, joka vastaa toisten olioiden luomisesta}}
+\newglossaryentry{aggregate}{
+  name=Aggregaatti,
+  text=aggregaatti,
+  description={Useiden olioiden kokoelma, jolla on yksi juuriolio. Käsitellään ohjelmalogiikassa yhtenä kokonaisuutena.}
+}
+\newglossaryentry{repository}{
+  name=Repositorio,
+  text=repositorio,
+  description=Rajapinta tiedon tallennusvälineeseen
+}
+\newglossaryentry{factory}{
+  name=Tehdas-olio,
+  text=tehdas-olio,
+  description={Olio, joka vastaa toisten olioiden luomisesta}
+}
+

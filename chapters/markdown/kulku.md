@@ -126,7 +126,7 @@ Toinen keskeinen keino kaikenkattavan kielen kehittämiseen tässä prosessissa 
 
 Eric Evans mainitsee, että \glsdisp{ubilang}{kaikenkattavan kielen} rakentamisessa oleellista on löytää sanat, joita alan asiantuntijat käyttävät. Etenkin puuttuvien käsitteiden tunnistaminen puheen seasta auttaa paljon mallin parantamisessa.\cite{evans:ddd}
 
-## \glsdisp{ddd}{sovellusaluevetoisen suunnittelun} käsitteiden hyödyntäminen
+## \glsdisp{ddd}{Sovellusaluevetoisen suunnittelun} käsitteiden hyödyntäminen
 Käytin tietomallin koodia rakentaessani apuna Evansin esittelemiä käsitteitä. Useat käsitteet, kuten käynnit ja laskut, kuvasin \glslink{entity}{yksilötyyppeinä}. Käsitteistä koostuvat kokonaisuudet ovat \glsdisp{aggregate}{aggregaatti}-rakenteissa. Esimerkiksi laskun sisältämät laskurivit tai myynnin sisältämät myyntiosuudet.
 
 Koska yksinkertaisessa prototyyppisovelluksessani ei ole ollenkaan tietokantaa, toteutin käsitteille Evansin mallin mukaisesti \glsdisp{repository}{repositoriot}. Käytännössä ne ovat vain yksinkertaisia luokkia, jotka pitävät sisällään linkitetyn listan olioita.

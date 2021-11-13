@@ -4,7 +4,7 @@
 
 Yleinen ongelma tietokoneohjelmistoja tehtäessä on, että ohjelmoijat tuntevat ohjelmiston erikoisalan heikosti. Esimerkiksi kiinteistötekniikkaa, kirjastokortistoa tai tämän työn tapauksessa terapiaklinikan toimintaa hoitavan ohjelmiston kehittäjä joutuu käsittelemään monimutkaisia, sovellusalaan sidottuja ongelmia. Näiden alojen asiantuntijat puolestaan tietävät, miten sovellusalan ongelmat ratkaistaan, mutta heiltä puuttuu taito suunnitella ohjelmistoja.
 
-Tämän ongelman ylittäminen on aihe, jota Eric Evans käsittelee kirjassaan Domain Driven Design.\cite{evans:ddd} Evansin mielestä jokaisen monimutkaisemman ohjelmiston sisässä on \gls{domainmodel} (Domain model), eli malli siitä, miten kyseinen ohjelmisto ratkaisee sovellusalan ongelmat. Malli voi kuitenkin olla piilossa ohjelmakoodin sisällä, ja saattaa olla, etteivät ohjelmiston kehittäjät edes tiedosta mallin olemassaoloa. Tämän mallin tuominen näkyväksi on sovellusaluevetoisen suunnittelun päätavoite.
+Tämän ongelman ylittäminen on aihe, jota Eric Evans käsittelee kirjassaan Domain Driven Design\cite{evans:ddd}. Evansin mielestä jokaisen monimutkaisemman ohjelmiston sisässä on \gls{domainmodel} (Domain model), eli malli siitä, miten kyseinen ohjelmisto ratkaisee sovellusalan ongelmat. Malli voi kuitenkin olla piilossa ohjelmakoodin sisällä, ja saattaa olla, etteivät ohjelmiston kehittäjät edes tiedosta mallin olemassaoloa. Tämän mallin tuominen näkyväksi on sovellusaluevetoisen suunnittelun päätavoite.
 
 \Gls{crunching} (Knowledge crunching) on keskeinen väline sovellusaluemallin rakentamiseen. Evans kuvaa prosessin, jossa kehittäjät luonnostelevat yhdessä sovellusalueen asiantuntijoiden kanssa \glsdisp{domainmodel}{sovellusaluemallin}. Tämä prosessi on tyypillisesti kehittäjien vetämä, ja se koostaa yhteen informaatiota monenlaisista lähteistä: sovellusalueen asiantuntijoilta, järjestelmän käyttäjiltä, ohjelmoijien aiemmasta kokemuksesta jne. 
 
@@ -18,7 +18,7 @@ Evans painottaa, että kaikenkattavaan kieleen tehtävä muutos muuttaa myös \g
 
 Koodina kuvattu \glsentryname{domainmodel} tulee myös eriyttää ohjelmassa omaksi arkkitehtuuriseksi tasokseen. Onnistuneesti erotettu sovellusalakohtainen logiikka muodostaa sovelluksen \glslink{domainlayer}{liiketoimintalogiikan tason} (Domain layer).
 
-### \glsdisp{ddd}{sovellusaluevetoisen suunnittelun} rakennuspalikat
+### \glsdisp{ddd}{Sovellusaluevetoisen suunnittelun} rakennuspalikat
 
 Koska Evansin lähtökohta on, että \glsentryname{domainmodel} ilmaistaan nimenomaan ohjelmakoodin kautta, tarvitaan joukko käytännön työkaluja, joiden avulla \glsentryname{domainmodel} on mahdollista toteuttaa teknisesti. Käyn seuraavaksi läpi muutamia keskeisimpiä.
 
@@ -65,7 +65,7 @@ Esimerkiksi laskut on mahdollista hakea laskurepositoriosta, johon on toteutettu
 
 Esitetty repositorio tallentaa tiedon vain olion sisään, mutta metodit voisivat yhtä hyvin sisältää esimerkiksi SQL-kutsuja, tai jonkin ORM-järjestelmän käyttökutsuja.
 
-## Mallin hiominen refaktoroimalla
+### Mallin hiominen refaktoroimalla
 
 Refaktoroinnilla tarkoitetaan koodin rakenteen muuttamista niin, että koodin tuottama tulos ei muutu. Refaktoroimalla voi siistiä koodia ja tehdä siitä luettavampaa.
 

@@ -6,7 +6,7 @@ Pitkäikäinen, jatkuvasti kehitetty ohjelma mutkistuu herkästi. Jos kehitystii
 ei pidä varaansa, alun perin yksinkertaisesta ja selkeästä ohjelmakoodista ja suoraviivaisesta tietorakenteesta kasvaa hankalasti hallittava kokonaisuus.
 
 Sotkuiseenkin ohjelmistoon voi kuitenkin saada selvyyttä taitavalla kohentelulla
-ja kehittämisellä. Kun toimintoja alkaa jakaa osiin, ja rakentaa osien välille
+ja kehittämisellä. Kun toimintoja alkaa jakaa osiin ja rakentaa osien välille
 selkeitä nivelkohtia, avautuu mahdollisuus tehdä hedelmällisiä parannuksia.
 
 Web-sovelluksessa eräs merkittävimpiä nivelkohtia on sovelluksen käyttöliittymän
