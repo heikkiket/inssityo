@@ -10,6 +10,6 @@ Koska GraphQL-rajapinta määritellään \glsdisp{dsl}{täsmäkielen} avulla, ma
 
 Projektin aikana löysin kohteeksi valitun laskutuksen ongelman ratkaisevan tietomallin, ja luonnostelin *notkean tietomallin parantelun* periaatteet. Pääperiaate on, että **sanat, kaaviot ja koodi** ovat kolme tapaa kommunikoida tietomallista kehittäjien ja liiketoimintaihmisten välillä.
 
-ietomallin toteuttaminen olemassaolevassa ohjelmistossa oli rajattu jo alunperinkin tämän projektin ulkopuolelle, ja se vaatisi vielä lisätyötä ja suunnittelua. Syntynyttä GraphQL-rajapintaskeemaa olisi mahdollista käyttää jatkotyön pohjana, ja näin parantaa myös vanhan ohjelmiston sisäistä logiikkaa.
+Tietomallin toteuttaminen olemassaolevassa ohjelmistossa oli rajattu jo alunperinkin tämän projektin ulkopuolelle, ja se vaatisi vielä lisätyötä ja suunnittelua. Syntynyttä GraphQL-rajapintaskeemaa olisi mahdollista käyttää jatkotyön pohjana, ja näin parantaa myös vanhan ohjelmiston sisäistä logiikkaa.
 
 GraphQL-kieli on pohjimmiltaan melko yksinkertainen, mutta joitain sen ominaisuuksia jäi tässä kartoittamatta. Esimerkiksi kielen tarjoamat Input Typet, jotka mahdollistavat tallennettavan datan esittämisen olioverkkona rajapintakyselyssä, sekä Union Typet, jotka tarjoavat tuen polymorfismille, jäivät tässä vaiheessa kartoittamatta. Jatkokysymykseksi siis jää, miten nämä monimutkaisemmat ominaisuudet niveltyvät yhteen \glsdisp{ddd}{sovellusaluevetoisen suunnittelun} kanssa.

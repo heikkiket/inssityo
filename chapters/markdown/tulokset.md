@@ -12,11 +12,11 @@ Laskujen sisältöjä voi tarkastella, ja ohjelma laskee laskujen avoimet summat
 
 ![\label{rakkine_dividing}Esimerkki käynnin jakamisesta usealle maksajalle](illustration/screenshots/Dividing.png)
 
-Lisäksi käyttöliittymästä voi valita maksajan luotavalle laskulle. Mikäli maksajia valitaan useampia, ohjelma jakaa käynnit kahdelle eri maksajalle. Tämä on esitetty kuvassa \ref{rakkine_dividing}
+Lisäksi käyttöliittymästä voi valita maksajan luotavalle laskulle. Mikäli maksajia valitaan useampia, ohjelma jakaa käynnit kahdelle eri maksajalle. Tämä on esitetty kuvassa \ref{rakkine_dividing}.
 
 ![\label{rakkine_list-view}Ohjelman listanäkymä](illustration/screenshots/List-view.png)
 
-Erillisessä listanäkymässä (Kuva \ref{rakkine_list-view}) voi tarkastella luotujen käyntien tilaa sekä laskutettavan myynnin tilaa. Ohjelma näyttää, onko käynti laskutettu vai laskuttamaton. Myynnin osalta ohjelma näyttää, miten myynti jakautuu eri maksajille, ja onko summa avoin, laskutettu vai hyvitetty.
+Erillisessä listanäkymässä (kuva \ref{rakkine_list-view}) voi tarkastella luotujen käyntien tilaa sekä laskutettavan myynnin tilaa. Ohjelma näyttää, onko käynti laskutettu vai laskuttamaton. Myynnin osalta ohjelma näyttää, miten myynti jakautuu eri maksajille, ja onko summa avoin, laskutettu vai hyvitetty.
 
 
 ![\label{rakkine_credited}Ohjelma näyttää, että yksittäinen laskurivi on hyvitetty](illustration/screenshots/credited.png)
@@ -37,8 +37,8 @@ Prototyypissä emme ottaneet kantaa, millä perusteella käynnin hinnan osittami
 
 ![\label{finalidea1}Idea 1](illustration/final-idea-1.jpg)
 
-Kaksi pientä ideaa ovat molemmat käyttökelpoisia erillään mallista. Ensimmäinen niistä on myynnin, myyntirivin ja hyvitysrivin välinen tiivis yhteysketju. Tämä idea (kuva \ref{finalidea1})mahdollistaa hyvin yksinkertaisen ja joustavan myynnin laskutus- ja hyvityslogiikan.
+Kaksi pientä ideaa ovat molemmat käyttökelpoisia erillään mallista. Ensimmäinen niistä on myynnin, myyntirivin ja hyvitysrivin välinen tiivis yhteysketju. Tämä idea (kuva \ref{finalidea1}) mahdollistaa hyvin yksinkertaisen ja joustavan myynnin laskutus- ja hyvityslogiikan.
 
 ![\label{finalidea2}Idea 2](illustration/final-idea-2.jpg)
 
-Toinen pieni idea on, että käynti kannattaisi erottaa selkeästi laskulle tulevasta myynnistä. Tällöin on mahdollista myös esimerkiksi vaihtaa myöhemmin maksajaa, jolta käynti laskutetaan, ilman että jo muodostettuihin laskuihin tarvitsee kajota. Tämä ajatus on esitetty kuvassa \ref{finalidea2}.
+Toinen pieni idea on, että käynti kannattaisi erottaa selkeästi laskulle tulevasta myynnistä. Tällöin on mahdollista myös esimerkiksi vaihtaa myöhemmin maksajaa, jolta käynti laskutetaan ilman, että jo muodostettuihin laskuihin tarvitsee kajota. Tämä ajatus on esitetty kuvassa \ref{finalidea2}.

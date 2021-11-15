@@ -1,20 +1,18 @@
 # Työn kulku
 
-Yrityksessä haluttiin valita laskutuksen sisältä tapaus, jossa hoitokäynti tulee voida jakaa usealle eri maksajalle osoitetuille laskuille, ja nämä laskut tulee voida hyvittää itsenäisesti.
-
-Mallintamisen aiheeksi valittu laskutus oli aihealueena minulle tuntematon, ja yksi prosessin haasteita olikin, pystynkö muutamassa viikossa omaksumaan riittävästi laskutuksen käsitteitä toimivan mallin aikaansaamiseksi.
+Yrityksessä haluttiin valita laskutuksen sisältä tapaus, jossa hoitokäynti tulee voida jakaa usealle eri maksajalle osoitetuille laskuille, ja nämä laskut tulee voida hyvittää itsenäisesti. Mallintamisen aiheeksi valittu laskutus oli aihealueena minulle tuntematon, ja yksi prosessin haasteita olikin, pystynkö muutamassa viikossa omaksumaan riittävästi laskutuksen käsitteitä toimivan mallin aikaansaamiseksi.
 
 ## Laskutuksen taustaa
 
-Ohjelmistoa käyttävä terapeutti kirjaa järjestelmään hoitokäyntejä ja laskuttaa niitä. Monesti samalle maksajalle - etenkin, jos tämä ei ole yksityishenkilö vaan instituutio - kertyy monta eri laskua, jotka lähetetään yhtenä joukkona esimerkiksi kerran kuukaudessa. Tätä kutsutaan koontilaskuksi.
+Ohjelmistoa käyttävä terapeutti kirjaa järjestelmään hoitokäyntejä ja laskuttaa niitä. Monesti samalle maksajalle — etenkin, jos tämä ei ole yksityishenkilö vaan instituutio — kertyy monta eri laskua, jotka lähetetään yhtenä joukkona esimerkiksi kerran kuukaudessa. Tätä kutsutaan koontilaskuksi.
 
-Toisinaan jo luodussa laskussa huomataan virhe. Kirjanpidon periaatteiden mukaan laskuja ei kuitenkaan saa tuhota, vaan virheellinen lasku on oikaistava tai kumottava. Tässä ohjelmistoprototyypissä oletetaan, että kyse on aina virheellisesti laskutetusta käynnistä, jota maksaja kieltäytyy maksamasta, ja joka pitää kumota. Tämä tapahtuu luomalla hyvityslasku.
+Toisinaan jo luodussa laskussa huomataan virhe. Kirjanpidon periaatteiden mukaan laskuja ei kuitenkaan saa tuhota, vaan virheellinen lasku on oikaistava tai kumottava. Tässä ohjelmistoprototyypissä oletetaan, että kyse on aina virheellisesti laskutetusta käynnistä, jota maksaja kieltäytyy maksamasta ja joka pitää kumota. Tämä tapahtuu luomalla hyvityslasku.
 
 Hyvityslasku on voitava luoda siten, että yksittäisellä laskulla oleva yksittäinen rivi voidaan kumota, muun laskun (ja sen sisältävän koontilaskun) säilyessä avoimena.
 
 ## Työskentelytavat
 
-Päätin tehdä työn lyhyissä iteraatioissa, ketterän kehityksen periaatteita seuraten. Tämä tyyli soveltuu hyvin yhteen tietomallin kehittämisen kanssa, sillä Evansin kirjassa kuvattu työtapa on samankaltainen. Lisäksi lyhyet iteraatiot ovat nykyään tyypillinen tapa tehdä ohjelmistoa.\cite{ConsultancyEu2020May}\cite{AgileIteration} En asettanut iteraatioille mitään ennalta määrättyä kestoa.
+Päätin tehdä työn lyhyissä iteraatioissa ketterän kehityksen periaatteita seuraten. Tämä tyyli soveltuu hyvin yhteen tietomallin kehittämisen kanssa, sillä Evansin kirjassa kuvattu työtapa on samankaltainen. Lisäksi lyhyet iteraatiot ovat nykyään tyypillinen tapa tehdä ohjelmistoa.\cites{ConsultancyEu2020May}{AgileIteration} En asettanut iteraatioille mitään ennalta määrättyä kestoa.
 
 Sovellusaluevetoisessa suunnittelussa oleellista on ohjelmoijan ja sovellusalueen asiantuntijan välinen kommunikaatio. Asetin siis tiimimme tuoteomistaja Lauran sovellusalueen asiantuntijan rooliin, ja käytin häntä kuvitteellisen asiakkaan edustajana. Tämä rooli sopi Lauralle erinomaisesti johtuen hänen työkokemuksestaan fysioterapeuttina ja yritäjänä.
 
@@ -28,11 +26,11 @@ Pyrin noudattamaan työskentelyssä Eric Evansin esittämää tiedon rouhimisen 
 
 Kirjoitin esimerkkiohjelmiston tyypilliseksi web-sovellukseksi, jossa palvelinohjelmisto ja selaimessa toimiva asiakasohjelma kommunikoivat keskenään HTTP-pyyntöjen avulla. Valitsin palvelinohjelmiston kehityskieleksi Python-kielen, koska sitä käytetään Nordhealthilla muutenkin. Python on myös syntaksiltaan suoraviivainen ja tässä mielessä helppokäyttöinen, prototyyppien rakentamiseen soveltuva kieli.
 
-Pythonin kanssa käytettäväksi HTTP-kirjastoksi valitsin Falcon-kirjaston\cite{FalconPython} puhtaasti sen yksinkertaisuuden vuoksi. Muita vaihtoehtoja olivat Django ja Flask\cite{FlaskPython}, mutta molemmat niistä sisälsivät paljon toimintoja, joita ei tässä projektissa tarvittu. Niissä on mukana esimerkiksi tuki sivupohjille, jota rajapintaa kehitettäessä ei tarvita. Ohjelmaan tarvittiin tuki vain yhdelle HTTP-resurssille, joka vastaa pyyntöihin JSON-muotoisella dokumentilla. GraphQL-kirjastoista harkitsin Ariadne\cite{AriadnePython}- ja Graphene\cite{GraphenePython} -kirjastojen välillä. Valitsin Ariadnen, koska se on tarkoitettu skeema edellä tapahtuvaan kehitystyöhön.
+Pythonin kanssa käytettäväksi HTTP-kirjastoksi valitsin Falcon-kirjaston \cite{FalconPython} puhtaasti sen yksinkertaisuuden vuoksi. Muita vaihtoehtoja olivat Django ja Flask \cite{FlaskPython}, mutta molemmat niistä sisälsivät paljon toimintoja, joita ei tässä projektissa tarvittu. Niissä on mukana esimerkiksi tuki sivupohjille, jota rajapintaa kehitettäessä ei tarvita. Ohjelmaan tarvittiin tuki vain yhdelle HTTP-resurssille, joka vastaa pyyntöihin JSON-muotoisella dokumentilla. GraphQL-kirjastoista harkitsin Ariadne \cite{AriadnePython}- ja Graphene \cite{GraphenePython} -kirjastojen välillä. Valitsin Ariadnen, koska se on tarkoitettu skeema edellä tapahtuvaan kehitystyöhön.
 
 Yksikkötestijärjestelmänä käytin Pytest-kirjastoa. Tietokantaa sovellukselle ei tarvittu, vaan rakenteet voidaan tallentaa muistiin ajonaikaisesti. Tämä helpottaa myös ohjelmiston tietorakenteen refaktorointeja, sillä tietokantaa ei ole tarve muokata tai luoda uudelleen ohjelmiston mallin muuttuessa.
 
-Asiakassovelluksen kirjoitin Vue.js -JavaScript-kirjastoa käyttäen, koska se on Nordhealthilla käytössä jo ennestään. GraphQL-rajapinnan kanssa kommunikoimiseen käytin Apollo-kirjastoa, ja sen Vueen integroivaa Vue Apollo -kirjastoa.
+Asiakassovelluksen kirjoitin Vue.js-JavaScript-kirjastoa käyttäen, koska se on Nordhealthilla käytössä jo ennestään. GraphQL-rajapinnan kanssa kommunikoimiseen käytin Apollo-kirjastoa, ja sen Vueen integroivaa Vue Apollo -kirjastoa.
 
 ## Kuvaus prosessin etenemisestä iteraatio iteraatiolta
 
@@ -76,7 +74,7 @@ Perjantaihin tultaessa olin refaktoroinut prototyyppiohjelmaa ja sen jälkeen k�
 
 ![\label{finalmodel1} Kuva, jossa käyntiin kytkeytyy palvelurivi ja palveluriviin hyvitysrivi](illustration/final-idea-1.jpg) 
 
-Yllättäen perjantaina puolen päivän jälkeen kaikki yksikkötestit menivät läpi, käyttäjätarina valmistui, ja ohjelmistoprototyypin toiminnassa tuntui tapahtuvan laadullinen hyppäys. Vaikutti, kuin prototyyppiohjelma olisi oppinut itsekseen jotain laskutuksesta. Ohjelman logiikka toimi paremmin kuin mitä itse ymmärsin laskutuksesta.
+Yllättäen perjantaina puolen päivän jälkeen kaikki yksikkötestit menivät läpi, käyttäjätarina valmistui, ja ohjelmistoprototyypin toiminnassa tuntui tapahtuvan laadullinen hyppäys. Vaikutti kuin prototyyppiohjelma olisi oppinut itsekseen jotain laskutuksesta. Ohjelman logiikka toimi paremmin kuin mitä itse ymmärsin laskutuksesta.
 
 Loppujen kahden käyttäjätarinan toteuttaminen onnistui kahdessa tunnissa, ja vaati vain joitain rivejä koodia. \Glsentryname{domainmodel} oli syventynyt.
 
@@ -86,7 +84,7 @@ Ohjelmoidessa syntynyt tietomalli sisälsi samat asiat, joista kokouksessa oli p
 
 Kolmannen iteraation aluksi pidimme jälleen suunnittelukokouksen. Tämän tapaamisen keskeisimpänä ongelmana oli, miten jo kertaalleen laskutettu ja hyvitetty käynti voidaan laskuttaa uudelleen.
 
-Yritimme piirtää monenlaisia erilaisia malleja ja diagrammeja, mutta mikään niistä ei tuntunut osuvalta. Tämä tapaaminen oli tunnelmaltaan kaikista tapaamisista jähmein. Kun kommunikaatio ei sujunut, myöskin malli kehittyi kehnosti.
+Yritimme piirtää monenlaisia erilaisia malleja ja diagrammeja, mutta mikään niistä ei tuntunut osuvalta. Tämä tapaaminen oli tunnelmaltaan kaikista tapaamisista jähmein. Kun kommunikaatio ei sujunut, myös malli kehittyi kehnosti.
 
 Laadimme tapaamisen lopuksi kuitenkin joukon käyttäjätarinoita, jotka tähtäsivät tavoitteeseemme, hyvitetyn käynnin uudelleenlaskuttamiseen.
 
@@ -104,7 +102,7 @@ Neljännen tapaamisen keskeinen ongelma oli, että käynti tuntui olevan edellee
 
 Vaikutti siltä, että käynnin ja laskun välistä puuttui edelleen jokin käsite. Olin keskustellut aiemmin viikolla laskutuksen kanssa työskennelleen tiimikaverini kanssa, ja hän kiinnitti huomiota siihen, että laskuille laitettiin "palvelurivejä". Hän oli itse käyttänyt omissa malleissaan "myyntiä".
 
-Nyt muistin tämän keskustelun, ja ehdotin sen pohjalta, että laskutuksessa ei käsiteltäisikään suoraan käyntejä vaan palvelumyyntiä. Laura totesi, että kaikki laskuille laitettava on lopulta myyntiä — ikäänkuin se olisi ollut itsestäänselvyys! Ohjelmoijalle tämä oivallus oli kuitenkin uusi tieto, ja se avasi täysin uuden näkökulman laskutukseen.
+Nyt muistin tämän keskustelun ja ehdotin sen pohjalta, että laskutuksessa ei käsiteltäisikään suoraan käyntejä vaan palvelumyyntiä. Laura totesi, että kaikki laskuille laitettava on lopulta myyntiä — ikäänkuin se olisi ollut itsestäänselvyys! Ohjelmoijalle tämä oivallus oli kuitenkin uusi tieto, ja se avasi täysin uuden näkökulman laskutukseen.
 
 ![\label{malli3}Kolmas malli](illustration/malli4.jpg)
 
@@ -116,7 +114,7 @@ Uusien ominaisuuksien toteuttaminen refaktoroinnin jälkeen oli huomattavan suor
 
 ## Huomioita prosessista
 
-Pienen prototyyppiohjelman kehittäminen oli valtavan hyödyllistä, ja se tuotti tukun tärkeitä oivalluksia siitä, miten sovellusaluevetoista suunnittelua tehdään, ja mikä on GraphQL:n merkitys prosessissa.
+Pienen prototyyppiohjelman kehittäminen oli valtavan hyödyllistä, ja se tuotti tukun tärkeitä oivalluksia siitä, miten sovellusaluevetoista suunnittelua tehdään ja mikä on GraphQL:n merkitys prosessissa.
 
 Mallia kehittäessä vaadittujen voimakkaiden refaktorointijaksojen määrä yllätti. Ennalta kirjallisuudesta luettuna ei refaktoroinnin määrää ollut helppo hahmottaa. Omakohtainen tekeminen paljasti, miten oleellinen osa \glslink{ddd}{Sovellusaluevetoista suunnittelua} refaktorointien tekeminen on.
 
@@ -124,7 +122,7 @@ Refaktoroiminen ei ole tässä tyylissä pelkästään tekninen keino pitää ko
 
 Toinen keskeinen keino kaikenkattavan kielen kehittämiseen tässä prosessissa oli suunnittelutapaamistemme kielen tarkka seuraaminen. Pyrin nappaamaan Lauran kanssa käydyistä keskusteluista termejä, joita käytimme, ja etenkin termejä, joita Laura käytti.
 
-Eric Evans mainitsee, että \glsdisp{ubilang}{kaikenkattavan kielen} rakentamisessa oleellista on löytää sanat, joita alan asiantuntijat käyttävät. Etenkin puuttuvien käsitteiden tunnistaminen puheen seasta auttaa paljon mallin parantamisessa.\cite{evans:ddd}
+Eric Evans mainitsee, että \glsdisp{ubilang}{kaikenkattavan kielen} rakentamisessa oleellista on löytää sanat, joita alan asiantuntijat käyttävät. Etenkin puuttuvien käsitteiden tunnistaminen puheen seasta auttaa paljon mallin parantamisessa. \cite{evans:ddd}
 
 ## \glsdisp{ddd}{Sovellusaluevetoisen suunnittelun} käsitteiden hyödyntäminen
 Käytin tietomallin koodia rakentaessani apuna Evansin esittelemiä käsitteitä. Useat käsitteet, kuten käynnit ja laskut, kuvasin \glslink{entity}{yksilötyyppeinä}. Käsitteistä koostuvat kokonaisuudet ovat \glsdisp{aggregate}{aggregaatti}-rakenteissa. Esimerkiksi laskun sisältämät laskurivit tai myynnin sisältämät myyntiosuudet.

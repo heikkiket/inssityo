@@ -34,22 +34,22 @@ suunnittelun ja ohjelmistokehityksen välillä. Varhaiset
 prototyyppiversiot ohjelmistosta toimivat jatkosuunnittelun
 materiaalina. Kun prosessia jatketaan, malli muuttuu ja syvenee. Evansin
 mukaan tämä on seurausta siitä, että ohjelmoijien ymmärrys
-sovellusalueesta syvenee.\cite{evans:ddd}
+sovellusalueesta syvenee. \cite{evans:ddd}
 
 Tavoitteena on, että ohjelmistokehittäjien ja alan asiantuntijoiden
 välille rakentuu \gls{ubilang}, jonka avulla kaikkien on mahdollista
 yhteisesti keskustella ohjelmiston toiminnasta ja kehitystarpeista.
-\gls{ubilang} yhdistää ja yhdenmukaistaa myös ohjelmiston eri osien
+\Gls{ubilang} yhdistää ja yhdenmukaistaa myös ohjelmiston eri osien
 parissa toimivien kehittäjien kielenkäyttöä.
 
 Kaikenkattavan kielen käsitteitä ovat luokkien nimet ja ohjelmiston
 keskeiset operaatiot. Se myös sisältää käsitteet, joilla voidaan kuvata
 käsitteiden käyttöä rajoittavat ja hallinnoivat keskeiset säännöt.
-Kaikenkattavan kielen käsitteet elävät ohjelmakoodissa, ja muodostavat
+Kaikenkattavan kielen käsitteet elävät ohjelmakoodissa ja muodostavat
 koodin ytimessä sijaitsevan \glsentryname{domainmodel}in.
 
 Evans painottaa, että kaikenkattavaan kieleen tehtävä muutos muuttaa
-myös \glsentryname{domainmodel}ia ja ohjelmakoodia.
+myös \glsentryname{domainmodel}a ja ohjelmakoodia.
 
 Koodina kuvattu \glsentryname{domainmodel} tulee myös eriyttää
 ohjelmassa omaksi arkkitehtuuriseksi tasokseen. Onnistuneesti erotettu
@@ -67,8 +67,8 @@ teknisesti. Käyn seuraavaksi läpi muutamia keskeisimpiä.
 
 \Gls{entity} edustaa käytännössä kaikkea, jolla on identiteetti.
 Esimerkiksi kahdella ihmisellä voi olla sama nimi, mutta he ovat silti
-identiteetiltään eri henkilöitä. \glsentryname{entity} voi myös muuttaa
-muotoaan, esimerkiksi ihminen kasvaa aikuiseksi ja vaikkapa vaihtaa
+identiteetiltään eri henkilöitä. \Glsentryname{entity} voi myös muuttaa
+muotoaan. Esimerkiksi ihminen kasvaa aikuiseksi ja vaikkapa vaihtaa
 sukunimensä. Identiteetti säilyy silti. Todella suuri osa
 \glsentryname{domainmodel}{sta} koostuu juuri
 \glsdisp{entity}{yksilötyypeistä}, sillä niitä on suurin osa
@@ -141,7 +141,7 @@ Mielenkiintoinen käsite Evansilla on \gls{repository}. Se edustaa
 projektissa tiedon tallennuspaikkaa, kuten vaikka tietokantaa. Ajatus
 on, että \glsdisp{domainmodel}{sovellusaluemallin} tasolla ei esitetä
 konkreettista tiedontallennustoteutusta, vaan ainoastaan abstrakti
-tietovarasto , \emph{repositorio}. Tähän repositorioon on mahdollista
+tietovarasto, \emph{repositorio}. Tähän repositorioon on mahdollista
 kohdistaa erilaisia hakuja sekä muokkausoperaatioita, ja repositorio
 palauttaa käytettäväksi kokoelman olioita, jotka edustavat
 \glsdisp{domainmodel}{sovellusaluemallin} käsitteitä.
@@ -171,7 +171,7 @@ repositorioluokan laskujen hakemiseksi.
 
 Esitetty repositorio tallentaa tiedon vain olion sisään, mutta metodit
 voisivat yhtä hyvin sisältää esimerkiksi SQL-kutsuja, tai jonkin
-ORM-järjestelmän käyttökutsuja.
+\gls{orm}-järjestelmän käyttökutsuja.
 
 \hypertarget{mallin-hiominen-refaktoroimalla}{%
 \subsection{Mallin hiominen
@@ -194,32 +194,32 @@ kirjoittamista, koodin keskinäiset kytkökset muodostuvat löyhiksi.
 Testien suoritustiheys on myös oleellista. Parhaisiin tuloksiin päästään
 jatkuvalla testaamisella. Se on menetelmä, jossa testityökalu tarkkailee
 lähdekooditiedostojen muutoksia, ja suorittaa testipatteriston uudelleen
-joka kerta, kun koodiin tulee muutoksia. \cite[luku 6]{beck2004extreme}
+joka kerta, kun koodiin tulee muutoksia. \cite[luku 6.]{beck2004extreme}
 
 Kattavasti yksikkötestattua koodia on myös helppo muunnella. Sen
-rakenteeseen ja toimintaan voi tehdä suuriakin muutoksia, ilman että
+rakenteeseen ja toimintaan voi tehdä suuriakin muutoksia ilman, että
 tarvitsee pelätä takaiskuja. Tämä edellyttää, että testit ovat siistejä
-ja vähäeleisiä, ja kirjoitettu samalla tarkkuudella kuin tuotantokoodi.
+ja vähäeleisiä ja kirjoitettu samalla tarkkuudella kuin tuotantokoodi.
 Paras metodi tähän tulokseen pääsemiseksi on kirjoittaa testejä ja
 tuotantokoodia rinnakkain rivi riviltä. Ohjenuorana voi käyttää ns.
 testipohjaisen kehittämisen kolmea sääntöä. Ne ovat: 1. Tuotantokoodia
-ei saa kirjoittaa, ennenkuin on kirjoittanut epäonnistuvan yksikkötestin
-2. Yksikkötestiä saa kirjoittaa vain sen verran kuin vaaditaan sen
-epäonnistumiseen. Kääntäjän tai tulkin raportoima virhe lasketaan
-epäonnistumiseksi. 3. Tuotantokoodia saa kirjoittaa vain sen verran,
-että yksikkötesti menee läpi.\cite[luku 9]{martin2008clean}
+ei saa kirjoittaa, ennen kuin on kirjoittanut epäonnistuvan
+yksikkötestin 2. Yksikkötestiä saa kirjoittaa vain sen verran kuin
+vaaditaan sen epäonnistumiseen. Kääntäjän tai tulkin raportoima virhe
+lasketaan epäonnistumiseksi. 3. Tuotantokoodia saa kirjoittaa vain sen
+verran, että yksikkötesti menee läpi.\cite[luku 9.]{martin2008clean}
 
 Joustavan järjestelmän suunnittelussa on myös hyvä seurata nk.
-YAGNI-periaatetta\footnote{``You Aren't Gonna Need It.'' suom. ``Et sinä
-  sitä tarvitse.''}. Kyseinen periaate edellyttää, että vain sellainen
-koodi kirjoitetaan, jolle on tarvetta. Luokkiin tai moduuleihin ei
-lisätä metodeita eikä toimintoja varmuuden varalta. \cite{jeffries1998}
+YAGNI-periaatetta.(``You Aren't Gonna Need It.'' suom. ``Et sinä sitä
+tarvitse.'') Kyseinen periaate edellyttää, että vain sellainen koodi
+kirjoitetaan, jolle on tarvetta. Luokkiin tai moduuleihin ei lisätä
+metodeita eikä toimintoja varmuuden varalta. \cite{jeffries1998}
 
 Evans toteaa, että joustava rakenne on monesti seurausta siitä, että
 \gls{domainmodel} kehittyy paremmaksi. Joustava ohjelmisto ei ole
 monimutkainen, eikä se piilota toiminnallisuuksiaan outojen rajapintojen
 taakse. Joustava ohjelmisto koostuu mahdollisimman pienestä määrästä
-löyhästi toisiinsa kytkeytyviä käsitteitä.\cite[luku 10]{evans:ddd}
+löyhästi toisiinsa kytkeytyviä käsitteitä.\cite[luku 10.]{evans:ddd}
 
 \hypertarget{graphql-teknologian-kuvaus}{%
 \section{GraphQL-teknologian kuvaus}\label{graphql-teknologian-kuvaus}}
@@ -236,8 +236,8 @@ mutta siihen liittyy myös eräitä ongelmia. Mikäli REST-tyyppisestä
 rajapinnasta halutaan hakea usean eri resurssin verkko, joudutaan
 tekemään erillinen pyyntö jokaista resurssia kohti. Toisissa tapauksissa
 taas halutaan vain osa resurssin esittämästä tiedosta, mutta joudutaan
-silti hakemaan koko
-resurssi.\cite{betterRESTPrisma}\cite{WhyUseGraphQLApollo}
+silti hakemaan koko resurssi.
+\cites{betterRESTPrisma}{WhyUseGraphQLApollo}
 
 \gls{graphql} on Facebookin kehittämä kyselykieli, jolla
 edellämainittuja ongelmia pyritään ratkaisemaan. Sen alkuperäinen
@@ -248,8 +248,8 @@ datan olioiden keskinäisenä verkkona. \cite{graphql:spec}
 GraphQL on vielä suhteellisen uusi teknologia, eikä siitä löydy kovin
 paljoa materiaalia. Keskeinen tiedonlähde ovat
 Facebookin\cite{graphql:spec} ja GraphQL-säätiön\cite{GraphQLOrg}
-julkaisemat verkkomateriaalit, sekä Apollo Graph -yrityksen
-GraphQL-teknologiaa käsittelevä materiaali.\cite{ApolloGraphQL}
+julkaisemat verkkomateriaalit sekä Apollo Graph -yrityksen
+GraphQL-teknologiaa käsittelevä materiaali. \cite{ApolloGraphQL}
 
 GraphQL koostuu kahdesta osasta: kyselykielestä sekä
 tyyppijärjestelmästä. Kyselykielellä muotoillaan pyyntö, johon
@@ -260,22 +260,21 @@ GraphQL ei ole varsinainen rajapinta, sillä palvelun
 toteuttamisteknologia on määrittelyn ulkopuolella. Useimmiten
 GraphQL-palvelut on toteutettu \gls{http}-teknologian päälle, mutta
 muitakin, kuten WebSocketia, voi käytttää. GraphQL ei myöskään
-määrittele, miten kyselyn vastaus tulee muodostaa, tai milllä
+määrittele, miten kyselyn vastaus tulee muodostaa tai millä
 ohjelmointikielellä järjestelmä tulee toteuttaa.
 
 Aivan täysin kielineutraali GraphQL ei silti ole. Osa konventioista on
-JavaScript-konventioita. Esimerkiksi kentän- ja muuttujien nimet on
+JavaScript-konventioita. Esimerkiksi kenttien ja muuttujien nimet on
 tapana kirjoittaa camelCase- ja PascalCase -muodoissa, eli vaihdellen
 suuria ja pieniä kirjaimia sanan sisällä samoin kuin kyseiset sanat
-tässä virkkeessä on tehty.\cite{GraphQLSchemaBasics}
+tässä virkkeessä on tehty. \cite{GraphQLSchemaBasics}
 
 \hypertarget{verkoista}{%
 \subsection{Verkoista}\label{verkoista}}
 
-GraphQL esittää datan olioiden välisenä verkkona.
-
-\gls{verkko} eli graafi on tietorakenne, joka koostuu N:stä solmusta ja
-niitä yhdistävistä kaarista.\cite{pozrikidis2014introduction} Verkkojen
+GraphQL esittää datan olioiden välisenä verkkona. \Gls{verkko} eli
+graafi on tietorakenne, joka koostuu N:stä solmusta ja niitä
+yhdistävistä kaarista. \cite{pozrikidis2014introduction} Verkkojen
 avulla on mahdollista esittää monenlaisia asioiden välisiä suhteita,
 kuten esimerkiksi reittikartta usean kaupungin välisistä teistä.
 
@@ -324,22 +323,21 @@ tarkistamisen luotettavasti ajon aikana. \cite{Cardelli+Wegner:1985}
 GraphQL-rajapinta koostuu tyypeistä, joita rajapinnalle lähetettävä
 kysely käyttää. Kyselyssä määritetään pyydettävät tyypit ja niiden
 kentät. Rajapinta palauttaa takaisin oliota edustavan joukon kenttiä
-\gls{hakurakenne}-muodossa, eli tietorakenteena, joka koostuu avain-arvo
--pareista. \cite{graphql:spec}
+\gls{hakurakenne}\{assosiaatiotaulun\} muodossa, eli tietorakenteena,
+joka koostuu avain-arvo-pareista. \cite{graphql:spec}
 
 GraphQL:ää käyttävät sovellukset on kuitenkin useimmiten kirjoitettu
 dynaamisesti tyypitetyillä kielillä, jotka eivät sisällä
 tyyppitarkistuksia, tai tarkistukset ovat ajonaikaisia ja vapaaehtoisia.
 Esimerkiksi alkuperäinen GraphQL-referenssi-implementaatio on
-kirjoitettu JavaScriptillä.\cite{graphqlRefImple2021Oct}
+kirjoitettu JavaScriptillä. \cite{graphqlRefImple2021Oct}
 
 Samoin Python-kieli on dynaamisesti tyypitetty, ja olioiden
 tunnistamisessa se käyttää duck-tyypitykseksi kutsuttua menetelmää.
 Duck-tyypityksessä olion tyyppiä ei tarkasteta välttämättä edes
-ajonaikaisesti, vaan oletetaan sen sisältämien jäsenten
-perusteella.\cite{pythonGloss2021Oct} Jos esimerkiksi oliosta löytyvät
-kentät \emph{summa} ja \emph{laskunumero}, oletetaan, että olio on
-lasku.
+ajonaikaisesti, vaan oletetaan sen sisältämien jäsenten perusteella
+\cite{pythonGloss2021Oct}. Jos esimerkiksi oliosta löytyvät kentät
+\emph{summa} ja \emph{laskunumero}, oletetaan, että olio on lasku.
 
 Tässä mielessä voidaan ajatella, että GraphQL on keino tuoda
 ajonaikaisia tyyppitarkistuksia myös dynaamisesti tyypitetyillä kielillä
@@ -388,11 +386,11 @@ type ConsolidatedInvoice {
 GraphQL:n olioverkko kuvataan täsmäkielellä määritellyn skeeman avulla.
 
 \Gls{dsl} on ohjelmointikieltä korkeamman tason kieli, joka on
-suunniteltu jollekin kapealle sovellusalueelle.\cite{landin1966next}
-Esimerkkejä \glsentryname{dsl}istä ovat esimerkiksi UNIX-tyyppisistä
+suunniteltu jollekin kapealle sovellusalueelle \cite{landin1966next}.
+Esimerkkejä \glsentryname{dsl}stä ovat esimerkiksi UNIX-tyyppisistä
 järjestelmistä tutut \emph{sed}- ja \emph{awk}-kielet. Tällaisen kielen
-avulla on mahdollista määritellä monimutkaisiakin asioita
-nopeasti.\cite{Raymond2003} Kieli tarjoaa tavanomaista ohjelmointikieltä
+avulla on mahdollista määritellä monimutkaisiakin asioita nopeasti.
+\cite{Raymond2003} Kieli tarjoaa tavanomaista ohjelmointikieltä
 ilmaisuvoimaisemman ja täsmällisemmän tavan määritellä asioita.
 
 Eräs täsmäkielen kanssa hyödynnettävä suunnittelumalli on kielen
@@ -400,18 +398,17 @@ käyttäminen tietorakenteiden abstraktioon.\cite{Spi00b}
 GraphQL-rajapinnassa on kysymys juuri tästä.
 
 GraphQL-rajapinnan tyypit, niille tehtävät kyselyt ja mutaatiot kuvataan
-skeemassa, GraphQL-kielen avulla. Edellä esitetty ConsolidatedInvoice-
-ja Invoice-olioista koostuva esimerkki on validi GraphQL-skeema. Tämä
+skeemassa GraphQL-kielen avulla. Edellä esitetty ConsolidatedInvoice- ja
+Invoice-olioista koostuva esimerkki on validi GraphQL-skeema. Tämä
 skeemamäärittelyihin käytettävä kieli on riippumaton
-ohjelmointikielestä.
-
-GraphQL-kirjastot eri kielissä lukevat skeeman, tarkistavat sen, ja sen
-jälkeen suorittavat Skeeman avulla ajonaikaisen tyyppitarkistuksen.
+ohjelmointikielestä. GraphQL-kirjastot eri kielissä lukevat skeeman,
+tarkistavat sen, ja sen jälkeen suorittavat Skeeman avulla ajonaikaisen
+tyyppitarkistuksen.
 
 GraphQL-kehityksen tyylejä on useita, ja yksi suosittu tapa on
 kirjoittaa skeema ensiksi. Se tarjoaa suuntaviivat sekä rajapinnan
 tekniselle toteutukselle, että myös graafisen asiakasohjelman
-laatimiselle.\cite{SchemaDriven2017Nov},\cite{SchemaDrivenDesign2021Jul}
+laatimiselle.\cites{SchemaDriven2017Nov}{SchemaDrivenDesign2021Jul}
 
 GraphQL-skeemaa voi siis verrata Eric Evansin esittämään ajatukseen
 \glsdisp{ubilang}{kaikenkattavasta kielestä}. Esimerkiksi GraphQL
@@ -442,11 +439,11 @@ ja osaa käsitellä niitä. Tyypillisesti GraphQL-rajapinnassa on vain yksi
 \texttt{graphql}-niminen resurssi, jolle pyynnöt esitetään. Pyynnöt ovat
 aina POST-tyyppisiä.
 
-HTTP-kerros ottaa pyynnön vastaan, ja lukee sen body-osassa olevan
+HTTP-kerros ottaa pyynnön vastaan ja lukee sen body-osassa olevan
 merkkijonomuotoisen GraphQL-kyselyn. Tämä kysely on tehty
 GraphQL-kyselykielellä. Rajapinta antaa kyselyn GraphQL-kirjastolle.
 
-Kirjasto ottaa kyselyn vastaan, ja tarkistaa sen oikeellisuuden
+Kirjasto ottaa kyselyn vastaan ja tarkistaa sen oikeellisuuden
 GraphQL-skeemaa vasten. Mikäli kysely on muodoltaan oikeanlainen,
 kirjasto ohjaa sen eteenpäin resolvereiksi kutsutuille funktioille.
 Resolver-funktiot eivät ole osa kirjastoa, vaan sovelluksen kehittäjä
@@ -455,7 +452,7 @@ jonka tehtävänä on tuottaa vastaus yksittäiseen GraphQL-kyselyn
 kenttään.
 
 Laskutusta käsittelevässä esimerkissä rajapinnan invoices-kenttää voisi
-vastata \texttt{invoices\_resolver} -niminen funktio.
+vastata \texttt{invoices\_resolver}-niminen funktio.
 
 Resolver-funktioiden kerros on alin kerros, josta GraphQL-palvelu
 tietää. Sen alla oleva ohjelmistologiikka on riippumaton rajapinnan
@@ -478,7 +475,7 @@ voi pyytää.
 
 Kun aiemman koodiesimerkin \ref{listing1} mukaisesti määritellystä
 GraphQL-rajapinnasta halutaan hakea tietoja, tehdään Query-tyypin
-consolidatedInvoices -kenttään kysely, joka kuvaa halutun oliopuun
+consolidatedInvoices-kenttään kysely, joka kuvaa halutun oliopuun
 rakenteen tyyppien avulla. Tätä kuvaa koodiesimerkki \ref{listing2}.
 
 \begin{code}
@@ -559,7 +556,7 @@ perustuva rajapinta, jossa rajapinnan tarjoama tieto on jäsennetty
 olioiksi ja niiden välisiksi suhteiksi.
 
 Voidaan siis esittää kysymys, kuinka hyvin GraphQL-rajapinta soveltuu
-\glsdisp{ddd}{sovellusaluevetoisen suunnittelun} tarpeisiin? On helppo
+\glsdisp{ddd}{sovellusaluevetoisen suunnittelun} tarpeisiin. On helppo
 kuvitella, että olioverkolla on mahdollista heijastaa
 \glsentryname{domainmodel}, ja jopa mallintaa se lähes yksi yhteen.
 Toisaalta GraphQL-rajapinta palauttaa dataa, kun taas olio-ohjelmoinnin
