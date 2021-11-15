@@ -106,7 +106,7 @@ Nyt muistin tämän keskustelun ja ehdotin sen pohjalta, että laskutuksessa ei 
 
 ![\label{malli3}Kolmas malli](illustration/malli4.jpg)
 
-Loimme kokouksessa mallin, jossa käynti muunnetaan myynniksi eli SalesItem-olioksi. Nyt käynneistä ei tarvitse välittää lainkaan laskuja käsiteltäessä. SalesItem puolestaan voidaan jakaa maksajille suunnatuiksi osuuksiksi, SalesShareiksi, ja yksittäisellä laskulla on SalesShareen kytketty SalesRow. Malli on esitetty kuvassa \ref{malli3}
+Loimme kokouksessa mallin, jossa käynti muunnetaan myynniksi eli SalesItem-olioksi. Nyt käynneistä ei tarvitse välittää lainkaan laskuja käsiteltäessä. SalesItem puolestaan voidaan jakaa maksajille suunnatuiksi osuuksiksi, SalesShareiksi, ja yksittäisellä laskulla on maksajan osuuteen kytketty myyntirivi, SalesRow. Malli on esitetty kuvassa \ref{malli3}
 
 Kokouksen jälkeen minua odotti jälleen refaktorointityö, joka oli projektin suurin. Käynnin perinpohjainen irrottaminen koko laskutuslogiikasta ja kahden uuden käsitteen laittaminen näiden väliin vaativat laajan remontin koko ohjelman toimintalogiikkaan.
 
@@ -122,7 +122,7 @@ Refaktoroiminen ei ole tässä tyylissä pelkästään tekninen keino pitää ko
 
 Toinen keskeinen keino kaikenkattavan kielen kehittämiseen tässä prosessissa oli suunnittelutapaamistemme kielen tarkka seuraaminen. Pyrin nappaamaan Lauran kanssa käydyistä keskusteluista termejä, joita käytimme, ja etenkin termejä, joita Laura käytti.
 
-Eric Evans mainitsee, että \glsdisp{ubilang}{kaikenkattavan kielen} rakentamisessa oleellista on löytää sanat, joita alan asiantuntijat käyttävät. Etenkin puuttuvien käsitteiden tunnistaminen puheen seasta auttaa paljon mallin parantamisessa. \cite{evans:ddd}
+Eric Evans mainitsee, että \glsdisp{ubilang}{kaikenkattavan kielen} rakentamisessa oleellista on löytää sanat, joita alan asiantuntijat käyttävät. Etenkin puuttuvien käsitteiden tunnistaminen puheen seasta auttaa paljon mallin parantamisessa. \citep{evans:ddd}
 
 ## \glsdisp{ddd}{Sovellusaluevetoisen suunnittelun} käsitteiden hyödyntäminen
 Käytin tietomallin koodia rakentaessani apuna Evansin esittelemiä käsitteitä. Useat käsitteet, kuten käynnit ja laskut, kuvasin \glslink{entity}{yksilötyyppeinä}. Käsitteistä koostuvat kokonaisuudet ovat \glsdisp{aggregate}{aggregaatti}-rakenteissa. Esimerkiksi laskun sisältämät laskurivit tai myynnin sisältämät myyntiosuudet.

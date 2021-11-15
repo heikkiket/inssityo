@@ -8,21 +8,21 @@ Tämän ongelman ylittäminen on aihe, jota Eric Evans käsittelee kirjassaan Do
 
 \Gls{crunching} (Knowledge crunching) on keskeinen väline sovellusaluemallin rakentamiseen. Evans kuvaa prosessin, jossa kehittäjät luonnostelevat yhdessä sovellusalueen asiantuntijoiden kanssa \glsdisp{domainmodel}{sovellusaluemallin}. Tämä prosessi on tyypillisesti kehittäjien vetämä, ja se koostaa yhteen informaatiota monenlaisista lähteistä: sovellusalueen asiantuntijoilta, järjestelmän käyttäjiltä, ohjelmoijien aiemmasta kokemuksesta jne. 
 
-Malli kytketään tiiviisti yhteen ohjelmakoodin kanssa vuorottelemalla suunnittelun ja ohjelmistokehityksen välillä. Varhaiset prototyyppiversiot ohjelmistosta toimivat jatkosuunnittelun materiaalina. Kun prosessia jatketaan, malli muuttuu ja syvenee. Evansin mukaan tämä on seurausta siitä, että ohjelmoijien ymmärrys sovellusalueesta syvenee. \cite{evans:ddd}
+Malli kytketään tiiviisti yhteen ohjelmakoodin kanssa vuorottelemalla suunnittelun ja ohjelmistokehityksen välillä. Varhaiset prototyyppiversiot ohjelmistosta toimivat jatkosuunnittelun materiaalina. Kun prosessia jatketaan, malli muuttuu ja syvenee. Evansin mukaan tämä on seurausta siitä, että ohjelmoijien ymmärrys sovellusalueesta syvenee. \citep{evans:ddd}
 
 Tavoitteena on, että ohjelmistokehittäjien ja alan asiantuntijoiden välille rakentuu \gls{ubilang}, jonka avulla kaikkien on mahdollista yhteisesti keskustella ohjelmiston toiminnasta ja kehitystarpeista. \Gls{ubilang} yhdistää ja yhdenmukaistaa myös ohjelmiston eri osien parissa toimivien kehittäjien kielenkäyttöä.
 
-Kaikenkattavan kielen käsitteitä ovat luokkien nimet ja ohjelmiston keskeiset operaatiot. Se myös sisältää käsitteet, joilla voidaan kuvata käsitteiden käyttöä rajoittavat ja hallinnoivat keskeiset säännöt. Kaikenkattavan kielen käsitteet elävät ohjelmakoodissa ja muodostavat koodin ytimessä sijaitsevan \glsentryname{domainmodel}in.
+Kaikenkattavan kielen käsitteitä ovat luokkien nimet ja ohjelmiston keskeiset operaatiot. Se myös sisältää käsitteet, joilla voidaan kuvata käsitteiden käyttöä rajoittavat ja hallinnoivat keskeiset säännöt. Kaikenkattavan kielen käsitteet elävät ohjelmakoodissa ja muodostavat koodin ytimessä sijaitsevan \glsentrytext{domainmodel}n.
 
-Evans painottaa, että kaikenkattavaan kieleen tehtävä muutos muuttaa myös \glsentryname{domainmodel}a ja ohjelmakoodia.
+Evans painottaa, että kaikenkattavaan kieleen tehtävä muutos muuttaa myös \glsentrytext{domainmodel}a ja ohjelmakoodia.
 
-Koodina kuvattu \glsentryname{domainmodel} tulee myös eriyttää ohjelmassa omaksi arkkitehtuuriseksi tasokseen. Onnistuneesti erotettu sovellusalakohtainen logiikka muodostaa sovelluksen \glslink{domainlayer}{liiketoimintalogiikan tason} (Domain layer).
+Koodina kuvattu \glsentrytext{domainmodel} tulee myös eriyttää ohjelmassa omaksi arkkitehtuuriseksi tasokseen. Onnistuneesti erotettu sovellusalakohtainen logiikka muodostaa sovelluksen \glslink{domainlayer}{liiketoimintalogiikan tason} (Domain layer).
 
 ### \glsdisp{ddd}{Sovellusaluevetoisen suunnittelun} rakennuspalikat
 
-Koska Evansin lähtökohta on, että \glsentryname{domainmodel} ilmaistaan nimenomaan ohjelmakoodin kautta, tarvitaan joukko käytännön työkaluja, joiden avulla \glsentryname{domainmodel} on mahdollista toteuttaa teknisesti. Käyn seuraavaksi läpi muutamia keskeisimpiä.
+Koska Evansin lähtökohta on, että \glsentrytext{domainmodel} ilmaistaan nimenomaan ohjelmakoodin kautta, tarvitaan joukko käytännön työkaluja, joiden avulla \glsentrytext{domainmodel} on mahdollista toteuttaa teknisesti. Käyn seuraavaksi läpi muutamia keskeisimpiä.
 
-\Gls{entity} edustaa käytännössä kaikkea, jolla on identiteetti. Esimerkiksi kahdella ihmisellä voi olla sama nimi, mutta he ovat silti identiteetiltään eri henkilöitä. \Glsentryname{entity} voi myös muuttaa muotoaan. Esimerkiksi ihminen kasvaa aikuiseksi ja vaikkapa vaihtaa sukunimensä. Identiteetti säilyy silti. Todella suuri osa \glsentryname{domainmodel}{sta} koostuu juuri \glsdisp{entity}{yksilötyypeistä}, sillä niitä on suurin osa kaikenkattavan kielen käsitteistä.
+\Gls{entity} edustaa käytännössä kaikkea, jolla on identiteetti. Esimerkiksi kahdella ihmisellä voi olla sama nimi, mutta he ovat silti identiteetiltään eri henkilöitä. \Glsentryname{entity} voi myös muuttaa muotoaan. Esimerkiksi ihminen kasvaa aikuiseksi ja vaikkapa vaihtaa sukunimensä. Identiteetti säilyy silti. Todella suuri osa \glsentrytext{domainmodel}{sta} koostuu juuri \glsdisp{entity}{yksilötyypeistä}, sillä niitä on suurin osa kaikenkattavan kielen käsitteistä.
 
 Esimerkiksi terapeutin kahdesta eri hoitokäynnistä luomilla laskuilla on identiteetti. Kahdella laskulla voi olla sisällytettynä samat hoitotoimenpiteet ja maksajakin voi olla sama, mutta silti laskut ovat omia erillisiä kokonaisuuksiaan.
 
@@ -63,54 +63,54 @@ Esimerkiksi laskut on mahdollista hakea laskurepositoriosta, johon on toteutettu
   \label{repository}
 \end{code}
 
-Esitetty repositorio tallentaa tiedon vain olion sisään, mutta metodit voisivat yhtä hyvin sisältää esimerkiksi SQL-kutsuja, tai jonkin \gls{orm}-järjestelmän käyttökutsuja.
+Esitetty repositorio tallentaa tiedon vain olion sisään, mutta metodit voisivat yhtä hyvin sisältää esimerkiksi SQL-kutsuja tai jonkin \gls{orm}-järjestelmän käyttökutsuja.
 
 ### Mallin hiominen refaktoroimalla
 
 Refaktoroinnilla tarkoitetaan koodin rakenteen muuttamista niin, että koodin tuottama tulos ei muutu. Refaktoroimalla voi siistiä koodia ja tehdä siitä luettavampaa.
 
-Evansin mukaan hyvä \glsentryname{domainmodel} syntyy hyvin harvoin ilman refaktorointia. Hän ei tarkoita refaktoroinnilla pelkästään koodin teknistä siistimistä, vaan refaktoroinnin motivaationa on tuoda \glsentryname{domainmodel} paremmin näkyviin koodin tasolla. Tämä vaatii joustavasti kirjoitettua koodia, jota on helppo muunnella.\cite[osa 3.]{evans:ddd}
+Evansin mukaan hyvä \glsentrytext{domainmodel} syntyy hyvin harvoin ilman refaktorointia. Hän ei tarkoita refaktoroinnilla pelkästään koodin teknistä siistimistä, vaan refaktoroinnin motivaationa on tuoda \glsentrytext{domainmodel} paremmin näkyviin koodin tasolla. Tämä vaatii joustavasti kirjoitettua koodia, jota on helppo muunnella.\cite[osa 3.]{evans:ddd}
 
 Keskeinen keino joustavan koodin tuottamiseksi ovat edeltäkäsin kirjoitettavat yksikkötestit. Kun testi laaditaan ennen koodin kirjoittamista, koodin keskinäiset kytkökset muodostuvat löyhiksi. Testien suoritustiheys on myös oleellista. Parhaisiin tuloksiin päästään jatkuvalla testaamisella. Se on menetelmä, jossa testityökalu tarkkailee lähdekooditiedostojen muutoksia, ja suorittaa testipatteriston uudelleen joka kerta, kun koodiin tulee muutoksia. \cite[luku 6.]{beck2004extreme}
 
 Kattavasti yksikkötestattua koodia on myös helppo muunnella. Sen rakenteeseen ja toimintaan voi tehdä suuriakin muutoksia ilman, että tarvitsee pelätä takaiskuja. Tämä edellyttää, että testit ovat siistejä ja vähäeleisiä ja kirjoitettu samalla tarkkuudella kuin tuotantokoodi. Paras metodi tähän tulokseen pääsemiseksi on kirjoittaa testejä ja tuotantokoodia rinnakkain rivi riviltä. Ohjenuorana voi käyttää ns. testipohjaisen kehittämisen kolmea sääntöä. Ne ovat:
 1. Tuotantokoodia ei saa kirjoittaa, ennen kuin on kirjoittanut epäonnistuvan yksikkötestin
 2. Yksikkötestiä saa kirjoittaa vain sen verran kuin vaaditaan sen epäonnistumiseen. Kääntäjän tai tulkin raportoima virhe lasketaan epäonnistumiseksi.
-3. Tuotantokoodia saa kirjoittaa vain sen verran, että yksikkötesti menee läpi.\cite[luku 9.]{martin2008clean}
+3. Tuotantokoodia saa kirjoittaa vain sen verran, että yksikkötesti menee läpi. \cite[luku 9.]{martin2008clean}
 
-Joustavan järjestelmän suunnittelussa on myös hyvä seurata nk. YAGNI-periaatetta.("You Aren't Gonna Need It." suom. "Et sinä sitä tarvitse.") Kyseinen periaate edellyttää, että vain sellainen koodi kirjoitetaan, jolle on tarvetta. Luokkiin tai moduuleihin ei lisätä metodeita eikä toimintoja varmuuden varalta. \cite{jeffries1998}
+Joustavan järjestelmän suunnittelussa on myös hyvä seurata nk. YAGNI-periaatetta.("You Aren't Gonna Need It." suom. "Et sinä sitä tarvitse.") Kyseinen periaate edellyttää, että vain sellainen koodi kirjoitetaan, jolle on tarvetta. Luokkiin tai moduuleihin ei lisätä metodeita eikä toimintoja varmuuden varalta. \citep{jeffries1998}
 
 
-Evans toteaa, että joustava rakenne on monesti seurausta siitä, että \gls{domainmodel} kehittyy paremmaksi. Joustava ohjelmisto ei ole monimutkainen, eikä se piilota toiminnallisuuksiaan outojen rajapintojen taakse. Joustava ohjelmisto koostuu mahdollisimman pienestä määrästä löyhästi toisiinsa kytkeytyviä käsitteitä.\cite[luku 10.]{evans:ddd}
+Evans toteaa, että joustava rakenne on monesti seurausta siitä, että \gls{domainmodel} kehittyy paremmaksi. Joustava ohjelmisto ei ole monimutkainen, eikä se piilota toiminnallisuuksiaan outojen rajapintojen taakse. Joustava ohjelmisto koostuu mahdollisimman pienestä määrästä löyhästi toisiinsa kytkeytyviä käsitteitä. \citep[luku 10.]{evans:ddd}
 
 ## GraphQL-teknologian kuvaus
 
-Useimmat sovellukset ovat nykyään web-sovelluksia, ja useimmat web-sovellukset puolestaan perustuvat \glsentryname{rest} (Representational State Transfer) -rajapintoihin. \glsentryname{rest} on arkkitehtuurityyli, jossa palvelin esittää asiakasohjelmalle joukon resursseja, joita asiakasohjelma voi pyytää ja muunnella tilattomia pyyntöjä käyttäen.\cite{fielding2000architectural}
+Useimmat sovellukset ovat nykyään web-sovelluksia, ja useimmat web-sovellukset puolestaan perustuvat \glsentrytext{rest} (Representational State Transfer) -rajapintoihin. \glsentrytext{rest} on arkkitehtuurityyli, jossa palvelin esittää asiakasohjelmalle joukon resursseja, joita asiakasohjelma voi pyytää ja muunnella tilattomia pyyntöjä käyttäen. \citep{fielding2000architectural}
 
 REST-tyyli on vakiintunut web-sovellusten toteuttamisteknologiaksi, mutta siihen liittyy myös eräitä ongelmia. Mikäli REST-tyyppisestä rajapinnasta halutaan hakea usean eri resurssin verkko, joudutaan tekemään erillinen pyyntö jokaista resurssia kohti. Toisissa tapauksissa taas halutaan vain osa resurssin esittämästä tiedosta, mutta joudutaan silti hakemaan koko resurssi. \cites{betterRESTPrisma}{WhyUseGraphQLApollo}
 
-\gls{graphql} on Facebookin kehittämä kyselykieli, jolla edellämainittuja ongelmia pyritään ratkaisemaan. Sen alkuperäinen suunnitteluperiaate oli tarjota web-asiakasohjelmien kehittäjille aiempaa laajempi vapaus rajapintapyyntöjen laatimiseen. GraphQL esittää datan olioiden keskinäisenä verkkona. \cite{graphql:spec}
+\gls{graphql} on Facebookin kehittämä kyselykieli, jolla edellämainittuja ongelmia pyritään ratkaisemaan. Sen alkuperäinen suunnitteluperiaate oli tarjota web-asiakasohjelmien kehittäjille aiempaa laajempi vapaus rajapintapyyntöjen laatimiseen. GraphQL esittää datan olioiden keskinäisenä verkkona. \citep{graphql:spec}
 
-GraphQL on vielä suhteellisen uusi teknologia, eikä siitä löydy kovin paljoa materiaalia. Keskeinen tiedonlähde ovat Facebookin\cite{graphql:spec} ja GraphQL-säätiön\cite{GraphQLOrg} julkaisemat verkkomateriaalit sekä Apollo Graph -yrityksen GraphQL-teknologiaa käsittelevä materiaali. \cite{ApolloGraphQL}
+GraphQL on vielä suhteellisen uusi teknologia, eikä siitä löydy kovin paljoa materiaalia. Keskeinen tiedonlähde ovat Facebookin \cite{graphql:spec} ja GraphQL-säätiön \cite{GraphQLOrg} julkaisemat verkkomateriaalit sekä Apollo Graph -yrityksen \cite{ApolloGraphQL} GraphQL-teknologiaa käsittelevä materiaali. 
 
 GraphQL koostuu kahdesta osasta: kyselykielestä sekä tyyppijärjestelmästä. Kyselykielellä muotoillaan pyyntö, johon GraphQL-palvelun tulee vastata. Tyyppijärjestelmä taas tarkistaa pyynnön oikeellisuuden.
 
 GraphQL ei ole varsinainen rajapinta, sillä palvelun toteuttamisteknologia on määrittelyn ulkopuolella. Useimmiten GraphQL-palvelut on toteutettu \gls{http}-teknologian päälle, mutta muitakin, kuten WebSocketia, voi käytttää. GraphQL ei myöskään määrittele, miten kyselyn vastaus tulee muodostaa tai millä ohjelmointikielellä järjestelmä tulee toteuttaa.
 
-Aivan täysin kielineutraali GraphQL ei silti ole. Osa konventioista on JavaScript-konventioita. Esimerkiksi kenttien ja muuttujien nimet on tapana kirjoittaa camelCase- ja PascalCase -muodoissa, eli vaihdellen suuria ja pieniä kirjaimia sanan sisällä samoin kuin kyseiset sanat tässä virkkeessä on tehty. \cite{GraphQLSchemaBasics} 
+Aivan täysin kielineutraali GraphQL ei silti ole. Osa konventioista on JavaScript-konventioita. Esimerkiksi kenttien ja muuttujien nimet on tapana kirjoittaa camelCase- ja PascalCase -muodoissa, eli vaihdellen suuria ja pieniä kirjaimia sanan sisällä samoin kuin kyseiset sanat tässä virkkeessä on tehty. \citep{GraphQLSchemaBasics} 
 
 
 ### Verkoista
 
 GraphQL esittää datan olioiden välisenä verkkona. \Gls{verkko} eli graafi on tietorakenne, joka koostuu N:stä solmusta ja niitä yhdistävistä kaarista. \cite{pozrikidis2014introduction} Verkkojen avulla on mahdollista esittää monenlaisia asioiden välisiä suhteita, kuten esimerkiksi reittikartta usean kaupungin välisistä teistä.
 
-Olio-ohjelmoinnin tyyli esittää ratkaistavan ongelmakentän olioiden välisinä verkkoina. Ohjelmassa ei ole juuri lainkaan jaettua tilan käsittelyä, vaan kaikki tai lähes kaikki ohjelman sisältämä tieto on olioissa. Näin käsiteltävät ongelmakokonaisuudet saadaan jaettua pienempiin, hallittavan kokoisiin osiin. \cite{booch2008object}
+Olio-ohjelmoinnin tyyli esittää ratkaistavan ongelmakentän olioiden välisinä verkkoina. Ohjelmassa ei ole juuri lainkaan jaettua tilan käsittelyä, vaan kaikki tai lähes kaikki ohjelman sisältämä tieto on olioissa. Näin käsiteltävät ongelmakokonaisuudet saadaan jaettua pienempiin, hallittavan kokoisiin osiin. \citep{booch2008object}
 
-GraphQL:n avulla sovellusala on mahdollista esittää verkon muodossa määrittelemällä GraphQL-tyyppien verkko. Tämän avulla rajapinta tarjoaa asiakasohjelmalle rakenteen, joka muistuttaa olio-ohjelmoinnin olioverkkoja.\cite{thinkingInGraphs}
+GraphQL:n avulla sovellusala on mahdollista esittää verkon muodossa määrittelemällä GraphQL-tyyppien verkko. Tämän avulla rajapinta tarjoaa asiakasohjelmalle rakenteen, joka muistuttaa olio-ohjelmoinnin olioverkkoja. \citep{thinkingInGraphs}
 
 Juuri verkkorakenne tekee olio-ohjelmoinnista tehokkaan välineen tosielämän ongelmien ratkaisemiseen. Oliot voivat edustaa ohjelman \gls{domainmodel}n käsitteitä, ja verkko muodostaa niiden välisen käsitekartan.
 
-Käsitteiden verkkoa kuvaa myös Eric Evans Domain Driven Design -kirjassa. Keino rakentaa \glsentryname{ubilang} kehittäjien ja alan asiantuntijoiden välille on antaa tärkeille käsitteille nimet, sijoittaa ne mallissa oikeisiin suhteisiin keskenään ja myös toteuttaa ne koodissa.
+Käsitteiden verkkoa kuvaa myös Eric Evans Domain Driven Design -kirjassa. Keino rakentaa \glsentrytext{ubilang} kehittäjien ja alan asiantuntijoiden välille on antaa tärkeille käsitteille nimet, sijoittaa ne mallissa oikeisiin suhteisiin keskenään ja myös toteuttaa ne koodissa.
 
 Jotta tietokone saa käsitteistä täyden hyödyn irti, on käsitteet jaettava muodollisesti määritettyihin tyyppeihin.
 
@@ -118,11 +118,11 @@ Jotta tietokone saa käsitteistä täyden hyödyn irti, on käsitteet jaettava m
 
 Tietokoneet käsittelevät dataa ottamatta sen enempää kantaa sen \glsdisp{tyyppi}{tyyppiin}. Pohjimmiltaan data on vain bittijonoja muistissa, tai elementtejä joukossa. Kun tällaista järjestämätöntä ja tyypittämätöntä joukkoa ryhdytään käsittelemään, on välttämätöntä järjestää se erilaisiin kategorioihin. Tämä tiedon luokittelu synnyttää tyyppijärjestelmän, mutta järjestelmä ei ole formaalisti määritelty, eikä tietokone voi niin ollen tehdä tyyppitarkistusta.
 
-Tyypitys tarkoittaa määrättyjä rajoituksia, joiden avulla voidaan varmistaa muuttujan oikeellisuus. Staattinen tyypitys on menetelmä, jossa lausekkeiden tyyppi voidaan määrittää staattisen analyysin avulla, siis jo käännösaikaisesti. Vahva tyypitys taas mahdollistaa tyypin tarkistamisen luotettavasti ajon aikana. \cite{Cardelli+Wegner:1985}
+Tyypitys tarkoittaa määrättyjä rajoituksia, joiden avulla voidaan varmistaa muuttujan oikeellisuus. Staattinen tyypitys on menetelmä, jossa lausekkeiden tyyppi voidaan määrittää staattisen analyysin avulla, siis jo käännösaikaisesti. Vahva tyypitys taas mahdollistaa tyypin tarkistamisen luotettavasti ajon aikana. \citep{Cardelli+Wegner:1985}
 
-GraphQL-rajapinta koostuu tyypeistä, joita rajapinnalle lähetettävä kysely käyttää. Kyselyssä määritetään pyydettävät tyypit ja niiden kentät. Rajapinta palauttaa takaisin oliota edustavan joukon kenttiä \gls{hakurakenne}{assosiaatiotaulun} muodossa, eli tietorakenteena, joka koostuu avain-arvo-pareista. \cite{graphql:spec}
+GraphQL-rajapinta koostuu tyypeistä, joita rajapinnalle lähetettävä kysely käyttää. Kyselyssä määritetään pyydettävät tyypit ja niiden kentät. Rajapinta palauttaa takaisin oliota edustavan joukon kenttiä \gls{hakurakenne}{assosiaatiotaulun} muodossa, eli tietorakenteena, joka koostuu avain-arvo-pareista. \citep{graphql:spec}
 
-GraphQL:ää käyttävät sovellukset on kuitenkin useimmiten kirjoitettu dynaamisesti tyypitetyillä kielillä, jotka eivät sisällä tyyppitarkistuksia, tai tarkistukset ovat ajonaikaisia ja vapaaehtoisia. Esimerkiksi alkuperäinen GraphQL-referenssi-implementaatio on kirjoitettu JavaScriptillä. \cite{graphqlRefImple2021Oct}
+GraphQL:ää käyttävät sovellukset on kuitenkin useimmiten kirjoitettu dynaamisesti tyypitetyillä kielillä, jotka eivät sisällä tyyppitarkistuksia, tai tarkistukset ovat ajonaikaisia ja vapaaehtoisia. Esimerkiksi alkuperäinen GraphQL-referenssi-implementaatio on kirjoitettu JavaScriptillä \citep{graphqlRefImple2021Oct}.
 
 Samoin Python-kieli on dynaamisesti tyypitetty, ja olioiden tunnistamisessa se käyttää duck-tyypitykseksi kutsuttua menetelmää. Duck-tyypityksessä olion tyyppiä ei tarkasteta välttämättä edes ajonaikaisesti, vaan oletetaan sen sisältämien jäsenten perusteella \cite{pythonGloss2021Oct}. Jos esimerkiksi oliosta löytyvät kentät *summa* ja *laskunumero*, oletetaan, että olio on lasku.
 
@@ -161,15 +161,15 @@ type ConsolidatedInvoice {
 
 GraphQL:n olioverkko kuvataan täsmäkielellä määritellyn skeeman avulla.
 
-\Gls{dsl} on ohjelmointikieltä korkeamman tason kieli, joka on suunniteltu jollekin kapealle sovellusalueelle \cite{landin1966next}. Esimerkkejä \glsentryname{dsl}stä ovat esimerkiksi UNIX-tyyppisistä järjestelmistä tutut *sed*- ja *awk*-kielet. Tällaisen kielen avulla on mahdollista määritellä monimutkaisiakin asioita nopeasti. \cite{Raymond2003} Kieli tarjoaa tavanomaista ohjelmointikieltä ilmaisuvoimaisemman ja täsmällisemmän tavan määritellä asioita.
+\Gls{dsl} on ohjelmointikieltä korkeamman tason kieli, joka on suunniteltu jollekin kapealle sovellusalueelle \cite{landin1966next}. Esimerkkejä \glsentrytext{dsl}stä ovat esimerkiksi UNIX-tyyppisistä järjestelmistä tutut *sed*- ja *awk*-kielet. Tällaisen kielen avulla on mahdollista määritellä monimutkaisiakin asioita nopeasti. \cite{Raymond2003} Kieli tarjoaa tavanomaista ohjelmointikieltä ilmaisuvoimaisemman ja luonnollista kieltä täsmällisemmän tavan määritellä asioita.
 
-Eräs täsmäkielen kanssa hyödynnettävä suunnittelumalli on kielen käyttäminen tietorakenteiden abstraktioon.\cite{Spi00b} GraphQL-rajapinnassa on kysymys juuri tästä.
+Eräs täsmäkielen kanssa hyödynnettävä suunnittelumalli on kielen käyttäminen tietorakenteiden abstraktioon\cite{Spi00b}. GraphQL-rajapinnassa on kysymys juuri tästä.
 
 GraphQL-rajapinnan tyypit, niille tehtävät kyselyt ja mutaatiot kuvataan skeemassa GraphQL-kielen avulla. Edellä esitetty ConsolidatedInvoice- ja Invoice-olioista koostuva esimerkki on validi GraphQL-skeema. Tämä skeemamäärittelyihin käytettävä kieli on riippumaton ohjelmointikielestä. GraphQL-kirjastot eri kielissä lukevat skeeman, tarkistavat sen, ja sen jälkeen suorittavat Skeeman avulla ajonaikaisen tyyppitarkistuksen.
 
 GraphQL-kehityksen tyylejä on useita, ja yksi suosittu tapa on kirjoittaa skeema ensiksi. Se tarjoaa suuntaviivat sekä rajapinnan tekniselle toteutukselle, että myös graafisen asiakasohjelman laatimiselle.\cites{SchemaDriven2017Nov}{SchemaDrivenDesign2021Jul}
 
-GraphQL-skeemaa voi siis verrata Eric Evansin esittämään ajatukseen \glsdisp{ubilang}{kaikenkattavasta kielestä}. Esimerkiksi GraphQL Foundationin materiaaleissa esitetään, että GraphQL-skeemaa tulisi ajatella jaettuna kielenä oman ohjelmointitiimin kesken, ja myös käyttäjien kanssa kommunikoimiseen.\cite{thinkingInGraphs}
+GraphQL-skeemaa voi siis verrata Eric Evansin esittämään ajatukseen \glsdisp{ubilang}{kaikenkattavasta kielestä}. Esimerkiksi GraphQL Foundationin materiaaleissa esitetään, että GraphQL-skeemaa tulisi ajatella jaettuna kielenä oman ohjelmointitiimin kesken, ja myös käyttäjien kanssa kommunikoimiseen .\citep{thinkingInGraphs}
 
 ### Miten GraphQL-sovellus toimii
 
@@ -247,10 +247,10 @@ invoice(customerId: 1, appoitnmentDate: "2021-09-21") {
 \end{code}
 
 
-## GraphQL ja \glsentryname{ddd}
+## GraphQL ja \glsentrytext{ddd}
 
-Eric Evansin kirjassa \glsentryname{domainmodel} rakennetaan olio-ohjelmoinnin tekniikoita käyttäen. Vaikka se ei olekaan ainoa tapa rakentaa \glsentryname{domainmodel}, on se kuitenkin tyylinä hyvin suosittu.
+Eric Evansin kirjassa \glsentrytext{domainmodel} rakennetaan olio-ohjelmoinnin tekniikoita käyttäen. Vaikka se ei olekaan ainoa tapa rakentaa \glsentrytext{domainmodel}, on se kuitenkin tyylinä hyvin suosittu.
 
 Kuten edellä olen esittänyt, GraphQL puolestaan on olioverkkoon perustuva rajapinta, jossa rajapinnan tarjoama tieto on jäsennetty olioiksi ja niiden välisiksi suhteiksi.
 
-Voidaan siis esittää kysymys, kuinka hyvin GraphQL-rajapinta soveltuu \glsdisp{ddd}{sovellusaluevetoisen suunnittelun} tarpeisiin. On helppo kuvitella, että olioverkolla on mahdollista heijastaa \glsentryname{domainmodel}, ja jopa mallintaa se lähes yksi yhteen. Toisaalta GraphQL-rajapinta palauttaa dataa, kun taas olio-ohjelmoinnin keinon luotu olioverkko voi esittää dynaamisen ja muuttuvan mallin. Onko GraphQL toimiva väline ohjelmiston tietomallin parantamiseen? Tätä kysymystä lähden työni käytännön osassa selvittämään.
+Voidaan siis esittää kysymys, kuinka hyvin GraphQL-rajapinta soveltuu \glsdisp{ddd}{sovellusaluevetoisen suunnittelun} tarpeisiin. On helppo kuvitella, että olioverkolla on mahdollista heijastaa \glsentrytext{domainmodel}, ja jopa mallintaa se lähes yksi yhteen. Toisaalta GraphQL-rajapinta palauttaa dataa, kun taas olio-ohjelmoinnin keinon luotu olioverkko voi esittää dynaamisen ja muuttuvan mallin. Onko GraphQL toimiva väline ohjelmiston tietomallin parantamiseen? Tätä kysymystä lähden työni käytännön osassa selvittämään.
