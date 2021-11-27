@@ -173,7 +173,7 @@ GraphQL-skeemaa voi siis verrata Eric Evansin esittämään ajatukseen \glsdisp{
 
 ### Miten GraphQL-sovellus toimii
 
-![\label{graphqlarkkitehtuuri} Esimerkkiarkkitehtuuri GraphQL-sovellukselle](illustration/GraphQL-arkkitehtuuri.png)
+![\label{graphqlarkkitehtuuri} Esimerkkiarkkitehtuuri GraphQL-sovellukselle](illustration/originals/graphql_arkkitehtuuri.pdf)
 
 Kuvassa \ref{graphqlarkkitehtuuri} esitän yksinkertaisen GraphQL-sovelluksen arkkitehtuurin. Arkkitehtuuri on kerroksittainen, ja rajapinnalle esitettävä pyyntö liikkuu siinä ylhäältä alaspäin. Koska GraphQL on teknologianeutraali, tämä on vain yksi, toki suhteellisen tyypillinen esimerkki mahdollisesta GraphQL-sovelluksesta.
 

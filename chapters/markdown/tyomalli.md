@@ -32,7 +32,7 @@ Suunnittelutapaamisten ja ohjelmointiprosessin välinen yhteys ei saa olla vain 
 
 Esittelen työmallin kuvassa \ref{tyomalli}.
 
-![\label{tyomalli} Kuva työmallista](illustration/malli/notkea_tietomallin_parantelu2-1.png)
+![\label{tyomalli} Kuva työmallista](illustration/malli/notkea_tietomallin_parantelu3.pdf){width=17cm height=12.75cm}
 
 ## Työmallin vahvuuksia
 Tämän työmallin tuloksena syntyvä ohjelmisto tai ohjelmiston osa on notkea ja helposti muokattavissa. Lisäksi sen rakenne mukailee hyvin läheisesti sovellusalan sisäistä logiikkaa. Tämä läheinen yhteys tekee helpoksi tietomallin jatkokehittämisen, kuten uusien ominaisuuksien lisäämisen tai olemassaolevien muuttamisen. Kun sovellusalan toimintatavat muuttuvat, vastaa ohjelmistoon tehtävän muutoksen suuruus sovellusalalla tapahtuvan muutoksen suuruutta.
