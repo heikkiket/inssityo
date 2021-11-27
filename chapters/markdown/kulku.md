@@ -4,7 +4,7 @@ Yrityksessä haluttiin valita laskutuksen sisältä tapaus, jossa hoitokäynti t
 
 ## Laskutuksen taustaa
 
-Ohjelmistoa käyttävä terapeutti kirjaa järjestelmään hoitokäyntejä ja laskuttaa niitä. Monesti samalle maksajalle — etenkin, jos tämä ei ole yksityishenkilö vaan instituutio — kertyy monta eri laskua, jotka lähetetään yhtenä joukkona esimerkiksi kerran kuukaudessa. Tätä kutsutaan koontilaskuksi.
+Ohjelmistoa käyttävä terapeutti kirjaa järjestelmään hoitokäyntejä ja laskuttaa niitä. Monesti samalle maksajalle – etenkin, jos tämä ei ole yksityishenkilö vaan instituutio – kertyy monta eri laskua, jotka lähetetään yhtenä joukkona esimerkiksi kerran kuukaudessa. Tätä kutsutaan koontilaskuksi.
 
 Toisinaan jo luodussa laskussa huomataan virhe. Kirjanpidon periaatteiden mukaan laskuja ei kuitenkaan saa tuhota, vaan virheellinen lasku on oikaistava tai kumottava. Tässä ohjelmistoprototyypissä oletetaan, että kyse on aina virheellisesti laskutetusta käynnistä, jota maksaja kieltäytyy maksamasta ja joka pitää kumota. Tämä tapahtuu luomalla hyvityslasku.
 
@@ -102,7 +102,7 @@ Neljännen tapaamisen keskeinen ongelma oli, että käynti tuntui olevan edellee
 
 Vaikutti siltä, että käynnin ja laskun välistä puuttui edelleen jokin käsite. Olin keskustellut aiemmin viikolla laskutuksen kanssa työskennelleen tiimikaverini kanssa, ja hän kiinnitti huomiota siihen, että laskuille laitettiin "palvelurivejä". Hän oli itse käyttänyt omissa malleissaan "myyntiä".
 
-Nyt muistin tämän keskustelun ja ehdotin sen pohjalta, että laskutuksessa ei käsiteltäisikään suoraan käyntejä vaan palvelumyyntiä. Laura totesi, että kaikki laskuille laitettava on lopulta myyntiä — ikäänkuin se olisi ollut itsestäänselvyys! Ohjelmoijalle tämä oivallus oli kuitenkin uusi tieto, ja se avasi täysin uuden näkökulman laskutukseen.
+Nyt muistin tämän keskustelun ja ehdotin sen pohjalta, että laskutuksessa ei käsiteltäisikään suoraan käyntejä vaan palvelumyyntiä. Laura totesi, että kaikki laskuille laitettava on lopulta myyntiä – ikäänkuin se olisi ollut itsestäänselvyys! Ohjelmoijalle tämä oivallus oli kuitenkin uusi tieto, ja se avasi täysin uuden näkökulman laskutukseen.
 
 ![\label{malli3}Kolmas malli](illustration/malli4.jpg)
 
