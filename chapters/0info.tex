@@ -29,7 +29,7 @@
 %by-nc-sa (Attribution-NonCommercial-ShareAlike)
 %by-nc-nd (Attribution-NonCommercial-NoDerivs)
 %Note that theseus do not accept dedication to public domain CC0
-\def\thesiscopy{all}
+\def\thesiscopy{by-sa}
 
 %Finnish section, for title/abstract
 \def\otsikko{Jaettua kieltä etsimässä – GraphQL-rajapinta tietomallin kohentelun
@@ -39,31 +39,81 @@ välineenä}
 \def\suuntautumis{Ohjelmistotuotanto}
 \def\thesisfi{Insinöörityö}%was Opinnäytetyö
 \def\ohjaajat{
-Titteli Etunimi Sukunimi\newline
-Titteli Etunimi Sukunimi
+Lehtori Vesa Ollikainen\newline
+Development Lead Pasi Nissinen
 }
 \def\tiivistelma{
-Tämä on tiivistelmän ensimmäinen kappale. Tiivistelmän kappaleet loppuvat komentoon newline, jotta saadaan yksi tyhjä rivi aikaiseksi. \newline
+Insinöörityössä pyrittiin kohentamaan ohjelmiston tietomallia kehittämällä
+GraphQL-rajapinta sovellusaluevetoisen suunnittelun keinoin. Tavoitteena oli
+parantaa ohjelmiston tietomallia ja luoda työprosessi tietomallin
+parantelemiseen.\newline
 
-Tämä on tiivistlemän toinen kappale.
+Työn kuluessa arvioitiin GraphQL-rajapinnan soveltuvuutta tietomallin
+parantamisen välineeksi ja tutkittiin, kuinka hyvin teknologia soveltuu
+sovellusaluevetoisen suunnittelun välineeksi. Tavoitteena oli hahmottaa
+GraphQL:n rakenteen ja sovellusaluevetoisen suunnittelun yhtymäkohtia.\newline
+
+Insinöörityössä laadittiin pieni prototyyppisovellus, jonka kautta tietomallin
+parantamisen prosessia kehitettiin ja GraphQL-teknologiaa testattiin. Tämä
+prototyyppi toimi testialustana sovellusaluevetoisen suunnittelun käytäntöjen ja
+sovellusalan käsitteiden ymmärtämiseen.\newline
+
+GraphQL soveltuu hyvin sovellusaluevetoisen suunnittelun työkaluksi. Sen tapa
+esittää rajapinnan takana oleva järjestelmä olioiden verkkona ja sen
+ohjelmointikielistä riippumaton täsmäkielimuotoinen toteutus tekevät siitä hyvän
+teknologian vanhan järjestelmän tietomallin kohenteluun.\newline
+
+Insinöörityön tuloksena syntyi Notkean tietomallin paranteluksi nimetty
+työmalli, jonka avulla tietomallia voi selkeyttää. Pääperiaate on, että sanat,
+kaaviot ja koodi ovat kolme tapaa kommunikoida tietomallin sisältämiä ideoita
+kehittäjien ja sovellusalan asiantuntijoiden välillä.\newline
+
+Työn tuloksena syntyneen työmallin avulla on mahdollista rakentaa iäkkään
+ohjelmiston tietorakennetta parantava GraphQL-rajapinta.
 }
-\def\avainsanat{avainsana, avainsana}
-\def\aihe{Lyhyt kuvaus opinnäytetyöstä. Max 255 merkkiä.}%for the pdf metadata/properties. If not used, empty it and also the \def\subject.
+\def\avainsanat{GraphQL, sovellusaluevetoinen suunnittelu, rajapinta,
+  olioverkko, extreme programming}
+\def\aihe{Insinöörityössä etsittiin keinoja parantaa iäkkään sovelluksen tietomallia kehittämällä GraphQL-rajapinta sovellusaluevetoisen suunnittelun keinoin. Tuloksena syntyi työmalli, jolla tietomallia voidaan parantaa.}%for the pdf metadata/properties. If not used, empty it and also the \def\subject.
 
 %English section, for title/abstract
 \title{Your title here}
 \def\metropoliadegree{Bachelor of Engineering} % change to your needs, e.g. "master", etc.
-\def\metropoliadegreeprogramme{your degree programme (e.g. Information Technology)}
-\def\metropoliaspecialisation{your major option (e.g. Mobile Solutions)}
+\def\metropoliadegreeprogramme{Information Technology}
+\def\metropoliaspecialisation{Software Engineering}
 \def\thesisen{Bachelor’s Thesis} % change to your need, e.g. master's
 \def\metropoliainstructors{
-First name Last name, Title (e.g.: Project Manager)\newline
-First name Last name, Title (e.g.: Principal Lecturer)
+Vesa Ollikainen, Senior Lecturer\newline
+Pasi Nissinen, Development Lead
 }
 \def\abstract{
-Abstract content. To force newline between paragraph in the abstract, you must have both a empty line and the newline command. \newline
+In this Bachelors' the aim was to enchange the data model of a software by
+developing a GraphQL interface with means of Domain Driven Design. The goal was
+both to enchange data model and to create a process for enchanging the data
+model.\newline
 
-beginning of second paragraph\ldots
+During the work GraphQL was evaluated as a means of enchangement for the data
+model. It was researched how well this technology suits as a tool for domain
+driven development. The goal was to understand confluences of Domain Driven
+Design and a structure of GraphQL API.\newline
+
+In this Bachelors' a small prototype software was developed where the nature of
+GraphQL was tested and the process for enchanging the data model was developed.
+This prototype was an environment for understanding practises of Domain Driven
+Design and the consepts of a domain.\newline
+
+GraphQL suits well as a tool for Domain Driven Design. The way how it presents
+the system behind the API as an object graph and its programming language
+independent implementation in a form of domain specific language make it as a
+good technology for enchanging the data model of legacy system.\newline
+
+As a result of the work, a working model for clarifying the data model was
+created, called \em{Notkea tietomallin parantelu}. The primary priciple is that
+words, diagrams and code are three ways to communicate about ideas included in data
+model, between developers and domain experts.\newline
+
+With the resulting working model it is possible to build a GraphQL API that
+enchanhes ti data model of a legacy system.
 }
-\def\metropoliakeywords{keyword, keyword}
+\def\metropoliakeywords{GraphQL, Domain Driven Design, API,
+  object graph, extreme programming}
 \def\subject{short description of the thesis. Max 255 characters.}%for the pdf metadata/properties. If not used, empty it and also the \def\aihe.
